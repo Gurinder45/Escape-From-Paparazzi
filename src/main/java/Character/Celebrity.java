@@ -1,6 +1,5 @@
 package Character;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class Celebrity extends Character {
 
 	public void loadImage() {
 		try {
-			this.img = ImageIO.read(getClass().getResourceAsStream("/img/celeb_placeholder.png"));
+			this.img = ImageIO.read(getClass().getResourceAsStream("/images/celeb_placeholder.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +54,7 @@ public class Celebrity extends Character {
 
 	@Override
 	public void draw(Graphics g2d) {
-		g2d.drawImage(img, this.getPositionX(), this.getPositionY(), 48, 48, null);
+		g2d.drawImage(img, this.getPositionX(), this.getPositionY(), gPanel.getCellSize(), gPanel.getCellSize(), null);
 
 	}
 

@@ -1,19 +1,28 @@
 package ui;
 
+
+
 import javax.swing.JFrame;
+
 import util.InputHandler;
 
 public class GameFrame extends JFrame implements Runnable {
-	public int tileSize = 16;
-	Thread thread;
-	InputHandler inpHandler = new InputHandler();
-	GamePanel gamePanel = new GamePanel(inpHandler);
+	private Thread thread;
+	private InputHandler inpHandler;
+	private GamePanel gamePanel;
+	final public int cellSize = 32;
+	final public int columnNum = 36;
+	final public int rowNum = 24;
+	final public int screenHeight = cellSize * rowNum;
+	final public int screenWidth = cellSize * columnNum;
 
 	int fps = 60;
 
 	public GameFrame() {
+		inpHandler = new InputHandler();
+		gamePanel = new GamePanel(inpHandler, this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(1152, 864);
+		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
 		this.addKeyListener(inpHandler);
 		this.add(gamePanel);
