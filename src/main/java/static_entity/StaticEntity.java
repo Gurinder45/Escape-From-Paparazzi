@@ -1,22 +1,19 @@
-package Character;
+package static_entity;
 
 import java.awt.Graphics;
 
-public class Paparazzi extends Character {
+import entity.Entity;
 
-	public Paparazzi(int x, int y) {
-		super(x,y);
-		// TODO Auto-generated constructor stub
-	}
+public class StaticEntity extends Entity {
 
 	@Override
-	public void draw(Graphics g2d) {
+	public void update() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update() {
+	public void draw(Graphics g2d) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -14,20 +14,15 @@ public class InputHandler implements KeyListener {
 
 		if (key == KeyEvent.VK_W) {
 			direction = Direction.UP;
-			System.out.println(direction);
-
 		}
 		if (key == KeyEvent.VK_A) {
 			direction = Direction.LEFT;
-			System.out.println(direction);
 		}
 		if (key == KeyEvent.VK_S) {
 			direction = Direction.DOWN;
-			System.out.println(direction);
 		}
 		if (key == KeyEvent.VK_D) {
 			direction = Direction.RIGHT;
-			System.out.println(direction);
 		}
 	}
 
