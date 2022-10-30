@@ -14,11 +14,13 @@ import util.InputHandler;
 
 public class GameFrame extends JFrame implements Runnable {
 	public int tileSize = 16;
-	InputHandler inpHandler = new InputHandler();
+	
 	Thread thread;
+	InputHandler inpHandler = new InputHandler();
+	GamePanel gamePanel = new GamePanel(inpHandler);
 
 	int fps = 60;
-	Celebrity celebrity = new Celebrity(100, 100, this, inpHandler);
+	
 	
 
 	public GameFrame() {
@@ -26,7 +28,9 @@ public class GameFrame extends JFrame implements Runnable {
 		this.setSize(768, 576);
 		this.setTitle("Papparazi Escape!");
 		this.addKeyListener(inpHandler);
+		this.add(gamePanel);
 		this.setVisible(true);
+		startThread();
 	}
 
 	public void startThread() {
@@ -39,8 +43,9 @@ public class GameFrame extends JFrame implements Runnable {
 		double nextStart = System.nanoTime() + interval;
 
 		while (thread != null) {
-			update();
-			repaint();
+			gamePanel.update();
+			
+			gamePanel.repaint();
 			try {
 				double timeRemaining = (nextStart - System.nanoTime()) / 1000000;
 				if (timeRemaining < 0) {
@@ -56,16 +61,15 @@ public class GameFrame extends JFrame implements Runnable {
 
 	}
 
-	public void update() {
-		celebrity.update();
-	}
 
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		Graphics2D g2d = (Graphics2D) g;
-        celebrity.draw(g2d);
-		
-
-		
-	}
+//	public void paintComponent(Graphics g) {
+//		System.out.println("hello");
+//		super.paintComponents(g);
+//		Graphics2D g2d = (Graphics2D) g;
+//        celebrity.draw(g2d);
+//        g2d.dispose();
+//		
+//
+//		
+//	}
 }

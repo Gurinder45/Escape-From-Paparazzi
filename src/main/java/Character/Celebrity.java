@@ -2,23 +2,18 @@ package Character;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
-import ui.GameFrame;
+import ui.GamePanel;
 import util.Direction;
 import util.InputHandler;
 
 public class Celebrity extends Character {
 	// celebrity should be singleton
 
-	GameFrame gPanel;
+	GamePanel gPanel;
 	InputHandler inpHandler;
 
-	public Celebrity(int x, int y, GameFrame gP, InputHandler inpH) {
+	public Celebrity(int x, int y, GamePanel gP, InputHandler inpH) {
 		super(x, y);
 		this.gPanel = gP;
 		this.inpHandler = inpH;
@@ -27,11 +22,11 @@ public class Celebrity extends Character {
 
 	public void update() {
 		if (inpHandler.getDirection() == Direction.UP) {
-			position.addY(speed);
+			position.subtractY(speed);
 			System.out.println(position.getX() + "," + position.getY());
 		}
 		if (inpHandler.getDirection() == Direction.DOWN) {
-			position.subtractY(speed);
+			position.addY(speed);
 			System.out.println(position.getX() + "," + position.getY());
 		}
 		if (inpHandler.getDirection() == Direction.LEFT) {
@@ -44,7 +39,10 @@ public class Celebrity extends Character {
 		}
 	}
 
-	public void draw(Graphics graphics) {
+	public void draw(Graphics g2d) {
+		g2d.setColor(Color.black);
+		g2d.fillRect(this.getPositionX(),this.getPositionY(),48,48);
+		
 		
 	}
 
