@@ -14,14 +14,11 @@ import util.InputHandler;
 public class Celebrity extends MoveableEntity {
 	// celebrity should be singleton
 
-	GameFrame gFrame;
 	InputHandler inpHandler;
-	CollisionFinder collisionFinder;
 
-	public Celebrity(int x, int y, GameFrame gF) {
-		super(x, y);
-		this.gFrame = gF;
-		this.inpHandler = gF.getInputHandler();
+	public Celebrity(int x, int y, GameFrame gameFrame) {
+		super(x, y, gameFrame);
+		this.inpHandler = gameFrame.getInputHandler();
 		this.speed = 4;
 		loadImage();
 	}
@@ -37,12 +34,12 @@ public class Celebrity extends MoveableEntity {
 
 	public void update() {
 		direction = inpHandler.getDirection();
-	
+
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
-		collisionFinder.checkEntity(this);
-		
-		if(!collided) {
+		collisionFinder.checkMapCollision(this);
+
+		if (!collided) {
 			if (direction == Direction.UP) {
 				position.subtractY(speed);
 			}
@@ -57,7 +54,7 @@ public class Celebrity extends MoveableEntity {
 				position.addX(speed);
 
 			}
-			
+
 		}
 
 	}

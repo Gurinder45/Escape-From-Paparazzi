@@ -7,15 +7,21 @@ import javax.swing.JPanel;
 
 import map.Map;
 import moveable_entity.Celebrity;
+import moveable_entity.Paparazzi;
+import static_entity.Camera;
 import util.InputHandler;
 
 public class GamePanel extends JPanel {
 	private Celebrity celebrity;
+	private Paparazzi paparazzi;
+	private Camera camera;
 	private Map map;
 	
 
 	public GamePanel(InputHandler InpHandler, GameFrame gFrame) {
-		this.celebrity = new Celebrity(100, 100, gFrame);
+		this.celebrity = new Celebrity(96, 96, gFrame);
+		this.paparazzi = new Paparazzi(320, 416, gFrame);
+		this.camera = new Camera(320, 544, gFrame);
 		this.map = new Map(gFrame);
 	}
 
@@ -25,6 +31,8 @@ public class GamePanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		map.draw(g2d);
 		celebrity.draw(g2d);
+		paparazzi.draw(g2d);
+		camera.draw(g2d);
 		g2d.dispose();
 	}
 

@@ -4,9 +4,9 @@ import java.awt.Graphics;
 
 import ui.GameFrame;
 
-public class Fan extends StaticEntity {
+public class Disguise extends StaticEntity {
 
-	public Fan(int x, int y, GameFrame gameFrame) {
+	public Disguise(int x, int y, GameFrame gameFrame) {
 		super(x, y, gameFrame);
 		// TODO Auto-generated constructor stub
 	}
@@ -28,6 +28,5 @@ public class Fan extends StaticEntity {
 		// TODO Auto-generated method stub
 		
 	}
-	
 
 }

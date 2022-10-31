@@ -1,5 +1,6 @@
 package game;
 
+import moveable_entity.Celebrity;
 import moveable_entity.MoveableEntity;
 import ui.GameFrame;
 import ui.GamePanel;
@@ -14,7 +15,7 @@ public class CollisionFinder {
 		this.gPanel = gFrame.getGamePanel();
 	}
 
-	public void checkEntity(MoveableEntity mvbEntity) {
+	public void checkMapCollision(MoveableEntity mvbEntity) {
 		// find the column(s)/row(s) the entity is in
 		int leftColumn = mvbEntity.getPositionX() / gFrame.cellSize;
 		int rightColumn = (mvbEntity.getPositionX() + gFrame.cellSize) / gFrame.cellSize;
@@ -58,5 +59,15 @@ public class CollisionFinder {
 			}
 		}
 	}
+	
+	public void checkStaticEntityCollision(Celebrity celeb) {
+		int leftColumn = celeb.getPositionX() / gFrame.cellSize;
+		int rightColumn = (celeb.getPositionX() + gFrame.cellSize) / gFrame.cellSize;
+		int topRow = celeb.getPositionY() / gFrame.cellSize;
+		int bottomRow = (celeb.getPositionY() + gFrame.cellSize) / gFrame.cellSize;
+		
+		
+	}
+	
 
 }

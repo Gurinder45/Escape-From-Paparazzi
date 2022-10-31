@@ -1,27 +1,19 @@
 package static_entity;
 
-import java.awt.Graphics;
-
 import entity.Entity;
+import ui.GameFrame;
+import util.Point;
 
-public class StaticEntity extends Entity {
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
+public abstract class StaticEntity extends Entity {
+	
+	protected int val;
+	protected  GameFrame gameFrame;
+	
+	public StaticEntity(int x, int y, GameFrame gameFrame) {
+		position = new Point(x,y);
+		this.gameFrame = gameFrame;
 		
 	}
 
-	@Override
-	public void draw(Graphics g2d) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void loadImage() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }
