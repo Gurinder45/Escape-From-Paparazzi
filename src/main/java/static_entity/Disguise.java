@@ -1,6 +1,9 @@
 package static_entity;
 
 import java.awt.Graphics;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import ui.GameFrame;
 
@@ -8,7 +11,8 @@ public class Disguise extends StaticEntity {
 
 	public Disguise(int x, int y, GameFrame gameFrame) {
 		super(x, y, gameFrame);
-		// TODO Auto-generated constructor stub
+		loadImage();
+		
 	}
 
 	@Override
@@ -19,14 +23,19 @@ public class Disguise extends StaticEntity {
 
 	@Override
 	public void draw(Graphics g2d) {
-		// TODO Auto-generated method stub
+		g2d.drawImage(img, this.getPositionX(), this.getPositionY(), gameFrame.cellSize, gameFrame.cellSize, null);
+		
 		
 	}
 
 	@Override
 	public void loadImage() {
-		// TODO Auto-generated method stub
-		
+		try {
+			this.img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
+		
 }
+
