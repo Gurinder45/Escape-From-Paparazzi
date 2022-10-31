@@ -2,12 +2,13 @@ package entity;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import util.Point;
 
 public abstract class Entity {
 	protected Point position;
-	protected Image img;
+	protected BufferedImage img;
 	
 	public Point getPosition() {
 		return position;

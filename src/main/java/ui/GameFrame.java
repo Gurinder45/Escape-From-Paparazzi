@@ -1,19 +1,19 @@
 package ui;
 
-
-
 import javax.swing.JFrame;
 
+import game.CollisionFinder;
 import util.InputHandler;
 
 public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
 	private GamePanel gamePanel;
+	private CollisionFinder collisionFinder;
 	final public int cellSize = 32;
 	final public int columnNum = 36;
 	final public int rowNum = 24;
-	final public int screenHeight = cellSize * rowNum;
+	final public int screenHeight = cellSize * (rowNum + 1);
 	final public int screenWidth = cellSize * columnNum;
 
 	int fps = 60;
@@ -21,6 +21,7 @@ public class GameFrame extends JFrame implements Runnable {
 	public GameFrame() {
 		inpHandler = new InputHandler();
 		gamePanel = new GamePanel(inpHandler, this);
+		collisionFinder = new CollisionFinder(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
@@ -54,5 +55,17 @@ public class GameFrame extends JFrame implements Runnable {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public GamePanel getGamePanel() {
+		return gamePanel;
+	}
+
+	public InputHandler getInputHandler() {
+		return inpHandler;
+	}
+
+	public CollisionFinder getCollisionFinder() {
+		return collisionFinder;
 	}
 }

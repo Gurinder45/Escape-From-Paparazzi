@@ -1,8 +1,8 @@
-package Character;
+package moveable_entity;
 
 import java.awt.Graphics;
 
-public class Paparazzi extends Character {
+public class Paparazzi extends MoveableEntity {
 
 	public Paparazzi(int x, int y) {
 		super(x,y);

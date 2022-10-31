@@ -4,14 +4,18 @@ import java.awt.image.BufferedImage;
 
 public class Cell {
     BufferedImage img;
-	private Boolean collision;
+	private Boolean collidable;
 	
 	public Cell() {
-		this.collision = false;
+		this.collidable = false;
 	}
 	
 	public void setCollidable(Boolean bool) {
-		collision = bool;
+		collidable= bool;
+	}
+	
+	public boolean getCollidable() {
+		return collidable;
 	}
 
 }

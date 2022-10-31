@@ -5,19 +5,17 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import Character.Celebrity;
 import map.Map;
+import moveable_entity.Celebrity;
 import util.InputHandler;
 
 public class GamePanel extends JPanel {
 	private Celebrity celebrity;
 	private Map map;
-	private GameFrame gFrame;
 	
 
 	public GamePanel(InputHandler InpHandler, GameFrame gFrame) {
-		this.celebrity = new Celebrity(100, 100, this, InpHandler);
-		this.gFrame = gFrame;
+		this.celebrity = new Celebrity(100, 100, gFrame);
 		this.map = new Map(gFrame);
 	}
 
@@ -34,8 +32,11 @@ public class GamePanel extends JPanel {
 		celebrity.update();
 	}
 	
-	public int getCellSize() {
-		return gFrame.cellSize;
+	public int[][] getMapArray() {
+		return map.getMapArray();
 	}
-
+	
+	public boolean isCollidable(int type) {
+		return map.checkColidable(type);
+	}
 }

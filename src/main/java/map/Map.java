@@ -30,9 +30,11 @@ public class Map {
 			
 			cell[1] = new Cell();
 			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_placeholder.png"));
+			cell[1].setCollidable(true);
 			
 			cell[2] = new Cell();
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder.png"));
+			cell[2].setCollidable(true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -87,5 +89,13 @@ public class Map {
 				y += gFrame.cellSize;
 			}
 		}
+	}
+	
+	public int[][] getMapArray() {
+		return mapArray;
+	}
+	
+	public boolean checkColidable(int type) {
+		return cell[type].getCollidable();
 	}
 }
