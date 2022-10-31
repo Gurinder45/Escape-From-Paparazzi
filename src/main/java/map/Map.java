@@ -17,7 +17,7 @@ public class Map {
 
 	public Map(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		cell = new Cell[3];
+		cell = new Cell[4];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();
 		loadMap();
@@ -35,6 +35,12 @@ public class Map {
 			cell[2] = new Cell();
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder.png"));
 			cell[2].setCollidable(true);
+			
+			cell[3] = new Cell();
+			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
+			cell[3].setCollidable(true);
+			
+		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

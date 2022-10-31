@@ -17,50 +17,21 @@ public class CollisionFinder {
 	}
 	
 	
-	public void checkStaticEntityCollision(Celebrity celeb) {
-		int leftColumn = celeb.getPositionX() / gFrame.cellSize;
-		int rightColumn = (celeb.getPositionX() + gFrame.cellSize) / gFrame.cellSize;
-		int topRow = celeb.getPositionY() / gFrame.cellSize;
-		int bottomRow = (celeb.getPositionY() + gFrame.cellSize) / gFrame.cellSize;
-		
-		int cell1Type, cell2Type, next;
-		
-		if (celeb.getDirection() == Direction.UP) {
-			next = (celeb.getPositionY() - celeb.getSpeed()) / gFrame.cellSize;
-			cell1Type = mapArray[leftColumn][next];
-			cell2Type = mapArray[rightColumn][next];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				celeb.setCollided(true);
-			}
+	public void checkStaticEntityCollision(int cellType, int index1, int index2) {
+		int[][] mapArray = gPanel.getMapArray();
+		switch(cellType) {
+		case 3:
+			mapArray[index2][index1] = 0;
+			break;
+			
 		}
-		if (celeb.getDirection() == Direction.DOWN) {
-			next = ((celeb.getPositionY() + gFrame.cellSize) + celeb.getSpeed()) / gFrame.cellSize;
-			cell1Type = mapArray[leftColumn][next];
-			cell2Type = mapArray[rightColumn][next];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				celeb.setCollided(true);
-			}
-		}
-		if (celeb.getDirection() == Direction.LEFT) {
-			next = (celeb.getPositionX() - celeb.getSpeed()) / gFrame.cellSize;
-			cell1Type = mapArray[next][topRow];
-			cell2Type = mapArray[next][bottomRow];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				celeb.setCollided(true);
-			}
-		}
-		if (celeb.getDirection() == Direction.RIGHT) {
-			next = (celeb.getPositionX() + gFrame.cellSize + celeb.getSpeed()) / gFrame.cellSize;
-			cell1Type = mapArray[next][topRow];
-			cell2Type = mapArray[next][bottomRow];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				celeb.setCollided(true);
-			}
-		}
+	
 		
-		
-		
+
 	}
+		
+		
+		
 	
 	
 	
@@ -80,32 +51,65 @@ public class CollisionFinder {
 			next = (mvbEntity.getPositionY() - mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				mvbEntity.setCollided(true);
+			
+			if(cell1Type > 2 || cell2Type > 2 ) {
+				if(cell1Type > 2) {
+					checkStaticEntityCollision(cell1Type, next, leftColumn);
+				} else {
+					checkStaticEntityCollision(cell2Type, next, rightColumn);
+				}
+			} else {
+				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+					mvbEntity.setCollided(true);
+				}
 			}
 		}
 		if (mvbEntity.getDirection() == Direction.DOWN) {
 			next = ((mvbEntity.getPositionY() + gFrame.cellSize) + mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				mvbEntity.setCollided(true);
+			if(cell1Type > 2 || cell2Type > 2 ) {
+				if(cell1Type > 2) {
+					checkStaticEntityCollision(cell1Type, next, leftColumn);
+				} else {
+					checkStaticEntityCollision(cell2Type, next, rightColumn);
+				}
+			} else {
+				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+					mvbEntity.setCollided(true);
+				}
 			}
 		}
 		if (mvbEntity.getDirection() == Direction.LEFT) {
 			next = (mvbEntity.getPositionX() - mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				mvbEntity.setCollided(true);
+			if(cell1Type > 2 || cell2Type > 2 ) {
+				if(cell1Type > 2) {
+					checkStaticEntityCollision(cell1Type, topRow, next);
+				} else {
+					checkStaticEntityCollision(cell2Type, bottomRow, next);
+				}
+			} else {
+				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+					mvbEntity.setCollided(true);
+				}
 			}
 		}
 		if (mvbEntity.getDirection() == Direction.RIGHT) {
 			next = (mvbEntity.getPositionX() + gFrame.cellSize + mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
-				mvbEntity.setCollided(true);
+			if(cell1Type > 2 || cell2Type > 2 ) {
+				if(cell1Type > 2) {
+					checkStaticEntityCollision(cell1Type, topRow, next);
+				} else {
+					checkStaticEntityCollision(cell2Type, bottomRow, next);
+				}
+			} else {
+				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+					mvbEntity.setCollided(true);
+				}
 			}
 		}
 	}
