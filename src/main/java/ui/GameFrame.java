@@ -33,13 +33,7 @@ public class GameFrame extends JFrame implements Runnable {
 	int fps = 60;
 
 	public GameFrame() {
-		
 
-
-
-		//how can i get JFrame type GamePanel?
-		//where is gamewindow?
-		this.con.add(fameTxt);
 
 
 		inpHandler = new InputHandler();
@@ -60,6 +54,9 @@ public class GameFrame extends JFrame implements Runnable {
 		fameTxt.setBounds(600, 700, 100, 200);
 		fameTxt.setBackground(Color.black);
 		con.add(fameTxt);
+		//how can i get JFrame type GamePanel?
+		//where is gamewindow?
+		this.con.add(fameTxt);
 
 	}
 
