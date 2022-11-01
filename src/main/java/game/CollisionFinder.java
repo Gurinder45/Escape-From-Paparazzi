@@ -22,8 +22,19 @@ public class CollisionFinder {
 		switch(cellType) {
 		case 3:
 			mapArray[index2][index1] = 0;
+			gFrame.addScore(2);
+			System.out.println(gFrame.getScore());
 			break;
-			
+		case 4:
+			 mapArray[index2][index1] = 0;
+			 gFrame.substractScore(4);
+			 System.out.println(gFrame.getScore());
+			break;
+		case 5:
+			mapArray[index2][index1] = 0;
+			gFrame.addScore(3);
+			System.out.println(gFrame.getScore());
+			break;
 		}
 	
 		
