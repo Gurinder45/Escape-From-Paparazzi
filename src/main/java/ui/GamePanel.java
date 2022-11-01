@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+
+
 import map.Map;
 import moveable_entity.Celebrity;
 import moveable_entity.Paparazzi;
@@ -18,6 +20,7 @@ public class GamePanel extends JPanel {
 	private Camera camera;
 	private Map map;
 	
+
 
 	public GamePanel(InputHandler InpHandler, GameFrame gFrame) {
 		this.celebrity = new Celebrity(96, 96, gFrame);

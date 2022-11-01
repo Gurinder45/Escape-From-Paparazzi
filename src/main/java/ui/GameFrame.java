@@ -6,6 +6,14 @@ import game.CollisionFinder;
 import util.InputHandler;
 import util.Score;
 
+//for texts
+// import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Container;
+import java.awt.Color;
+import javax.swing.JLabel;
+
 public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
@@ -15,12 +23,25 @@ public class GameFrame extends JFrame implements Runnable {
 	final public int cellSize = 32;
 	final public int columnNum = 36;
 	final public int rowNum = 24;
-	final public int screenHeight = cellSize * (rowNum + 1);
-	final public int screenWidth = cellSize * columnNum;
+	final public int screenHeight = 900; //cellSize * (rowNum + 1);
+	final public int screenWidth = 1500; //cellSize * columnNum;
+
+		//texts
+		JPanel fameTxt;
+		Container con;
 
 	int fps = 60;
 
 	public GameFrame() {
+		
+
+
+
+		//how can i get JFrame type GamePanel?
+		//where is gamewindow?
+		this.con.add(fameTxt);
+
+
 		inpHandler = new InputHandler();
 		score = new Score();
 		gamePanel = new GamePanel(inpHandler, this);
@@ -32,6 +53,14 @@ public class GameFrame extends JFrame implements Runnable {
 		this.add(gamePanel);
 		this.setVisible(true);
 		startThread();
+
+		//for texts
+		con = this.getContentPane();
+		fameTxt = new JPanel();
+		fameTxt.setBounds(600, 700, 100, 200);
+		fameTxt.setBackground(Color.black);
+		con.add(fameTxt);
+
 	}
 
 	public void startThread() {
