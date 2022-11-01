@@ -19,8 +19,6 @@ public class GamePanel extends JPanel {
 	
 
 	public GamePanel(GameFrame gFrame) {
-
-	public GamePanel(InputHandler InpHandler, GameFrame gFrame) {
 		this.celebrity = new Celebrity(96, 96, gFrame);
 		this.paparazzi = new Paparazzi(320, 416, gFrame);
 		this.map = new Map(gFrame);
