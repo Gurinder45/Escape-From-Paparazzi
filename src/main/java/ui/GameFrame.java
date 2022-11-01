@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.CardLayout;
+
 import javax.swing.JFrame;
 
 import game.CollisionFinder;
@@ -10,6 +12,8 @@ public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
 	private GamePanel gamePanel;
+	private StartPanel startPanel;
+	private CardLayout cardLayout;
 	private CollisionFinder collisionFinder;
 	private Score score;
 	final public int cellSize = 32;
@@ -22,15 +26,29 @@ public class GameFrame extends JFrame implements Runnable {
 
 	public GameFrame() {
 		inpHandler = new InputHandler();
+		cardLayout = new CardLayout();
+		startPanel = new StartPanel(this);
 		score = new Score();
-		gamePanel = new GamePanel(inpHandler, this);
+		gamePanel = new GamePanel(this);
 		collisionFinder = new CollisionFinder(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
 		this.addKeyListener(inpHandler);
-		this.add(gamePanel);
+		this.setFocusable(true);
 		this.setVisible(true);
+		createCardLayout();
+	}
+	
+	public void createCardLayout() {
+		this.setLayout(cardLayout);
+		this.add(startPanel, "startPanel");
+		this.add(gamePanel, "gamePanel");
+		cardLayout.show(getContentPane(), "startPanel");
+	}
+	
+	public void startGame() {
+		cardLayout.show(getContentPane(), "gamePanel");
 		startThread();
 	}
 

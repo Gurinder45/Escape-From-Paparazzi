@@ -36,17 +36,8 @@ public class CollisionFinder {
 			System.out.println(gFrame.getScore());
 			break;
 		}
-	
-		
-
 	}
 		
-		
-		
-	
-	
-	
-
 	public void checkMapCollision(MoveableEntity mvbEntity) {
 		// find the column(s)/row(s) the entity is in
 		int leftColumn = mvbEntity.getPositionX() / gFrame.cellSize;

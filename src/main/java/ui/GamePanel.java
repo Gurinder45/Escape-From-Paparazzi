@@ -8,18 +8,15 @@ import javax.swing.JPanel;
 import map.Map;
 import moveable_entity.Celebrity;
 import moveable_entity.Paparazzi;
-import static_entity.Camera;
-import static_entity.Disguise;
 import util.InputHandler;
 
 public class GamePanel extends JPanel {
 	private Celebrity celebrity;
 	private Paparazzi paparazzi;
-	private Camera camera;
 	private Map map;
 	
 
-	public GamePanel(InputHandler InpHandler, GameFrame gFrame) {
+	public GamePanel(GameFrame gFrame) {
 		this.celebrity = new Celebrity(96, 96, gFrame);
 		this.paparazzi = new Paparazzi(320, 416, gFrame);
 		this.map = new Map(gFrame);
