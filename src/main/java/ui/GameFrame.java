@@ -53,10 +53,7 @@ public class GameFrame extends JFrame implements Runnable {
 		fameTxt = new JPanel();
 		fameTxt.setBounds(600, 700, 100, 200);
 		fameTxt.setBackground(Color.black);
-		con.add(fameTxt);
-		//how can i get JFrame type GamePanel?
-		//where is gamewindow?
-		this.con.add(fameTxt);
+		con.add(fameTxt); //??
 
 	}
 
