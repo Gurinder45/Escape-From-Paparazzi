@@ -30,9 +30,9 @@ public class GameFrame extends JFrame implements Runnable {
 	final public int screenHeight = 900; //cellSize * (rowNum + 1);
 	final public int screenWidth = 1500; //cellSize * columnNum;
 
-		//texts
-		JPanel fameTxt;
-		Container con;
+	//texts
+	JPanel fameTxt;
+	Container con;
 
 	int fps = 60;
 
