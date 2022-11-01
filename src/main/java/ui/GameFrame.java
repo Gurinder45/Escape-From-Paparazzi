@@ -37,9 +37,6 @@ public class GameFrame extends JFrame implements Runnable {
 	int fps = 60;
 
 	public GameFrame() {
-
-
-
 		inpHandler = new InputHandler();
 		cardLayout = new CardLayout();
 		startPanel = new StartPanel(this);
@@ -65,14 +62,6 @@ public class GameFrame extends JFrame implements Runnable {
 	public void startGame() {
 		cardLayout.show(getContentPane(), "gamePanel");
 		startThread();
-
-		//for texts
-		con = this.getContentPane();
-		fameTxt = new JPanel();
-		fameTxt.setBounds(600, 700, 100, 200);
-		fameTxt.setBackground(Color.black);
-		con.add(fameTxt); //??
-
 	}
 
 	public void startThread() {
