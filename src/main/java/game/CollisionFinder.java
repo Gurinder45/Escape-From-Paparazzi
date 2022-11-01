@@ -26,6 +26,7 @@ public class CollisionFinder {
 			System.out.println(gFrame.getScore());
 			break;
 		case 4:
+		// try this
 			 mapArray[index2][index1] = 0;
 			 gFrame.substractScore(4);
 			 System.out.println(gFrame.getScore());
