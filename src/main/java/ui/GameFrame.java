@@ -4,12 +4,14 @@ import javax.swing.JFrame;
 
 import game.CollisionFinder;
 import util.InputHandler;
+import util.Score;
 
 public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
 	private GamePanel gamePanel;
 	private CollisionFinder collisionFinder;
+	private Score score;
 	final public int cellSize = 32;
 	final public int columnNum = 36;
 	final public int rowNum = 24;
@@ -20,6 +22,7 @@ public class GameFrame extends JFrame implements Runnable {
 
 	public GameFrame() {
 		inpHandler = new InputHandler();
+		score = new Score();
 		gamePanel = new GamePanel(inpHandler, this);
 		collisionFinder = new CollisionFinder(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,5 +70,18 @@ public class GameFrame extends JFrame implements Runnable {
 
 	public CollisionFinder getCollisionFinder() {
 		return collisionFinder;
+	}
+	
+	public void addScore(int val){
+		score.addScore(val); 
+	}
+	
+	public void substractScore(int val){
+		score.substractScore(val);
+		 
+	}
+	
+	public int getScore() {
+		return score.getScore();
 	}
 }
