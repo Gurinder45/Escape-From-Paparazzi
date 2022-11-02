@@ -8,7 +8,6 @@ import java.text.DecimalFormat;
 //this class will handle all the on-screen UI
 public class UI {
 
-    GamePanel gPanel;
     Font arial_40;
     double timer;
     DecimalFormat deciF = new DecimalFormat("#0.00");

@@ -9,15 +9,6 @@ import game.EnemyMovement;
 import util.InputHandler;
 import util.Score;
 
-//for texts
-// import javax.swing.JFrame;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.Container;
-import java.net.PasswordAuthentication;
-import java.awt.Color;
-import javax.swing.JLabel;
-
 public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
@@ -32,12 +23,8 @@ public class GameFrame extends JFrame implements Runnable {
 	final public int cellSize = 32;
 	final public int columnNum = 36;
 	final public int rowNum = 24;
-	final public int screenHeight = 900; // cellSize * (rowNum + 1);
-	final public int screenWidth = 1500; // cellSize * columnNum;
-
-	// texts
-	JPanel fameTxt;
-	Container con;
+	final public int screenHeight = cellSize * (rowNum + 1);
+	final public int screenWidth = cellSize * columnNum;
 
 	int fps = 60;
 
