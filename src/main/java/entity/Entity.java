@@ -26,9 +26,7 @@ public abstract class Entity {
 	public void setPosition(int x, int y) {
 		position.setPoint(x,y);
 	}
-	
-	public abstract void update();
-	
+
 	public abstract void draw(Graphics g2d);
 	
 	public abstract void loadImage();

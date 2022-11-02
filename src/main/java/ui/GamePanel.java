@@ -5,8 +5,6 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-
-
 import map.Map;
 import moveable_entity.Celebrity;
 import moveable_entity.Paparazzi;
@@ -16,7 +14,6 @@ public class GamePanel extends JPanel {
 	private Celebrity celebrity;
 	private Paparazzi paparazzi;
 	private Map map;
-	
 
 	public GamePanel(GameFrame gFrame) {
 		this.celebrity = new Celebrity(96, 96, gFrame);
@@ -36,12 +33,13 @@ public class GamePanel extends JPanel {
 
 	public void update() {
 		celebrity.update();
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
 	}
-	
+
 	public int[][] getMapArray() {
 		return map.getMapArray();
 	}
-	
+
 	public boolean isCollidable(int type) {
 		return map.checkColidable(type);
 	}

@@ -14,11 +14,7 @@ public class Camera extends StaticEntity {
 		loadImage();
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
 
-	}
 
 	@Override
 	public void draw(Graphics g2d) {

@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 
 import game.CollisionFinder;
+import game.EnemyMovement;
 import util.InputHandler;
 import util.Score;
 
@@ -19,6 +20,7 @@ import javax.swing.JLabel;
 public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
+	private EnemyMovement enemyMovement;
 	private GamePanel gamePanel;
 	private StartPanel startPanel;
 	private CardLayout cardLayout;
@@ -41,6 +43,7 @@ public class GameFrame extends JFrame implements Runnable {
 		cardLayout = new CardLayout();
 		startPanel = new StartPanel(this);
 		score = new Score();
+		enemyMovement = new EnemyMovement(this);
 		gamePanel = new GamePanel(this);
 		collisionFinder = new CollisionFinder(this);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,6 +103,10 @@ public class GameFrame extends JFrame implements Runnable {
 
 	public CollisionFinder getCollisionFinder() {
 		return collisionFinder;
+	}
+	
+	public EnemyMovement getEnemyMovement() {
+		return enemyMovement;
 	}
 	
 	public void addScore(int val){
