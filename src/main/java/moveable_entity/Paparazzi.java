@@ -43,7 +43,7 @@ public class Paparazzi extends MoveableEntity {
 	public void move(Direction direction) {
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
-		collisionFinder.checkMapCollision(this);
+		collisionFinder.checkEnemyCollision(this);
 
 		if (!collided) {
 			if (direction == Direction.UP) {
@@ -71,7 +71,7 @@ public class Paparazzi extends MoveableEntity {
 		int startRow = this.getPositionY() / gFrame.cellSize;
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
-		collisionFinder.checkMapCollision(this);
+		collisionFinder.checkEnemyCollision(this);
 		enemyMovement.setNodes(startColumn, startRow, playerColumn, playerRow);
 		if (enemyMovement.search()) {
 			int nextPositionX = enemyMovement.getNextColumn();
@@ -81,18 +81,21 @@ public class Paparazzi extends MoveableEntity {
 			int rightPosition = (this.getPositionX() + gFrame.cellSize);
 			int topPosition = this.getPositionY();
 			int bottomPosition = (this.getPositionY() + gFrame.cellSize);
-			
-			// case when next position is above and the enemy is perfectly centered in the tile
+
+			// case when next position is above and the enemy is perfectly centered in the
+			// tile
 			if (topPosition > nextPositionY && leftPosition >= nextPositionX
 					&& rightPosition <= nextPositionX + gFrame.cellSize) {
 				direction = Direction.UP;
 				move(direction);
-			// case when next position is below and the enemy is perfectly centered in the tile
+				// case when next position is below and the enemy is perfectly centered in the
+				// tile
 			} else if (topPosition < nextPositionY && leftPosition >= nextPositionX
 					&& rightPosition <= nextPositionX + gFrame.cellSize) {
 				direction = Direction.DOWN;
 				move(direction);
-			// case when next position is above or below but enemy needs to move into the center of the tile
+				// case when next position is above or below but enemy needs to move into the
+				// center of the tile
 			} else if (topPosition >= nextPositionY && bottomPosition >= nextPositionY +
 					gFrame.cellSize) {
 				if (leftPosition > nextPositionX) {
@@ -103,7 +106,7 @@ public class Paparazzi extends MoveableEntity {
 					direction = Direction.RIGHT;
 					move(direction);
 				}
-			// if a collision is preventing the enemy from moving up, move left or right
+				// if a collision is preventing the enemy from moving up, move left or right
 			} else if (topPosition > nextPositionY && leftPosition >= nextPositionX) {
 				direction = Direction.UP;
 				move(direction);
@@ -119,8 +122,8 @@ public class Paparazzi extends MoveableEntity {
 					direction = Direction.RIGHT;
 					move(direction);
 				}
-				
-			// if a collision is preventing the enemy from moving down, move left or right
+
+				// if a collision is preventing the enemy from moving down, move left or right
 			} else if (topPosition < nextPositionY && leftPosition >= nextPositionX) {
 				direction = Direction.DOWN;
 				move(direction);
