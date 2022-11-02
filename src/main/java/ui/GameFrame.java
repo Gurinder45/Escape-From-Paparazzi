@@ -14,6 +14,7 @@ import util.Score;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Container;
+import java.net.PasswordAuthentication;
 import java.awt.Color;
 import javax.swing.JLabel;
 
@@ -23,25 +24,28 @@ public class GameFrame extends JFrame implements Runnable {
 	private EnemyMovement enemyMovement;
 	private GamePanel gamePanel;
 	private StartPanel startPanel;
+	private PausedPanel pausedPanel;
 	private CardLayout cardLayout;
 	private CollisionFinder collisionFinder;
 	private Score score;
+	private boolean paused;
 	final public int cellSize = 32;
 	final public int columnNum = 36;
 	final public int rowNum = 24;
-	final public int screenHeight = 900; //cellSize * (rowNum + 1);
-	final public int screenWidth = 1500; //cellSize * columnNum;
+	final public int screenHeight = 900; // cellSize * (rowNum + 1);
+	final public int screenWidth = 1500; // cellSize * columnNum;
 
-	//texts
+	// texts
 	JPanel fameTxt;
 	Container con;
 
 	int fps = 60;
 
 	public GameFrame() {
-		inpHandler = new InputHandler();
+		inpHandler = new InputHandler(this);
 		cardLayout = new CardLayout();
 		startPanel = new StartPanel(this);
+		pausedPanel = new PausedPanel(this);
 		score = new Score();
 		enemyMovement = new EnemyMovement(this);
 		gamePanel = new GamePanel(this);
@@ -54,18 +58,21 @@ public class GameFrame extends JFrame implements Runnable {
 		this.setVisible(true);
 		createCardLayout();
 	}
-	
+
 	public void createCardLayout() {
 		this.setLayout(cardLayout);
 		this.add(startPanel, "startPanel");
 		this.add(gamePanel, "gamePanel");
+		this.add(pausedPanel, "pausedPanel");
 		cardLayout.show(getContentPane(), "startPanel");
 	}
-	
+
 	public void startGame() {
 		cardLayout.show(getContentPane(), "gamePanel");
+		paused = false;
 		startThread();
 	}
+	
 
 	public void startThread() {
 		thread = new Thread(this);
@@ -104,21 +111,36 @@ public class GameFrame extends JFrame implements Runnable {
 	public CollisionFinder getCollisionFinder() {
 		return collisionFinder;
 	}
-	
+
 	public EnemyMovement getEnemyMovement() {
 		return enemyMovement;
 	}
-	
-	public void addScore(int val){
-		score.addScore(val); 
+
+	public void addScore(int val) {
+		score.addScore(val);
 	}
-	
-	public void substractScore(int val){
+
+	public void substractScore(int val) {
 		score.substractScore(val);
-		 
+
 	}
-	
+
 	public int getScore() {
 		return score.getScore();
+	}
+
+	public void togglePause() {
+		if(paused == false) {
+			paused = true;
+			cardLayout.show(getContentPane(), "pausedPanel");
+			
+		} else {
+			paused = false;
+			cardLayout.show(getContentPane(), "gamePanel");
+		}
+	}
+
+	public boolean isPaused() {
+		return paused;
 	}
 }

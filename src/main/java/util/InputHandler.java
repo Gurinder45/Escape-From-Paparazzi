@@ -3,8 +3,15 @@ package util;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import ui.GameFrame;
+
 public class InputHandler implements KeyListener {
 	public Direction direction;
+	private GameFrame gFrame;
+
+	public InputHandler(GameFrame gFrame) {
+		this.gFrame = gFrame;
+	}
 
 	public void keyTyped(KeyEvent e) {
 	}
@@ -23,6 +30,9 @@ public class InputHandler implements KeyListener {
 		}
 		if (key == KeyEvent.VK_D) {
 			direction = Direction.RIGHT;
+		}
+		if (key == KeyEvent.VK_ESCAPE) {
+			gFrame.togglePause();
 		}
 	}
 

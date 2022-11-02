@@ -14,8 +14,10 @@ public class GamePanel extends JPanel {
 	private Celebrity celebrity;
 	private Paparazzi paparazzi;
 	private Map map;
+	private GameFrame gFrame;
 
 	public GamePanel(GameFrame gFrame) {
+		this.gFrame = gFrame;
 		this.celebrity = new Celebrity(96, 96, gFrame);
 		this.paparazzi = new Paparazzi(320, 416, gFrame);
 		this.map = new Map(gFrame);
@@ -32,8 +34,11 @@ public class GamePanel extends JPanel {
 	}
 
 	public void update() {
-		celebrity.update();
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		if (!gFrame.isPaused()) {
+			celebrity.update();
+			paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		}
+
 	}
 
 	public int[][] getMapArray() {
