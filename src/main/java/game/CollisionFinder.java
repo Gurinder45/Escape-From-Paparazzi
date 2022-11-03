@@ -9,32 +9,43 @@ import util.Direction;
 
 public class CollisionFinder {
 	private GameFrame gFrame;
-	private GamePanel gPanel;
+	private int disguiseCollected;
 
 	public CollisionFinder(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		this.gPanel = gFrame.getGamePanel();
 
 	}
 
-	public void checkStaticEntityCollision(int cellType, int index1, int index2) {
-		int[][] mapArray = gPanel.getMapArray();
+	public void resetDisguises() {
+		disguiseCollected = 0;
+	}
+
+	public void checkStaticEntityCollision(int cellType, int index1, int index2, MoveableEntity mvbEntity) {
+		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 		switch (cellType) {
 			case 3:
 				mapArray[index2][index1] = 0;
 				gFrame.addScore(2);
-				System.out.println(gFrame.getScore());
+				disguiseCollected++;
 				break;
 			case 4:
 				// try this
 				mapArray[index2][index1] = 0;
 				gFrame.substractScore(4);
-				System.out.println(gFrame.getScore());
+				if (gFrame.getScore() < 0) {
+					gFrame.loseGame();
+				}
 				break;
 			case 5:
 				mapArray[index2][index1] = 0;
 				gFrame.addScore(3);
-				System.out.println(gFrame.getScore());
+				break;
+			case 6:
+				if (disguiseCollected == 5) {
+					gFrame.winGame();
+				} else {
+					mvbEntity.setCollided(true);
+				}
 				break;
 		}
 	}
@@ -49,7 +60,7 @@ public class CollisionFinder {
 
 		int cell1Type, cell2Type, next;
 
-		int[][] mapArray = gPanel.getMapArray();
+		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 
 		if (mvbEntity.getDirection() == Direction.UP) {
 			next = (mvbEntity.getPositionY() - mvbEntity.getSpeed()) / gFrame.cellSize;
@@ -58,12 +69,12 @@ public class CollisionFinder {
 
 			if (cell1Type > 2 || cell2Type > 2) {
 				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, next, leftColumn);
+					checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
 				} else {
-					checkStaticEntityCollision(cell2Type, next, rightColumn);
+					checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
 				}
 			} else {
-				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 					mvbEntity.setCollided(true);
 				}
 			}
@@ -74,12 +85,12 @@ public class CollisionFinder {
 			cell2Type = mapArray[rightColumn][next];
 			if (cell1Type > 2 || cell2Type > 2) {
 				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, next, leftColumn);
+					checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
 				} else {
-					checkStaticEntityCollision(cell2Type, next, rightColumn);
+					checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
 				}
 			} else {
-				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 					mvbEntity.setCollided(true);
 				}
 			}
@@ -90,12 +101,12 @@ public class CollisionFinder {
 			cell2Type = mapArray[next][bottomRow];
 			if (cell1Type > 2 || cell2Type > 2) {
 				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, topRow, next);
+					checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
 				} else {
-					checkStaticEntityCollision(cell2Type, bottomRow, next);
+					checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
 				}
 			} else {
-				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 					mvbEntity.setCollided(true);
 				}
 			}
@@ -106,12 +117,12 @@ public class CollisionFinder {
 			cell2Type = mapArray[next][bottomRow];
 			if (cell1Type > 2 || cell2Type > 2) {
 				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, topRow, next);
+					checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
 				} else {
-					checkStaticEntityCollision(cell2Type, bottomRow, next);
+					checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
 				}
 			} else {
-				if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 					mvbEntity.setCollided(true);
 				}
 			}
@@ -127,13 +138,13 @@ public class CollisionFinder {
 
 		int cell1Type, cell2Type, next;
 
-		int[][] mapArray = gPanel.getMapArray();
+		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 
 		if (paparazzi.getDirection() == Direction.UP) {
 			next = (paparazzi.getPositionY() + gap - paparazzi.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 				paparazzi.setCollided(true);
 			}
 		}
@@ -141,7 +152,7 @@ public class CollisionFinder {
 			next = ((paparazzi.getPositionY() - gap + gFrame.cellSize) + paparazzi.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 				paparazzi.setCollided(true);
 			}
 		}
@@ -149,7 +160,7 @@ public class CollisionFinder {
 			next = (paparazzi.getPositionX() + gap - paparazzi.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 				paparazzi.setCollided(true);
 			}
 		}
@@ -157,7 +168,7 @@ public class CollisionFinder {
 			next = (paparazzi.getPositionX() - gap + gFrame.cellSize + paparazzi.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (gPanel.isCollidable(cell1Type) || gPanel.isCollidable(cell2Type)) {
+			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
 				paparazzi.setCollided(true);
 			}
 		}

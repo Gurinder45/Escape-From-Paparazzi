@@ -15,7 +15,7 @@ public class Paparazzi extends MoveableEntity {
 
 	public Paparazzi(int x, int y, GameFrame gameFrame) {
 		super(x, y, gameFrame);
-		this.speed = 2;
+		this.speed = 1;
 		this.enemyMovement = gameFrame.getEnemyMovement();
 		loadImage();
 	}
@@ -75,8 +75,8 @@ public class Paparazzi extends MoveableEntity {
 		collisionFinder.checkEnemyCollision(this);
 		enemyMovement.setNodes(startColumn, startRow, playerColumn, playerRow);
 		if (enemyMovement.search()) {
-			int nextPositionX = enemyMovement.getNextColumn();
-			int nextPositionY = enemyMovement.getNextRow();
+			int nextPositionX = enemyMovement.getNextColumn() * gFrame.cellSize;
+			int nextPositionY = enemyMovement.getNextRow() * gFrame.cellSize;
 
 			int leftPosition = this.getPositionX() + gap;
 			int rightPosition = this.getPositionX() - gap + gFrame.cellSize;
@@ -138,6 +138,11 @@ public class Paparazzi extends MoveableEntity {
 					direction = Direction.RIGHT;
 					move(direction);
 				}
+			}
+			int nextColumn = enemyMovement.getNextColumn();
+			int nextRow = enemyMovement.getNextRow();
+			if (nextColumn == playerColumn && nextRow == playerRow) {
+				gFrame.loseGame();
 			}
 		}
 	}

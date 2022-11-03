@@ -18,8 +18,16 @@ public class EnemyMovement {
     public EnemyMovement(GameFrame gFrame) {
         this.gFrame = gFrame;
         this.opened = new ArrayList<Node>();
-        this.path = new ArrayList<Node>();	
+        this.path = new ArrayList<Node>();
         loadNodes();
+    }
+
+    public void clearAll() {
+        opened.clear();
+        path.clear();
+        succeeded = false;
+        loadNodes();
+
     }
 
     public void loadNodes() {
@@ -144,7 +152,7 @@ public class EnemyMovement {
             cur = opened.get(optimalIndex);
             if (cur == end) {
                 succeeded = true;
-                trackPath();          
+                trackPath();
             }
         }
         return succeeded;
@@ -169,11 +177,11 @@ public class EnemyMovement {
     }
 
     public int getNextColumn() {
-        return path.get(0).columnNum * gFrame.cellSize;
+        return path.get(0).columnNum;
     }
 
     public int getNextRow() {
-        return path.get(0).rowNum * gFrame.cellSize;
+        return path.get(0).rowNum;
     }
 
 }

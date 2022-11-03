@@ -18,7 +18,7 @@ public class Map {
 
 	public Map(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		cell = new Cell[6];
+		cell = new Cell[7];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();
 		loadMap();
@@ -28,76 +28,78 @@ public class Map {
 		try {
 			cell[0] = new Cell();
 			cell[0].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
-			
+
 			cell[1] = new Cell();
 			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_placeholder.png"));
 			cell[1].setCollidable(true);
-			
+
 			cell[2] = new Cell();
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder.png"));
 			cell[2].setCollidable(true);
-			
+
 			cell[3] = new Cell();
 			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
 			cell[3].setCollidable(false);
-			
+
 			cell[4] = new Cell();
 			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
 			cell[4].setCollidable(false);
-			
+
 			cell[5] = new Cell();
 			cell[5].img = ImageIO.read(getClass().getResourceAsStream("/images/fan.png"));
 			cell[5].setCollidable(false);
-			
-			
-		
+
+			cell[6] = new Cell();
+			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
+			cell[6].setCollidable(true);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void loadMap() {
 		try {
 			InputStream inpStrm = getClass().getResourceAsStream("/map/map.txt");
 			BufferedReader bReader = new BufferedReader(new InputStreamReader(inpStrm));
-			
+
 			int col = 0;
 			int row = 0;
-			
+
 			while (col < gFrame.columnNum && row < gFrame.rowNum) {
 				String line = bReader.readLine();
-				
-				while(col < gFrame.columnNum) {
+
+				while (col < gFrame.columnNum) {
 					String nums[] = line.split(" ");
 					int num = Integer.parseInt(nums[col]);
 					mapArray[col][row] = num;
 					col++;
-					
+
 				}
 				if (col == gFrame.columnNum) {
 					col = 0;
 					row++;
 				}
 			}
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void draw(Graphics2D g2d) {
 		int col = 0;
 		int row = 0;
 		int x = 0;
 		int y = 0;
 		int cellType;
-		
+
 		while (col < gFrame.columnNum && row < gFrame.rowNum) {
 			cellType = mapArray[col][row];
 			g2d.drawImage(cell[cellType].img, x, y, gFrame.cellSize, gFrame.cellSize, null);
 			col++;
 			x += gFrame.cellSize;
-			
+
 			if (col == gFrame.columnNum) {
 				col = 0;
 				x = 0;
@@ -106,11 +108,11 @@ public class Map {
 			}
 		}
 	}
-	
+
 	public int[][] getMapArray() {
 		return mapArray;
 	}
-	
+
 	public boolean checkColidable(int type) {
 		return cell[type].getCollidable();
 	}

@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.text.DecimalFormat;
 
 //this class will handle all the on-screen UI
-public class UI {
+public class Hud {
 
     Font arial_40;
     double timer;
@@ -15,7 +15,7 @@ public class UI {
 
 
 
-    public UI(GameFrame gFrame) {
+    public Hud(GameFrame gFrame) {
         this.gf = gFrame;
         arial_40 = new Font("Arial", Font.PLAIN, 40);
     }

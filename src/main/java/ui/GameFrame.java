@@ -16,6 +16,8 @@ public class GameFrame extends JFrame implements Runnable {
 	private GamePanel gamePanel;
 	private StartPanel startPanel;
 	private PausedPanel pausedPanel;
+	private WinPanel winPanel;
+	private LosePanel losePanel;
 	private CardLayout cardLayout;
 	private CollisionFinder collisionFinder;
 	private Score score;
@@ -33,6 +35,8 @@ public class GameFrame extends JFrame implements Runnable {
 		cardLayout = new CardLayout();
 		startPanel = new StartPanel(this);
 		pausedPanel = new PausedPanel(this);
+		winPanel = new WinPanel(this);
+		losePanel = new LosePanel(this);
 		score = new Score();
 		enemyMovement = new EnemyMovement(this);
 		gamePanel = new GamePanel(this);
@@ -40,7 +44,6 @@ public class GameFrame extends JFrame implements Runnable {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
-		this.addKeyListener(inpHandler);
 		this.setFocusable(true);
 		this.setVisible(true);
 		createCardLayout();
@@ -51,15 +54,39 @@ public class GameFrame extends JFrame implements Runnable {
 		this.add(startPanel, "startPanel");
 		this.add(gamePanel, "gamePanel");
 		this.add(pausedPanel, "pausedPanel");
+		this.add(winPanel, "winPanel");
+		this.add(losePanel, "losePanel");
 		cardLayout.show(getContentPane(), "startPanel");
 	}
 
 	public void startGame() {
+		this.addKeyListener(inpHandler);
 		cardLayout.show(getContentPane(), "gamePanel");
 		paused = false;
 		startThread();
 	}
 	
+	public void restartGame() {
+		enemyMovement.clearAll();
+		score.restartScore();
+		gamePanel.placeElements();
+		collisionFinder.resetDisguises();
+		this.addKeyListener(inpHandler);
+		cardLayout.show(getContentPane(), "gamePanel");
+		paused = false;
+		
+	}
+
+	public void loseGame() {
+		paused = true;
+		this.removeKeyListener(inpHandler);
+		cardLayout.show(getContentPane(), "losePanel");
+	}
+
+	public void winGame() {
+		cardLayout.show(getContentPane(), "winPanel");
+
+	}
 
 	public void startThread() {
 		thread = new Thread(this);
@@ -117,10 +144,10 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	public void togglePause() {
-		if(paused == false) {
+		if (paused == false) {
 			paused = true;
 			cardLayout.show(getContentPane(), "pausedPanel");
-			
+
 		} else {
 			paused = false;
 			cardLayout.show(getContentPane(), "gamePanel");

@@ -20,6 +20,7 @@ public class Celebrity extends MoveableEntity {
 		super(x, y, gameFrame);
 		this.inpHandler = gameFrame.getInputHandler();
 		this.speed = 4;
+		this.direction = Direction.NONE;
 		loadImage();
 	}
 

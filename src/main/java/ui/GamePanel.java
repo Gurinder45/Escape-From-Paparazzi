@@ -16,16 +16,19 @@ public class GamePanel extends JPanel {
 	private Map map;
 	private GameFrame gFrame;
 
-	//UI
-	private  UI ui;
-	
+	// UI
+	private Hud hud;
+
 	public GamePanel(GameFrame gFrame) {
 		this.gFrame = gFrame;
+		placeElements();
+	}
 
+	public void placeElements() {
 		this.celebrity = new Celebrity(96, 96, gFrame);
 		this.paparazzi = new Paparazzi(320, 416, gFrame);
 		this.map = new Map(gFrame);
-		this.ui = new UI(gFrame);
+		this.hud = new Hud(gFrame);	
 	}
 
 	@Override
@@ -36,8 +39,8 @@ public class GamePanel extends JPanel {
 		celebrity.draw(g2d);
 		paparazzi.draw(g2d);
 
-		//UI 
-		ui.draw(g2d);
+		// UI
+		hud.draw(g2d);
 		g2d.dispose();
 	}
 
