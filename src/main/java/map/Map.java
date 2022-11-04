@@ -18,7 +18,7 @@ public class Map {
 
 	public Map(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		cell = new Cell[7];
+		cell = new Cell[8];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();
 		loadMap();
@@ -63,25 +63,30 @@ public class Map {
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder.png"));
 			cell[2].setCollidable(true);
 
-			//regular reward image
+			//barrier block image 2
 			cell[3] = new Cell();
-			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
-			cell[3].setCollidable(false);
+			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder2.png"));
+			cell[3].setCollidable(true);
 
-			//punishment image 1
+			//regular reward image
 			cell[4] = new Cell();
-			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
+			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
 			cell[4].setCollidable(false);
-
 			//bonus reward image
 			cell[5] = new Cell();
 			cell[5].img = ImageIO.read(getClass().getResourceAsStream("/images/fan.png"));
 			cell[5].setCollidable(false);
 
-			//barrier block image 2
+			//punishment image 1
 			cell[6] = new Cell();
-			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder2.png"));
-			cell[6].setCollidable(true);
+			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
+			cell[6].setCollidable(false);
+
+			//punishment image 2
+			cell[7] = new Cell();
+			cell[7].img = ImageIO.read(getClass().getResourceAsStream("/images/camera2.png"));
+			cell[7].setCollidable(false);
+
 
 		} catch (IOException e) {
 			e.printStackTrace();
