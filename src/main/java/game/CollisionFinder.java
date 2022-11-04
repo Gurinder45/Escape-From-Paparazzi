@@ -23,6 +23,12 @@ public class CollisionFinder {
 	public void checkStaticEntityCollision(int cellType, int index1, int index2, MoveableEntity mvbEntity) {
 		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 		switch (cellType) {
+			case 1:
+				mvbEntity.setCollided(true);
+				break;
+			case 2:
+				mvbEntity.setCollided(true);
+				break;
 			case 3:
 				mapArray[index2][index1] = 0;
 				gFrame.addScore(2);
@@ -73,66 +79,29 @@ public class CollisionFinder {
 			next = (mvbEntity.getPositionY() - mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-
-			if (cell1Type > 2 || cell2Type > 2) {
-				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
-				} else {
-					checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
-				}
-			} else {
-				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-					mvbEntity.setCollided(true);
-				}
-			}
+			checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
+			checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
 		}
 		if (mvbEntity.getDirection() == Direction.DOWN) {
 			next = ((mvbEntity.getPositionY() + gFrame.cellSize) + mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-			if (cell1Type > 2 || cell2Type > 2) {
-				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
-				} else {
-					checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
-				}
-			} else {
-				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-					mvbEntity.setCollided(true);
-				}
-			}
+			checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
+			checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
 		}
 		if (mvbEntity.getDirection() == Direction.LEFT) {
 			next = (mvbEntity.getPositionX() - mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (cell1Type > 2 || cell2Type > 2) {
-				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
-				} else {
-					checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
-				}
-			} else {
-				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-					mvbEntity.setCollided(true);
-				}
-			}
+			checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
+			checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
 		}
 		if (mvbEntity.getDirection() == Direction.RIGHT) {
 			next = (mvbEntity.getPositionX() + gFrame.cellSize + mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (cell1Type > 2 || cell2Type > 2) {
-				if (cell1Type > 2) {
-					checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
-				} else {
-					checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
-				}
-			} else {
-				if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-					mvbEntity.setCollided(true);
-				}
-			}
+			checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
+			checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
 		}
 	}
 
