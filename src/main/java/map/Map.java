@@ -49,31 +49,38 @@ public class Map {
 
 	public void loadImages() {
 		try {
+			//floor image
 			cell[0] = new Cell();
 			cell[0].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
 
+			//wall image 
 			cell[1] = new Cell();
 			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_placeholder.png"));
 			cell[1].setCollidable(true);
 
+			//barrier block image 1
 			cell[2] = new Cell();
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder.png"));
 			cell[2].setCollidable(true);
 
+			//regular reward image
 			cell[3] = new Cell();
 			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
 			cell[3].setCollidable(false);
 
+			//punishment image 1
 			cell[4] = new Cell();
 			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
 			cell[4].setCollidable(false);
 
+			//bonus reward image
 			cell[5] = new Cell();
 			cell[5].img = ImageIO.read(getClass().getResourceAsStream("/images/fan.png"));
 			cell[5].setCollidable(false);
 
+			//barrier block image 2
 			cell[6] = new Cell();
-			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
+			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder2.png"));
 			cell[6].setCollidable(true);
 
 		} catch (IOException e) {
