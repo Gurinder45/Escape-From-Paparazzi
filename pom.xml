@@ -3,5 +3,41 @@
   <groupId>ca.gitlab.cmpt276f22_group18</groupId>
   <artifactId>maze_game</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+<properties>
+     <maven.compiler.source>17</maven.compiler.source>
+     <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <build> 
+  
+    <plugins>
+      <!-- Build an executable JAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>main.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      </plugins>
+    </build>
+
+  <dependencies> 
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-swing</artifactId>
+        <version>20-ea+4</version>
+    </dependency>
+  </dependencies> 
 </project>
+
+
 
