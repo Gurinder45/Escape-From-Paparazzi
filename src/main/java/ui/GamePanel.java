@@ -28,7 +28,7 @@ public class GamePanel extends JPanel {
 		this.celebrity = new Celebrity(96, 96, gFrame);
 		this.paparazzi = new Paparazzi(320, 416, gFrame);
 		this.map = new Map(gFrame);
-		this.hud = new Hud(gFrame);	
+		this.hud = new Hud(gFrame);
 	}
 
 	@Override
@@ -58,5 +58,9 @@ public class GamePanel extends JPanel {
 
 	public boolean isCollidable(int type) {
 		return map.checkColidable(type);
+	}
+
+	public void loadBonusRewards(int num) {
+		map.loadBonusRewards(num);
 	}
 }

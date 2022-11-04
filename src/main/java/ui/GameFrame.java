@@ -65,7 +65,7 @@ public class GameFrame extends JFrame implements Runnable {
 		paused = false;
 		startThread();
 	}
-	
+
 	public void restartGame() {
 		enemyMovement.clearAll();
 		score.restartScore();
@@ -74,7 +74,7 @@ public class GameFrame extends JFrame implements Runnable {
 		this.addKeyListener(inpHandler);
 		cardLayout.show(getContentPane(), "gamePanel");
 		paused = false;
-		
+
 	}
 
 	public void loseGame() {
@@ -156,5 +156,9 @@ public class GameFrame extends JFrame implements Runnable {
 
 	public boolean isPaused() {
 		return paused;
+	}
+
+	public void loadBonusRewards(int num) {
+		gamePanel.loadBonusRewards(num);
 	}
 }

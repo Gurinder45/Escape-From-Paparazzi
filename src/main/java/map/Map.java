@@ -24,6 +24,29 @@ public class Map {
 		loadMap();
 	}
 
+	public void loadBonusRewards(int num) {
+		switch (num) {
+			case 1:
+				mapArray[20][20] = 5;
+				break;
+			case 2:
+				mapArray[20][20] = 0;
+				mapArray[7][18] = 5;
+				break;
+			case 3:
+				mapArray[7][18] = 0;
+				mapArray[19][5] = 5;
+				break;
+			case 4:
+				mapArray[19][5] = 0;
+				mapArray[1][1] = 5;
+				break;
+			case 5:
+				mapArray[1][1] = 0;
+				break;
+		}
+	}
+
 	public void loadImages() {
 		try {
 			cell[0] = new Cell();
