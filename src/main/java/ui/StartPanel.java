@@ -26,7 +26,7 @@ public class StartPanel extends JPanel {
 		loadBackground();
 		this.startBtn = new JButton("START");
 		this.add(startBtn);
-		startBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
+		//startBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
 		addActListeners();
 
 	}
