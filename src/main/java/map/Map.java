@@ -18,7 +18,7 @@ public class Map {
 
 	public Map(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		cell = new Cell[7];
+		cell = new Cell[8];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();
 		loadMap();
@@ -75,6 +75,14 @@ public class Map {
 			cell[6] = new Cell();
 			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
 			cell[6].setCollidable(true);
+
+			cell[6] = new Cell();
+			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
+			cell[6].setCollidable(true);
+
+			cell[7] = new Cell();
+			cell[7].img = ImageIO.read(getClass().getResourceAsStream("/images/laser.png"));
+			cell[7].setCollidable(false);
 
 		} catch (IOException e) {
 			e.printStackTrace();
