@@ -25,16 +25,44 @@ public class Celebrity extends MoveableEntity {
 	}
 
 	public void loadImage() {
-		try {
-			this.img = ImageIO.read(getClass().getResourceAsStream("/images/celeb_placeholder.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (direction == Direction.UP) {
+			try {
+				this.img = ImageIO.read(getClass().getResourceAsStream("/images/celeb_up.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if (direction == Direction.DOWN) {
+			try {
+				this.img = ImageIO.read(getClass().getResourceAsStream("/images/celeb_down.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if (direction == Direction.RIGHT) {
+			try {
+				this.img = ImageIO.read(getClass().getResourceAsStream("/images/celeb_right.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if (direction == Direction.LEFT) {
+			try {
+				this.img = ImageIO.read(getClass().getResourceAsStream("/images/celeb_left.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// if no direction yet
+		} else {
+			try {
+				this.img = ImageIO.read(getClass().getResourceAsStream("/images/celeb_down.png"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
 
 	public void update() {
 		direction = inpHandler.getDirection();
+		loadImage();
 
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
