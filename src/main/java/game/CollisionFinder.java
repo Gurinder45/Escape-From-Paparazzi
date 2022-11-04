@@ -29,12 +29,7 @@ public class CollisionFinder {
 				disguiseCollected++;
 				break;
 			case 4:
-				// try this
-				mapArray[index2][index1] = 0;
-				gFrame.substractScore(4);
-				if (gFrame.getScore() < 0) {
-					gFrame.loseGame();
-				}
+				mvbEntity.setCollided(true);
 				break;
 			case 5:
 				mapArray[index2][index1] = 0;
@@ -47,6 +42,18 @@ public class CollisionFinder {
 					mvbEntity.setCollided(true);
 				}
 				break;
+			case 7:
+				for (int i = 0; i < gFrame.columnNum; i++) {
+					if (mapArray[i][index1] == 7) {
+						mapArray[i][index1] = 0;
+					}
+				}
+				gFrame.substractScore(4);
+				if (gFrame.getScore() < 0) {
+					gFrame.loseGame();
+				}
+				break;
+
 		}
 	}
 
