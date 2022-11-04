@@ -18,7 +18,7 @@ public class Map {
 
 	public Map(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		cell = new Cell[8];
+		cell = new Cell[7];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();
 		loadMap();
@@ -49,45 +49,41 @@ public class Map {
 
 	public void loadImages() {
 		try {
-			//floor image
+			//floor
 			cell[0] = new Cell();
 			cell[0].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
 
-			//wall image 
+			//wall
 			cell[1] = new Cell();
 			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_placeholder.png"));
 			cell[1].setCollidable(true);
 
-			//barrier block image 1
+			//barrier //外側の四角
 			cell[2] = new Cell();
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder.png"));
 			cell[2].setCollidable(true);
 
-			//barrier block image 2
+			//disguise //t-shirt
 			cell[3] = new Cell();
-			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder2.png"));
-			cell[3].setCollidable(true);
+			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
+			cell[3].setCollidable(false);
 
-			//regular reward image
+			//punishment //camera
 			cell[4] = new Cell();
-			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
+			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
 			cell[4].setCollidable(false);
-			//bonus reward image
+
+			//bonus reward
 			cell[5] = new Cell();
 			cell[5].img = ImageIO.read(getClass().getResourceAsStream("/images/fan.png"));
 			cell[5].setCollidable(false);
 
-			//punishment image 1
+			//?
 			cell[6] = new Cell();
-			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
-			cell[6].setCollidable(false);
+			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
+			cell[6].setCollidable(true);
 
-			//punishment image 2
-			cell[7] = new Cell();
-			cell[7].img = ImageIO.read(getClass().getResourceAsStream("/images/camera2.png"));
-			cell[7].setCollidable(false);
-
-
+			//camera lazer
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
