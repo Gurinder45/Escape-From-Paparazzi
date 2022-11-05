@@ -43,6 +43,7 @@ public class Paparazzi extends MoveableEntity {
 	public void move(Direction direction) {
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
+		collisionFinder.checkEnemyMapCollision(this);
 		collisionFinder.checkEnemyCollision(this);
 
 		if (!collided) {
@@ -72,6 +73,7 @@ public class Paparazzi extends MoveableEntity {
 		int startRow = (this.getPositionY() + gap) / gFrame.cellSize;
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
+		collisionFinder.checkEnemyMapCollision(this);
 		collisionFinder.checkEnemyCollision(this);
 		enemyMovement.setNodes(startColumn, startRow, playerColumn, playerRow);
 		if (enemyMovement.search()) {

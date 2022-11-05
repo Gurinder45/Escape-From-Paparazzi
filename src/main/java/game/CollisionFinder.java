@@ -1,5 +1,6 @@
 package game;
 
+import javafx.scene.shape.Rectangle;
 import moveable_entity.Celebrity;
 import moveable_entity.MoveableEntity;
 import moveable_entity.Paparazzi;
@@ -42,7 +43,7 @@ public class CollisionFinder {
 				gFrame.addScore(3);
 				break;
 			case 6:
-				if (disguiseCollected == 1) { //change to 5 later
+				if (disguiseCollected == 1) { // change to 5 later
 					gFrame.winGame();
 				} else {
 					mvbEntity.setCollided(true);
@@ -86,34 +87,34 @@ public class CollisionFinder {
 		if (mvbEntity.getDirection() == Direction.UP) {
 			next = (mvbEntity.getPositionY() - mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
-			cell2Type = mapArray[rightColumn][next];
 			checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
+			cell2Type = mapArray[rightColumn][next];
 			checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
 		}
 		if (mvbEntity.getDirection() == Direction.DOWN) {
 			next = ((mvbEntity.getPositionY() + gFrame.cellSize) + mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
-			cell2Type = mapArray[rightColumn][next];
 			checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
+			cell2Type = mapArray[rightColumn][next];
 			checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
 		}
 		if (mvbEntity.getDirection() == Direction.LEFT) {
 			next = (mvbEntity.getPositionX() - mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
-			cell2Type = mapArray[next][bottomRow];
 			checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
+			cell2Type = mapArray[next][bottomRow];
 			checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
 		}
 		if (mvbEntity.getDirection() == Direction.RIGHT) {
 			next = (mvbEntity.getPositionX() + gFrame.cellSize + mvbEntity.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
-			cell2Type = mapArray[next][bottomRow];
 			checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
+			cell2Type = mapArray[next][bottomRow];
 			checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
 		}
 	}
 
-	public void checkEnemyCollision(Paparazzi paparazzi) {
+	public void checkEnemyMapCollision(Paparazzi paparazzi) {
 		int gap = 5;
 		int leftColumn = (paparazzi.getPositionX() + gap) / gFrame.cellSize;
 		int rightColumn = (paparazzi.getPositionX() - gap + gFrame.cellSize) / gFrame.cellSize;
@@ -157,6 +158,50 @@ public class CollisionFinder {
 			}
 		}
 
+	}
+
+	public void checkEnemyCollision(Paparazzi paparazzi) {
+		Paparazzi[] pprzziArray = gFrame.getPaparazzis();
+		Rectangle paparazziRect = new Rectangle(paparazzi.getPositionX(), paparazzi.getPositionY(), 32, 32);
+		Rectangle otherPaparazziRect = new Rectangle(0, 0, 32, 32);
+
+		for (int i = 0; i < pprzziArray.length; i++) {
+			if (paparazzi != pprzziArray[i]) {
+
+				if (paparazzi.getDirection() == Direction.UP) {
+					paparazziRect.setY(paparazzi.getPositionY() - paparazzi.getSpeed());
+					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
+					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
+					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+						paparazzi.setCollided(true);
+					}
+				}
+				if (paparazzi.getDirection() == Direction.DOWN) {
+					paparazziRect.setY(paparazzi.getPositionY() + paparazzi.getSpeed());
+					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
+					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
+					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+						paparazzi.setCollided(true);
+					}
+				}
+				if (paparazzi.getDirection() == Direction.RIGHT) {
+					paparazziRect.setX(paparazzi.getPositionX() + paparazzi.getSpeed());
+					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
+					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
+					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+						paparazzi.setCollided(true);
+					}
+				}
+				if (paparazzi.getDirection() == Direction.LEFT) {
+					paparazziRect.setX(paparazzi.getPositionX() - paparazzi.getSpeed());
+					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
+					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
+					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+						paparazzi.setCollided(true);
+					}
+				}
+			}
+		}
 	}
 
 }
