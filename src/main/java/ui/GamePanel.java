@@ -12,7 +12,7 @@ import util.InputHandler;
 
 public class GamePanel extends JPanel {
 	private Celebrity celebrity;
-	private Paparazzi paparazzi;
+	private Paparazzi[] paparazzi;
 	private Map map;
 	private GameFrame gFrame;
 
@@ -21,12 +21,14 @@ public class GamePanel extends JPanel {
 
 	public GamePanel(GameFrame gFrame) {
 		this.gFrame = gFrame;
+		this.paparazzi = new Paparazzi[2];
 		placeElements();
 	}
 
 	public void placeElements() {
 		this.celebrity = new Celebrity(1080, 630, gFrame);
-		this.paparazzi = new Paparazzi(700, 600, gFrame);
+		paparazzi[0] = new Paparazzi(288, 416, gFrame);
+		paparazzi[1] = new Paparazzi(576, 576, gFrame);
 		this.map = new Map(gFrame);
 		this.hud = new Hud(gFrame);
 	}
@@ -37,7 +39,10 @@ public class GamePanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		map.draw(g2d);
 		celebrity.draw(g2d);
-		paparazzi.draw(g2d);
+		for (int i = 0; i < paparazzi.length; i++) {
+			paparazzi[i].draw(g2d);
+
+		}
 
 		// UI
 		hud.draw(g2d);
@@ -47,7 +52,9 @@ public class GamePanel extends JPanel {
 	public void update() {
 		if (!gFrame.isPaused()) {
 			celebrity.update();
-			paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+			for (int i = 0; i < paparazzi.length; i++) {
+				paparazzi[i].update(celebrity.getPositionX(), celebrity.getPositionY());
+			}
 		}
 
 	}
@@ -62,5 +69,9 @@ public class GamePanel extends JPanel {
 
 	public void loadBonusRewards(int num) {
 		map.loadBonusRewards(num);
+	}
+
+	public Paparazzi[] getPaparazzis() {
+		return paparazzi;
 	}
 }

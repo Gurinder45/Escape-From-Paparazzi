@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import game.CollisionFinder;
 import game.EnemyMovement;
+import moveable_entity.Paparazzi;
 import util.InputHandler;
 import util.Score;
 
@@ -85,8 +86,9 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	public void winGame() {
+		paused = true;
+		this.removeKeyListener(inpHandler);
 		cardLayout.show(getContentPane(), "winPanel");
-
 	}
 
 	public void startThread() {
@@ -161,5 +163,9 @@ public class GameFrame extends JFrame implements Runnable {
 
 	public void loadBonusRewards(int num) {
 		gamePanel.loadBonusRewards(num);
+	}
+
+	public Paparazzi[] getPaparazzis() {
+		return gamePanel.getPaparazzis();
 	}
 }
