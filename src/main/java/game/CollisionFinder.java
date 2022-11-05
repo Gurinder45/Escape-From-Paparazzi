@@ -68,7 +68,6 @@ public class CollisionFinder {
 			case 10:
 				mvbEntity.setCollided(true);
 				break;
-
 		}
 	}
 
