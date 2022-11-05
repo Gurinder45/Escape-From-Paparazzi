@@ -18,7 +18,7 @@ public class Map {
 
 	public Map(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		cell = new Cell[11];
+		cell = new Cell[10];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();
 		loadMap();
@@ -98,9 +98,6 @@ public class Map {
 			cell[9].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_2.png"));
 			cell[9].setCollidable(true);
 
-			cell[10] = new Cell();
-			cell[10].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_3.png"));
-			cell[10].setCollidable(true);
 
 		} catch (IOException e) {
 			e.printStackTrace();
