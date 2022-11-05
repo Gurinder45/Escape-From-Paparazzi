@@ -1,3 +1,8 @@
+/**
+ * this class will handle all the on-screen UI
+ *  この間にコメントを記述する
+ *
+ */
 package ui;
 
 import java.awt.Color;
@@ -5,7 +10,6 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.text.DecimalFormat;
 
-//this class will handle all the on-screen UI
 public class Hud {
 
     Font arial_40;
