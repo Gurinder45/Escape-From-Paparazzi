@@ -25,8 +25,8 @@ public class GamePanel extends JPanel {
 	}
 
 	public void placeElements() {
-		this.celebrity = new Celebrity(96, 96, gFrame);
-		this.paparazzi = new Paparazzi(320, 416, gFrame);
+		this.celebrity = new Celebrity(1080, 630, gFrame);
+		this.paparazzi = new Paparazzi(700, 600, gFrame);
 		this.map = new Map(gFrame);
 		this.hud = new Hud(gFrame);
 	}

@@ -46,6 +46,7 @@ public class GameFrame extends JFrame implements Runnable {
 		this.setTitle("Papparazi Escape!");
 		this.setFocusable(true);
 		this.setVisible(true);
+		this.setResizable(false);
 		createCardLayout();
 	}
 
