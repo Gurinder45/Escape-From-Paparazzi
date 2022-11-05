@@ -18,7 +18,7 @@ public class Map {
 
 	public Map(GameFrame gFrame) {
 		this.gFrame = gFrame;
-		cell = new Cell[8];
+		cell = new Cell[11];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();
 		loadMap();
@@ -55,12 +55,12 @@ public class Map {
 
 			//wall
 			cell[1] = new Cell();
-			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_placeholder.png"));
+			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall.png"));
 			cell[1].setCollidable(true);
 
 			//barrier //外側の四角
 			cell[2] = new Cell();
-			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_placeholder.png"));
+			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier.png"));
 			cell[2].setCollidable(true);
 
 			//disguise //t-shirt
@@ -86,6 +86,21 @@ public class Map {
 			cell[7] = new Cell();
 			cell[7].img = ImageIO.read(getClass().getResourceAsStream("/images/laser.png"));
 			cell[7].setCollidable(false);
+
+			//wall_2 //separator
+			//wall
+			cell[8] = new Cell();
+			cell[8].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_2.png"));
+			cell[8].setCollidable(true);
+
+			//barrier 2
+			cell[9] = new Cell();
+			cell[9].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_2.png"));
+			cell[9].setCollidable(true);
+
+			cell[10] = new Cell();
+			cell[10].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_3.png"));
+			cell[10].setCollidable(true);
 
 		} catch (IOException e) {
 			e.printStackTrace();

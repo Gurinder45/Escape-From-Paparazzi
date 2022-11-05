@@ -59,6 +59,15 @@ public class CollisionFinder {
 					gFrame.loseGame();
 				}
 				break;
+			case 8:
+				mvbEntity.setCollided(true);
+				break;
+			case 9:
+				mvbEntity.setCollided(true);
+				break;
+			case 10:
+				mvbEntity.setCollided(true);
+				break;
 
 		}
 	}
