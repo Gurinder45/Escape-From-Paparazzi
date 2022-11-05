@@ -27,22 +27,22 @@ public class Map {
 	public void loadBonusRewards(int num) {
 		switch (num) {
 			case 1:
-				mapArray[20][20] = 5;
+				mapArray[29][17] = 5;
 				break;
 			case 2:
-				mapArray[20][20] = 0;
-				mapArray[7][18] = 5;
+				mapArray[29][17] = 0;
+				mapArray[8][14] = 5;
 				break;
 			case 3:
-				mapArray[7][18] = 0;
-				mapArray[19][5] = 5;
+				mapArray[8][14] = 0;
+				mapArray[22][3] = 5;
 				break;
 			case 4:
-				mapArray[19][5] = 0;
-				mapArray[1][1] = 5;
+				mapArray[22][3] = 0;
+				mapArray[5][4] = 5;
 				break;
 			case 5:
-				mapArray[1][1] = 0;
+				mapArray[5][4] = 0;
 				break;
 		}
 	}
@@ -53,12 +53,12 @@ public class Map {
 			cell[0] = new Cell();
 			cell[0].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
 
-			//wall
+			//wall (This separates rooms)
 			cell[1] = new Cell();
 			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall.png"));
 			cell[1].setCollidable(true);
 
-			//barrier //外側の四角
+			//barrier 
 			cell[2] = new Cell();
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier.png"));
 			cell[2].setCollidable(true);
@@ -68,32 +68,32 @@ public class Map {
 			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
 			cell[3].setCollidable(false);
 
-			//punishment //camera
+			//camera(just a regular bblock/barrier)
 			cell[4] = new Cell();
 			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
 			cell[4].setCollidable(false);
 
-			//bonus reward
+			//bonus reward (a fan wanting a signiture from the celeb)
 			cell[5] = new Cell();
 			cell[5].img = ImageIO.read(getClass().getResourceAsStream("/images/fan.png"));
 			cell[5].setCollidable(false);
 
-			//?
+			//blocks for goal
 			cell[6] = new Cell();
 			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
 			cell[6].setCollidable(true);
 
+			//laser (punishment)
 			cell[7] = new Cell();
 			cell[7].img = ImageIO.read(getClass().getResourceAsStream("/images/laser.png"));
 			cell[7].setCollidable(false);
 
 			//wall_2 //separator
-			//wall
 			cell[8] = new Cell();
 			cell[8].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_2.png"));
 			cell[8].setCollidable(true);
 
-			//barrier 2
+			//barrier 2 (clothing racks)
 			cell[9] = new Cell();
 			cell[9].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_2.png"));
 			cell[9].setCollidable(true);
