@@ -25,7 +25,7 @@ public class WinPanel extends JPanel {
 		this.restartBtn = new JButton("RESTART");
 		this.add(restartBtn);
 		//restartBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
-		restartBtn.setBounds(750, 370, 200, 100);
+		restartBtn.setBounds(710, 450, 300, 100);
 		restartBtn.setBackground(new Color(143, 0, 225));
 		restartBtn.setForeground(Color.YELLOW);
 		restartBtn.setFocusPainted(false);
@@ -62,9 +62,9 @@ public class WinPanel extends JPanel {
 		int x = (gFrame.screenWidth / 2) - (2 * gFrame.cellSize);
 		int y = gFrame.screenHeight / 4;
 		g2d.setBackground(new Color(143, 0, 225));
-		g2d.setFont(new Font("Serif", Font.BOLD, 40));
+		g2d.setFont(new Font("Serif", Font.BOLD, 65));
 
-		g2d.setColor(Color.white);
-		g2d.drawString(text, x, y);
+		g2d.setColor(Color.black);
+		g2d.drawString(text, 710, 370);
 	}
 }

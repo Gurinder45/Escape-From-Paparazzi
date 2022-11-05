@@ -83,10 +83,6 @@ public class Map {
 			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
 			cell[6].setCollidable(true);
 
-			cell[6] = new Cell();
-			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
-			cell[6].setCollidable(true);
-
 			cell[7] = new Cell();
 			cell[7].img = ImageIO.read(getClass().getResourceAsStream("/images/laser.png"));
 			cell[7].setCollidable(false);
