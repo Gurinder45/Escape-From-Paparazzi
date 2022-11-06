@@ -14,8 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
+ * This class will create and design the start panel
  * 
- * @return
+ * @author Haruka Mibuchi
  */
 public class WinPanel extends JPanel {
 	private JButton restartBtn;
@@ -40,7 +41,8 @@ public class WinPanel extends JPanel {
 
 	/**
 	 * 
-	 * @return
+	 * this method will add the action listerner to the list
+	 * when the button is clicked, it will start the game
 	 */
 	public void addActListeners() {
 		restartBtn.addActionListener(new ActionListener() {
@@ -52,7 +54,7 @@ public class WinPanel extends JPanel {
 
 	/**
 	 * 
-	 * @return
+	 * this method will load the background image
 	 */
 	public void loadBackground() {
 		try {
@@ -66,7 +68,7 @@ public class WinPanel extends JPanel {
 
 	/**
 	 * 
-	 * @return
+	 * this method will design and add the bottons in the paused panel
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);

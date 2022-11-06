@@ -14,8 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
+ * This class will design the start panel
  * 
- * @return
+ * @author Haruka Mibuchi
  */
 public class StartPanel extends JPanel {
 

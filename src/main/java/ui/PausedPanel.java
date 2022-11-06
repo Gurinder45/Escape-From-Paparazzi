@@ -14,10 +14,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
+ * This class will design the pause panel
  * 
- * @return
+ * @author Haruka Mibuchi
  */
-
 public class PausedPanel extends JPanel {
 	private JButton resumeBtn;
 	private GameFrame gFrame;
