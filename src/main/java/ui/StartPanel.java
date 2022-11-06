@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- * This class will design the start panel
+ * This class will create and design the start panel
  * 
  * @author Haruka Mibuchi
  */
@@ -41,7 +41,8 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * 
+	 * this method will add the action listerner to the list
+	 * when the button is clicked, it will start the game
 	 */
 	public void addActListeners() {
 		startBtn.addActionListener(new ActionListener() {
@@ -53,7 +54,7 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * 
+	 * this method will load the background image
 	 */
 	public void loadBackground() {
 		try {
@@ -67,7 +68,7 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * 
+	 * this method will design and add the bottons in the paused panel
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);

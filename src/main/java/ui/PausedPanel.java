@@ -19,17 +19,18 @@ import javax.swing.JPanel;
  * @author Haruka Mibuchi
  */
 public class PausedPanel extends JPanel {
+
 	private JButton resumeBtn;
 	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
 	public PausedPanel(GameFrame gFrame) {
+
 		this.gFrame = gFrame;
 		this.setLayout(null);
 		loadBackground();
 		this.resumeBtn = new JButton("RESUME");
 		this.add(resumeBtn);
-		//resumeBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
 		resumeBtn.setBounds(710, 450, 250, 100);
 		resumeBtn.setBackground(new Color(225, 225, 0));
 		resumeBtn.setForeground(Color.BLACK);
@@ -40,8 +41,8 @@ public class PausedPanel extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * this method will add the action listerner to the list
+	 * when the button is clicked, it will pause the game
 	 */
 	public void addActListeners() {
 		resumeBtn.addActionListener(new ActionListener() {
@@ -52,8 +53,7 @@ public class PausedPanel extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * this method will load the background image
 	 */
 	public void loadBackground() {
 		try {
@@ -66,23 +66,19 @@ public class PausedPanel extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * this method will design and add the bottons in the paused panel
 	 */
 	public void paintComponent(Graphics g) {
+
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(backgroundImg, 0, 0, gFrame.screenWidth, gFrame.screenHeight, null);
 
 		String text = "Paused";
-		// roughly position text in middle of screen
-		int x = (gFrame.screenWidth / 2) - (2 * gFrame.cellSize);
-		int y = gFrame.screenHeight / 4;
 
 		g2d.setFont(new Font("Serif", Font.BOLD, 65));
 		g2d.setColor(Color.black);
 		g2d.drawString(text, 730, 370);
-		//g2d.drawString(text, x, y);
 	}
 }
 
