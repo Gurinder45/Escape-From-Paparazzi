@@ -13,6 +13,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @return
+ */
+
 public class PausedPanel extends JPanel {
 	private JButton resumeBtn;
 	private GameFrame gFrame;
@@ -34,6 +39,10 @@ public class PausedPanel extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void addActListeners() {
 		resumeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -42,6 +51,10 @@ public class PausedPanel extends JPanel {
 		});
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void loadBackground() {
 		try {
 			backgroundImg = ImageIO.read(getClass().getResourceAsStream("/images/background.png"));
@@ -52,6 +65,10 @@ public class PausedPanel extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;

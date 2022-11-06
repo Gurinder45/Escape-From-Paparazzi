@@ -15,6 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @return
+ */
+
 public class StartPanel extends JPanel {
 
 	private JButton startBtn;
@@ -37,6 +42,10 @@ public class StartPanel extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void addActListeners() {
 		startBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -45,6 +54,10 @@ public class StartPanel extends JPanel {
 		});
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void loadBackground() {
 		try {
 			backgroundImg = ImageIO.read(getClass().getResourceAsStream("/images/background.png"));
@@ -55,7 +68,10 @@ public class StartPanel extends JPanel {
 
 	}
 
-
+	/**
+	 * 
+	 * @return
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;

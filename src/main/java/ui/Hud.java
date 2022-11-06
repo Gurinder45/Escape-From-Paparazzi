@@ -22,6 +22,10 @@ public class Hud {
         arial_40 = new Font("Arial", Font.PLAIN, 40);
     }
 
+    /**
+	 * 
+	 * @return
+	 */
     public void draw(Graphics2D g2d) {
         g2d.setFont(arial_40);
         g2d.setColor(Color.black);

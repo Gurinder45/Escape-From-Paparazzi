@@ -19,12 +19,19 @@ public class GamePanel extends JPanel {
 	// UI
 	private Hud hud;
 
+	/**
+	 * 
+	 * @param gFrame
+	 */
 	public GamePanel(GameFrame gFrame) {
 		this.gFrame = gFrame;
 		this.paparazzi = new Paparazzi[2];
 		placeElements();
 	}
 
+	/**
+	 * 
+	 */
 	public void placeElements() {
 		this.celebrity = new Celebrity(1080, 630, gFrame);
 		paparazzi[0] = new Paparazzi(288, 416, gFrame);
@@ -33,6 +40,10 @@ public class GamePanel extends JPanel {
 		this.hud = new Hud(gFrame);
 	}
 
+	/**
+	 * this method draws neccesasary things such as map and celebrity om JPanel
+	 *   @param g the Graphics class object 
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
@@ -49,6 +60,9 @@ public class GamePanel extends JPanel {
 		g2d.dispose();
 	}
 
+	/**
+	 * 
+	 */
 	public void update() {
 		if (!gFrame.isPaused()) {
 			celebrity.update();
@@ -59,18 +73,34 @@ public class GamePanel extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int[][] getMapArray() {
 		return map.getMapArray();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isCollidable(int type) {
 		return map.checkColidable(type);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void loadBonusRewards(int num) {
 		map.loadBonusRewards(num);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Paparazzi[] getPaparazzis() {
 		return paparazzi;
 	}

@@ -13,6 +13,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @return
+ */
 public class WinPanel extends JPanel {
 	private JButton restartBtn;
 	private GameFrame gFrame;
@@ -34,6 +38,10 @@ public class WinPanel extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void addActListeners() {
 		restartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -42,6 +50,10 @@ public class WinPanel extends JPanel {
 		});
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void loadBackground() {
 		try {
 			backgroundImg = ImageIO.read(getClass().getResourceAsStream("/images/background.png"));
@@ -52,6 +64,10 @@ public class WinPanel extends JPanel {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;
