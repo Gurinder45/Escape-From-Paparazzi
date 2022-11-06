@@ -2,11 +2,15 @@ package game;
 
 import javafx.scene.shape.Rectangle;
 import moveable_entity.Celebrity;
-import moveable_entity.MoveableEntity;
 import moveable_entity.Paparazzi;
 import ui.GameFrame;
-import ui.GamePanel;
 import util.Direction;
+
+/**
+ * Handles all collisions which happen on the map
+ * 
+ * @author Gurinder Bhogal
+ */
 
 public class CollisionFinder {
 	private GameFrame gFrame;
@@ -14,45 +18,56 @@ public class CollisionFinder {
 
 	public CollisionFinder(GameFrame gFrame) {
 		this.gFrame = gFrame;
-
 	}
 
+	/**
+	 * resets the number of disguises collected for a restart
+	 */
 	public void resetDisguises() {
 		disguiseCollected = 0;
 	}
 
-	public void checkStaticEntityCollision(int cellType, int index1, int index2, MoveableEntity mvbEntity) {
+	/**
+	 * Given the type of cell the player is about to walk into,
+	 * make the appropriate change to the map or game state
+	 *
+	 * @param cellType  the type of cell that the character is walking into
+	 * @param rowIndex  the row the cell is on
+	 * @param colIndex  the colum the cell is on
+	 * @param character the character
+	 */
+	public void checkCellType(int cellType, int rowIndex, int colIndex, Celebrity character) {
 		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 		switch (cellType) {
 			case 1:
-				mvbEntity.setCollided(true);
+				character.setCollided(true);
 				break;
 			case 2:
-				mvbEntity.setCollided(true);
+				character.setCollided(true);
 				break;
 			case 3:
-				mapArray[index2][index1] = 0;
+				mapArray[colIndex][rowIndex] = 0;
 				gFrame.addScore(2);
 				disguiseCollected++;
 				break;
 			case 4:
-				mvbEntity.setCollided(true);
+				character.setCollided(true);
 				break;
 			case 5:
-				mapArray[index2][index1] = 0;
+				mapArray[colIndex][rowIndex] = 0;
 				gFrame.addScore(3);
 				break;
 			case 6:
 				if (disguiseCollected >= 4) {
 					gFrame.winGame();
 				} else {
-					mvbEntity.setCollided(true);
+					character.setCollided(true);
 				}
 				break;
 			case 7:
 				for (int i = 0; i < gFrame.columnNum; i++) {
-					if (mapArray[i][index1] == 7) {
-						mapArray[i][index1] = 0;
+					if (mapArray[i][rowIndex] == 7) {
+						mapArray[i][rowIndex] = 0;
 					}
 				}
 				gFrame.substractScore(4);
@@ -61,143 +76,159 @@ public class CollisionFinder {
 				}
 				break;
 			case 8:
-				mvbEntity.setCollided(true);
+				character.setCollided(true);
 				break;
 			case 9:
-				mvbEntity.setCollided(true);
+				character.setCollided(true);
 				break;
 			case 10:
-				mvbEntity.setCollided(true);
+				character.setCollided(true);
 				break;
 		}
 	}
 
-	public void checkMapCollision(MoveableEntity mvbEntity) {
+	/**
+	 * Checks which cells the character is about to walk into and calls
+	 * CheckCellType
+	 * to take the appropriate action
+	 * 
+	 * @param character the Character which is checked
+	 */
+	public void checkMapCollision(Celebrity character) {
 		// find the column(s)/row(s) the entity is in
 		int gap = 5;
-		int leftColumn = (mvbEntity.getPositionX() + gap) / gFrame.cellSize;
-		int rightColumn = (mvbEntity.getPositionX() - gap + gFrame.cellSize) / gFrame.cellSize;
-		int topRow = (mvbEntity.getPositionY() + gap) / gFrame.cellSize;
-		int bottomRow = (mvbEntity.getPositionY() - gap + gFrame.cellSize) / gFrame.cellSize;
+		int leftColumn = (character.getPositionX() + gap) / gFrame.cellSize;
+		int rightColumn = (character.getPositionX() - gap + gFrame.cellSize) / gFrame.cellSize;
+		int topRow = (character.getPositionY() + gap) / gFrame.cellSize;
+		int bottomRow = (character.getPositionY() - gap + gFrame.cellSize) / gFrame.cellSize;
 
 		int cell1Type, cell2Type, next;
 
 		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 
-		if (mvbEntity.getDirection() == Direction.UP) {
-			next = (mvbEntity.getPositionY() - mvbEntity.getSpeed()) / gFrame.cellSize;
+		if (character.getDirection() == Direction.UP) {
+			next = (character.getPositionY() - character.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
-			checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
+			checkCellType(cell1Type, next, leftColumn, character);
 			cell2Type = mapArray[rightColumn][next];
-			checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
+			checkCellType(cell2Type, next, rightColumn, character);
 		}
-		if (mvbEntity.getDirection() == Direction.DOWN) {
-			next = ((mvbEntity.getPositionY() + gFrame.cellSize) + mvbEntity.getSpeed()) / gFrame.cellSize;
+		if (character.getDirection() == Direction.DOWN) {
+			next = ((character.getPositionY() + gFrame.cellSize) + character.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
-			checkStaticEntityCollision(cell1Type, next, leftColumn, mvbEntity);
+			checkCellType(cell1Type, next, leftColumn, character);
 			cell2Type = mapArray[rightColumn][next];
-			checkStaticEntityCollision(cell2Type, next, rightColumn, mvbEntity);
+			checkCellType(cell2Type, next, rightColumn, character);
 		}
-		if (mvbEntity.getDirection() == Direction.LEFT) {
-			next = (mvbEntity.getPositionX() - mvbEntity.getSpeed()) / gFrame.cellSize;
+		if (character.getDirection() == Direction.LEFT) {
+			next = (character.getPositionX() - character.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
-			checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
+			checkCellType(cell1Type, topRow, next, character);
 			cell2Type = mapArray[next][bottomRow];
-			checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
+			checkCellType(cell2Type, bottomRow, next, character);
 		}
-		if (mvbEntity.getDirection() == Direction.RIGHT) {
-			next = (mvbEntity.getPositionX() + gFrame.cellSize + mvbEntity.getSpeed()) / gFrame.cellSize;
+		if (character.getDirection() == Direction.RIGHT) {
+			next = (character.getPositionX() + gFrame.cellSize + character.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
-			checkStaticEntityCollision(cell1Type, topRow, next, mvbEntity);
+			checkCellType(cell1Type, topRow, next, character);
 			cell2Type = mapArray[next][bottomRow];
-			checkStaticEntityCollision(cell2Type, bottomRow, next, mvbEntity);
+			checkCellType(cell2Type, bottomRow, next, character);
 		}
 	}
 
-	public void checkEnemyMapCollision(Paparazzi paparazzi) {
+	/**
+	 * Checks the cells the enemy is going to move to and checks if it should be
+	 * collided with
+	 * 
+	 * @param enemy the enemy to be checked
+	 */
+	public void checkEnemyMapCollision(Paparazzi enemy) {
 		int gap = 5;
-		int leftColumn = (paparazzi.getPositionX() + gap) / gFrame.cellSize;
-		int rightColumn = (paparazzi.getPositionX() - gap + gFrame.cellSize) / gFrame.cellSize;
-		int topRow = (paparazzi.getPositionY() + gap) / gFrame.cellSize;
-		int bottomRow = (paparazzi.getPositionY() - gap + gFrame.cellSize) / gFrame.cellSize;
-
+		int leftColumn = (enemy.getPositionX() + gap) / gFrame.cellSize;
+		int rightColumn = (enemy.getPositionX() - gap + gFrame.cellSize) / gFrame.cellSize;
+		int topRow = (enemy.getPositionY() + gap) / gFrame.cellSize;
+		int bottomRow = (enemy.getPositionY() - gap + gFrame.cellSize) / gFrame.cellSize;
 		int cell1Type, cell2Type, next;
-
 		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 
-		if (paparazzi.getDirection() == Direction.UP) {
-			next = (paparazzi.getPositionY() + gap - paparazzi.getSpeed()) / gFrame.cellSize;
+		if (enemy.getDirection() == Direction.UP) {
+			next = (enemy.getPositionY() + gap - enemy.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-				paparazzi.setCollided(true);
+				enemy.setCollided(true);
 			}
 		}
-		if (paparazzi.getDirection() == Direction.DOWN) {
-			next = ((paparazzi.getPositionY() - gap + gFrame.cellSize) + paparazzi.getSpeed()) / gFrame.cellSize;
+		if (enemy.getDirection() == Direction.DOWN) {
+			next = ((enemy.getPositionY() - gap + gFrame.cellSize) + enemy.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-				paparazzi.setCollided(true);
+				enemy.setCollided(true);
 			}
 		}
-		if (paparazzi.getDirection() == Direction.LEFT) {
-			next = (paparazzi.getPositionX() + gap - paparazzi.getSpeed()) / gFrame.cellSize;
+		if (enemy.getDirection() == Direction.LEFT) {
+			next = (enemy.getPositionX() + gap - enemy.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-				paparazzi.setCollided(true);
+				enemy.setCollided(true);
 			}
 		}
-		if (paparazzi.getDirection() == Direction.RIGHT) {
-			next = (paparazzi.getPositionX() - gap + gFrame.cellSize + paparazzi.getSpeed()) / gFrame.cellSize;
+		if (enemy.getDirection() == Direction.RIGHT) {
+			next = (enemy.getPositionX() - gap + gFrame.cellSize + enemy.getSpeed()) / gFrame.cellSize;
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
-				paparazzi.setCollided(true);
+				enemy.setCollided(true);
 			}
 		}
 
 	}
 
-	public void checkEnemyCollision(Paparazzi paparazzi) {
+	/**
+	 * Checks if enemies are about to collide with each other
+	 * 
+	 * @param enemy enemy to be checked
+	 */
+	public void checkEnemyCollision(Paparazzi enemy) {
 		Paparazzi[] pprzziArray = gFrame.getPaparazzis();
-		Rectangle paparazziRect = new Rectangle(paparazzi.getPositionX(), paparazzi.getPositionY(), 32, 32);
+		Rectangle paparazziRect = new Rectangle(enemy.getPositionX(), enemy.getPositionY(), 32, 32);
 		Rectangle otherPaparazziRect = new Rectangle(0, 0, 32, 32);
 
 		for (int i = 0; i < pprzziArray.length; i++) {
-			if (paparazzi != pprzziArray[i]) {
+			if (enemy != pprzziArray[i]) {
 
-				if (paparazzi.getDirection() == Direction.UP) {
-					paparazziRect.setY(paparazzi.getPositionY() - paparazzi.getSpeed());
+				if (enemy.getDirection() == Direction.UP) {
+					paparazziRect.setY(enemy.getPositionY() - enemy.getSpeed());
 					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
 					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
 					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
-						paparazzi.setCollided(true);
+						enemy.setCollided(true);
 					}
 				}
-				if (paparazzi.getDirection() == Direction.DOWN) {
-					paparazziRect.setY(paparazzi.getPositionY() + paparazzi.getSpeed());
+				if (enemy.getDirection() == Direction.DOWN) {
+					paparazziRect.setY(enemy.getPositionY() + enemy.getSpeed());
 					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
 					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
 					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
-						paparazzi.setCollided(true);
+						enemy.setCollided(true);
 					}
 				}
-				if (paparazzi.getDirection() == Direction.RIGHT) {
-					paparazziRect.setX(paparazzi.getPositionX() + paparazzi.getSpeed());
+				if (enemy.getDirection() == Direction.RIGHT) {
+					paparazziRect.setX(enemy.getPositionX() + enemy.getSpeed());
 					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
 					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
 					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
-						paparazzi.setCollided(true);
+						enemy.setCollided(true);
 					}
 				}
-				if (paparazzi.getDirection() == Direction.LEFT) {
-					paparazziRect.setX(paparazzi.getPositionX() - paparazzi.getSpeed());
+				if (enemy.getDirection() == Direction.LEFT) {
+					paparazziRect.setX(enemy.getPositionX() - enemy.getSpeed());
 					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
 					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
 					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
-						paparazzi.setCollided(true);
+						enemy.setCollided(true);
 					}
 				}
 			}
