@@ -29,7 +29,8 @@ public class WinPanel extends JPanel {
 		loadBackground();
 		this.restartBtn = new JButton("RESTART");
 		this.add(restartBtn);
-		//restartBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
+		// restartBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2)
+		// - 15, 80, 30);
 		restartBtn.setBounds(710, 450, 300, 100);
 		restartBtn.setBackground(new Color(143, 0, 225));
 		restartBtn.setForeground(Color.YELLOW);
@@ -41,7 +42,7 @@ public class WinPanel extends JPanel {
 
 	/**
 	 * 
-	 * this method will add the action listerner to the list
+	 * this method will add the action listener to the list
 	 * when the button is clicked, it will start the game
 	 */
 	public void addActListeners() {
@@ -68,7 +69,7 @@ public class WinPanel extends JPanel {
 
 	/**
 	 * 
-	 * this method will design and add the bottons in the paused panel
+	 * this method will design and add the buttons in the paused panel
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
@@ -76,9 +77,6 @@ public class WinPanel extends JPanel {
 		g2d.drawImage(backgroundImg, 0, 0, gFrame.screenWidth, gFrame.screenHeight, null);
 
 		String text = "YOU WON!";
-		// roughly position text in middle of screen
-		int x = (gFrame.screenWidth / 2) - (2 * gFrame.cellSize);
-		int y = gFrame.screenHeight / 4;
 		g2d.setBackground(new Color(143, 0, 225));
 		g2d.setFont(new Font("Serif", Font.BOLD, 65));
 

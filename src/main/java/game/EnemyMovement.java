@@ -57,7 +57,8 @@ public class EnemyMovement {
     }
 
     /**
-     * Sets the start and end rows and columns, sets the solid nodes, and gets their
+     * Sets the start and end rows and columns, sets the isCollidable nodes, and
+     * gets their
      * total cost
      * 
      * @param startColum starting column of the enemy
@@ -82,7 +83,7 @@ public class EnemyMovement {
             // check if the cell is Collidable
             if (mapArray[column][row] == 1 || mapArray[column][row] == 2 || mapArray[column][row] == 6
                     || mapArray[column][row] == 8 || mapArray[column][row] == 9) { ///////
-                nodes[column][row].solid = true;
+                nodes[column][row].isCollidable = true;
             }
             getTotalCost(nodes[column][row]);
             column++;
@@ -174,7 +175,7 @@ public class EnemyMovement {
      * @param node node to open
      */
     public void openNode(Node node) {
-        if (node.open == false && node.checked == false && node.solid == false) {
+        if (node.open == false && node.checked == false && node.isCollidable == false) {
             node.open = true;
             node.parent = cur;
             opened.add(node);
@@ -205,7 +206,7 @@ public class EnemyMovement {
             // iterate through the nodes and make them back to their original state
             nodes[column][row].open = false;
             nodes[column][row].checked = false;
-            nodes[column][row].solid = false;
+            nodes[column][row].isCollidable = false;
             column++;
             if (column == gFrame.columnNum) {
                 column = 0;

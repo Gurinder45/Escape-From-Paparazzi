@@ -23,8 +23,8 @@ public class Hud {
     }
 
     /**
-	 * This method will display some texts on the screen such as time and fame
-	 */
+     * This method will display some texts on the screen such as time and fame
+     */
     public void draw(Graphics2D g2d) {
 
         g2d.setFont(arial_40);
@@ -34,10 +34,10 @@ public class Hud {
         timer += (double) 1 / 60;
         float deciTimer = Float.parseFloat(deciF.format(timer));
 
-        //setting the time for bonus rward to pop up on the screen at certain time
-        if (deciTimer % 5.00 == 0 && deciTimer <= 25.00) {
+        // setting the time for bonus rward to pop up on the screen at certain time
+        if (deciTimer % 10.00 == 0 && deciTimer <= 50.00) {
             int intTimer = (int) deciTimer;
-            int rewardNum = intTimer / 5;
+            int rewardNum = intTimer / 10;
             gf.loadBonusRewards(rewardNum);
         }
 

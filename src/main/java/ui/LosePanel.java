@@ -39,7 +39,7 @@ public class LosePanel extends JPanel {
 	}
 
 	/**
-	 * this method wi;; ass 
+	 * Add action listener to restart button
 	 */
 	public void addActListeners() {
 		restartBtn.addActionListener(new ActionListener() {
@@ -50,8 +50,7 @@ public class LosePanel extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * load the background image
 	 */
 	public void loadBackground() {
 		try {
@@ -65,7 +64,7 @@ public class LosePanel extends JPanel {
 
 	/**
 	 * 
-	 * @return
+	 * Draws the losing panel
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
@@ -73,12 +72,8 @@ public class LosePanel extends JPanel {
 		g2d.drawImage(backgroundImg, 0, 0, gFrame.screenWidth, gFrame.screenHeight, null);
 
 		String text = "YOU LOST";
-		// roughly position text in middle of screen
-		int x = (gFrame.screenWidth / 2) - (2 * gFrame.cellSize);
-		int y = gFrame.screenHeight / 4;
-
 		g2d.setFont(new Font("Serif", Font.BOLD, 65));
 		g2d.setColor(Color.black);
-		g2d.drawString(text, 680, 370); //x, y);
+		g2d.drawString(text, 680, 370); // x, y);
 	}
 }

@@ -41,7 +41,7 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * this method will add the action listerner to the list
+	 * this method will add the action listener to the list
 	 * when the button is clicked, it will start the game
 	 */
 	public void addActListeners() {
@@ -68,7 +68,7 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * this method will design and add the bottons in the paused panel
+	 * this method will design and add the buttons in the paused panel
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
