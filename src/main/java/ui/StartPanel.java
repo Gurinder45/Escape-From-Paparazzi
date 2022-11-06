@@ -30,7 +30,7 @@ public class StartPanel extends JPanel {
 		//startBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
 		startBtn.setBounds(750, 370, 200, 100);
 		startBtn.setBackground(new Color(143, 0, 225));
-		startBtn.setForeground(Color.WHITE);
+		startBtn.setForeground(Color.BLACK);
 		startBtn.setFocusPainted(false);
 		startBtn.setFont(new Font("Serif", Font.BOLD, 40));
 		addActListeners();
