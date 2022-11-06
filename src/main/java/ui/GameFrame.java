@@ -76,7 +76,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this methods creates the intro page for a game
 	 * Changes panel to the game panel and starts the thread
 	 */
 	public void startGame() {
@@ -87,7 +86,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this methods reset things such as score and items and then show the game window
 	 * Resets game elements and displays the game panel for a game restart
 	 */
 	public void restartGame() {
@@ -102,8 +100,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this method is used when the user loses the game
-	 * it will remove all the key and show the lose panel
 	 * Stops the game and displays losing panel
 	 */
 	public void loseGame() {
@@ -113,8 +109,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this method is used when the user wins the game
-	 * it will show the win panel
 	 * Stops the game and displays winning panel
 	 */
 	public void winGame() {
@@ -124,8 +118,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this method reates a new thread and automatically call the run method
-	 * and start the theread
 	 * Begins the game thread
 	 */
 	public void startThread() {
@@ -134,8 +126,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this method creates a game loop which will update things such as
-	 * chracter position and draw the screen with updated position
 	 * Tells the game panel to update and repaint
 	 */
 	public void run() {
@@ -169,7 +159,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * @return input handler
 	 * Get the input handler for the frame
 	 * 
 	 * @return the input handler
@@ -179,7 +168,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * @return collision finder
 	 * Get the collision finder of the frame
 	 * 
 	 * @return the collision finder
@@ -189,7 +177,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * @return 
 	 * Get the enemy movement handler of the frame
 	 * 
 	 * @return the enemy movement handler
@@ -199,8 +186,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this method will add the item score to the current total score
-	 * @param val
 	 * Add the given score to the score total
 	 * 
 	 * @param val value to be added
@@ -210,8 +195,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * this method will remove certain points from the total score
-	 * @param val
 	 * Subtract the given score from the score total
 	 * 
 	 * @param val value to be subtracted
@@ -221,8 +204,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return the total score 
 	 * Get the current score
 	 * 
 	 * @return the current score
@@ -257,7 +238,6 @@ public class GameFrame extends JFrame implements Runnable {
 
 	/**
 	 * 
-	 * @param num
 	 * for the given the given number it loads corresponding reward
 	 * 
 	 * @param num corresponds to the reward number to load
@@ -267,8 +247,6 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
-	 * 
-	 * @return
 	 * Returns all the paparazzi in the game
 	 * 
 	 * @return an array of type paparazzi
