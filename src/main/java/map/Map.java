@@ -1,6 +1,5 @@
 package map;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +10,11 @@ import javax.imageio.ImageIO;
 
 import ui.GameFrame;
 
+/**
+ * Handles layout of cells and spawns/de-spawns rewards
+ * 
+ * @author Gurinder Bhogal
+ */
 public class Map {
 	private GameFrame gFrame;
 	private Cell[] cell;
@@ -24,6 +28,11 @@ public class Map {
 		loadMap();
 	}
 
+	/**
+	 * the given trap number and de-spawn the previous one
+	 * 
+	 * @param num the trap number to be spawned
+	 */
 	public void loadBonusRewards(int num) {
 		switch (num) {
 			case 1:
@@ -47,6 +56,10 @@ public class Map {
 		}
 	}
 
+	/**
+	 * Initialize all cell types with their pictures and set whether or not they are
+	 * collidable
+	 */
 	public void loadImages() {
 		try {
 			// floor
@@ -104,6 +117,10 @@ public class Map {
 		}
 	}
 
+	/**
+	 * Reads the map.txt resource file to load a 2d array of integers representing
+	 * cell types
+	 */
 	public void loadMap() {
 		try {
 			InputStream inpStrm = getClass().getResourceAsStream("/map/map.txt");
@@ -133,6 +150,11 @@ public class Map {
 		}
 	}
 
+	/**
+	 * Draws the images of the map and rewards on the panel
+	 *
+	 * @param g2d graphics2D to draw on panel
+	 */
 	public void draw(Graphics2D g2d) {
 		int col = 0;
 		int row = 0;
@@ -155,10 +177,22 @@ public class Map {
 		}
 	}
 
+	/**
+	 * Gets the the games map
+	 * 
+	 * @return an array of integers representing cell types
+	 */
 	public int[][] getMapArray() {
 		return mapArray;
 	}
 
+	/**
+	 * checks if the cell type is collidable
+	 * 
+	 * @param type integer representing cell type
+	 * @return true if the integer represents a collidable cell type, false
+	 *         otherwise
+	 */
 	public boolean checkColidable(int type) {
 		return cell[type].getCollidable();
 	}

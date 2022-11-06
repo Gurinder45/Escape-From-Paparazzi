@@ -1,8 +1,9 @@
 package game;
 
 /**
+ * Nodes for a* searching algorithm.
+ *
  * @author julio patrick Asifiwe
- *handles the management of each column on the map
  */
 
 public class Node {

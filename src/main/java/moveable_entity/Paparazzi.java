@@ -9,6 +9,9 @@ import game.EnemyMovement;
 import ui.GameFrame;
 import util.Direction;
 
+/**
+ * Represents the enemies in the game
+ */
 public class Paparazzi extends MoveableEntity {
 
 	EnemyMovement enemyMovement;
@@ -26,11 +29,6 @@ public class Paparazzi extends MoveableEntity {
 
 	}
 
-	public void update(int x, int y) {
-		findPath(x, y);
-
-	}
-
 	@Override
 	public void loadImage() {
 		try {
@@ -40,6 +38,11 @@ public class Paparazzi extends MoveableEntity {
 		}
 	}
 
+	/**
+	 * Moves the paparazzi in the given direction
+	 * 
+	 * @param direction direction to move enemy in
+	 */
 	public void move(Direction direction) {
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
@@ -60,12 +63,16 @@ public class Paparazzi extends MoveableEntity {
 			if (direction == Direction.RIGHT) {
 				position.addX(speed);
 			}
-
 		}
-
 	}
 
-	public void findPath(int x, int y) {
+	/**
+	 * Finds the next direction to move the paparazzi closer to the celebrity
+	 * 
+	 * @param x celebrities x position
+	 * @param y celebrities y position
+	 */
+	public void update(int x, int y) {
 		int gap = 5;
 		int playerColumn = (x + gap) / gFrame.cellSize;
 		int playerRow = (y + gap) / gFrame.cellSize;

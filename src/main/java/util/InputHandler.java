@@ -1,11 +1,16 @@
 package util;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import ui.GameFrame;
 
-public class InputHandler implements KeyListener {
+/**
+ * Handles all keyboard input
+ * 
+ * @author Gurinder Bhogal
+ */
+public class InputHandler extends KeyAdapter {
 	public Direction direction;
 	private GameFrame gFrame;
 
@@ -13,9 +18,7 @@ public class InputHandler implements KeyListener {
 		this.gFrame = gFrame;
 	}
 
-	public void keyTyped(KeyEvent e) {
-	}
-
+	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 
@@ -36,6 +39,7 @@ public class InputHandler implements KeyListener {
 		}
 	}
 
+	@Override
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 
@@ -51,7 +55,5 @@ public class InputHandler implements KeyListener {
 			return Direction.NONE;
 		}
 		return direction;
-
 	}
-
 }
