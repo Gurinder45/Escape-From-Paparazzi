@@ -1,25 +1,33 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> c394876712777fe4e044b50ae8d1d620d5698562
 package entity;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import util.Point;
 
+/**
+ * @author julio patrick Asifiwe
+ *Handles all the entity needed functions 
+ */
 public abstract class Entity {
 	protected Point position;
 	protected BufferedImage img;
 
+	
 	public Point getPosition() {
 		return position;
 	}
 
+	/**
+	 * @return the x (value) position of the entity
+	 */
 	public int getPositionX() {
 		return position.getX();
 	}
 
+	/**
+	 * @return  the y (value) position of the entitty
+	 */
 	public int getPositionY() {
 		return position.getY();
 	}
@@ -28,8 +36,15 @@ public abstract class Entity {
 		position.setPoint(x, y);
 	}
 
+	/**
+	 * draws 2d the entity to be shown in the map
+	 * @param g2d to be drawn
+	 */
 	public abstract void draw(Graphics g2d);
 
+	/**
+	 * loading the image to the map  that was drawn 
+	 */
 	public abstract void loadImage();
 
 }

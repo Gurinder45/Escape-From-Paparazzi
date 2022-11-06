@@ -7,6 +7,11 @@ import javax.sound.midi.Track;
 import ui.GameFrame;
 import ui.GamePanel;
 
+/**
+ * @author julio patrick Asifiwe
+ * handles the movements of the enemy when following the celebrity
+ *
+ */
 public class EnemyMovement {
     private GameFrame gFrame;
     private Node[][] nodes;
@@ -22,6 +27,9 @@ public class EnemyMovement {
         loadNodes();
     }
 
+    /**
+     * clears everything and loads all nodes 
+     */
     public void clearAll() {
         opened.clear();
         path.clear();
@@ -30,6 +38,9 @@ public class EnemyMovement {
 
     }
 
+    /**
+     * loading all the nodes or colunms from the frame 
+     */
     public void loadNodes() {
         nodes = new Node[gFrame.columnNum][gFrame.rowNum];
         int column = 0;
@@ -46,6 +57,9 @@ public class EnemyMovement {
         }
     }
 
+    /**
+     * reseting all the nodes to new
+     */
     public void resetNodes() {
         int column = 0;
         int row = 0;
@@ -66,6 +80,12 @@ public class EnemyMovement {
         succeeded = false;
     }
 
+    /**
+     * @param startColum of where the enemy will start
+     * @param startRow of where the enemy will start
+     * @param endColumn of where the goal or celebrity will be
+     * @param endRow of where the goal or celebrity will be
+     */
     public void setNodes(int startColum, int startRow, int endColumn, int endRow) {
         resetNodes();
 
@@ -94,6 +114,10 @@ public class EnemyMovement {
         }
     }
 
+    /**
+     * calculating how far the node to be found is
+     * @param node to be looked for
+     */
     public void getTotalCost(Node node) {
         int horizontalDist = Math.abs(node.columnNum - start.columnNum);
         int verticalDist = Math.abs(node.rowNum - start.rowNum);
@@ -106,6 +130,9 @@ public class EnemyMovement {
         node.fCost = node.gCost + node.hCost;
     }
 
+    /**
+     * @return true if u succeeded to find the goal
+     */
     public boolean search() {
         while (succeeded == false) {
             int column = cur.columnNum;
@@ -159,6 +186,10 @@ public class EnemyMovement {
         return succeeded;
     }
 
+    /**
+     * 
+     * @param node to be opened 
+     */
     public void openNode(Node node) {
         if (node.open == false && node.checked == false && node.solid == false) {
             node.open = true;
@@ -168,6 +199,9 @@ public class EnemyMovement {
         }
     }
 
+    /**
+     * tracking the path of the enemy
+     */
     public void trackPath() {
         Node node = end;
 
@@ -177,10 +211,16 @@ public class EnemyMovement {
         }
     }
 
+    /**
+     * @return the next column to to current position
+     */
     public int getNextColumn() {
         return path.get(0).columnNum;
     }
 
+    /**
+     * @return the next row to current position
+     */
     public int getNextRow() {
         return path.get(0).rowNum;
     }

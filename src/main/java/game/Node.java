@@ -1,5 +1,10 @@
 package game;
 
+/**
+ * @author julio patrick Asifiwe
+ *handles the management of each column on the map
+ */
+
 public class Node {
     public Node parent;
     public int columnNum;
