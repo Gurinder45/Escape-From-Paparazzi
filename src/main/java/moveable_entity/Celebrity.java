@@ -1,16 +1,19 @@
 package moveable_entity;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import game.CollisionFinder;
 import ui.GameFrame;
 import util.Direction;
 import util.InputHandler;
 
+/**
+ * The playable character in the game
+ * 
+ * @author Gurinder Bhogal
+ */
 public class Celebrity extends MoveableEntity {
 	// celebrity should be singleton
 
@@ -24,6 +27,7 @@ public class Celebrity extends MoveableEntity {
 		loadImage();
 	}
 
+	@Override
 	public void loadImage() {
 		if (direction == Direction.UP) {
 			try {
@@ -60,6 +64,10 @@ public class Celebrity extends MoveableEntity {
 
 	}
 
+	/**
+	 * checks the direction the player is going in and moves it in that direction if
+	 * its permissable
+	 */
 	public void update() {
 		direction = inpHandler.getDirection();
 		loadImage();

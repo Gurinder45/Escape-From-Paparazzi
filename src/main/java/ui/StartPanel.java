@@ -10,16 +10,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
  * 
  * @return
  */
-
 public class StartPanel extends JPanel {
 
 	private JButton startBtn;
@@ -32,7 +29,6 @@ public class StartPanel extends JPanel {
 		loadBackground();
 		this.startBtn = new JButton("START");
 		this.add(startBtn);
-		//startBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
 		startBtn.setBounds(750, 370, 200, 100);
 		startBtn.setBackground(new Color(143, 0, 225));
 		startBtn.setForeground(Color.BLACK);
@@ -44,7 +40,7 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * @return
+	 * 
 	 */
 	public void addActListeners() {
 		startBtn.addActionListener(new ActionListener() {
@@ -56,7 +52,7 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * @return
+	 * 
 	 */
 	public void loadBackground() {
 		try {
@@ -70,19 +66,11 @@ public class StartPanel extends JPanel {
 
 	/**
 	 * 
-	 * @return
+	 * 
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(backgroundImg, 0, 0, gFrame.screenWidth, gFrame.screenHeight, null);
-/* 
-		String text = "Paparazzi Escape!";
-		// roughly position text in middle of screen
-		int x = (gFrame.screenWidth / 2) - (2 * gFrame.cellSize);
-		int y = gFrame.screenHeight / 4;
-
-		g2d.setColor(Color.white);
-		g2d.drawString(text, x, y);*/
 	}
 }

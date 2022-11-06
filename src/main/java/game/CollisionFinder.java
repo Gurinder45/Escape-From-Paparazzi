@@ -1,6 +1,6 @@
 package game;
 
-import javafx.scene.shape.Rectangle;
+import java.awt.Rectangle;
 import moveable_entity.Celebrity;
 import moveable_entity.Paparazzi;
 import ui.GameFrame;
@@ -200,34 +200,34 @@ public class CollisionFinder {
 			if (enemy != pprzziArray[i]) {
 
 				if (enemy.getDirection() == Direction.UP) {
-					paparazziRect.setY(enemy.getPositionY() - enemy.getSpeed());
-					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
-					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
-					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+					paparazziRect.y = enemy.getPositionY() - enemy.getSpeed();
+					otherPaparazziRect.x = pprzziArray[i].getPositionX();
+					otherPaparazziRect.y = pprzziArray[i].getPositionY();
+					if (paparazziRect.intersects(otherPaparazziRect)) {
 						enemy.setCollided(true);
 					}
 				}
 				if (enemy.getDirection() == Direction.DOWN) {
-					paparazziRect.setY(enemy.getPositionY() + enemy.getSpeed());
-					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
-					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
-					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+					paparazziRect.y = enemy.getPositionY() + enemy.getSpeed();
+					otherPaparazziRect.x = pprzziArray[i].getPositionX();
+					otherPaparazziRect.y = pprzziArray[i].getPositionY();
+					if (paparazziRect.intersects(otherPaparazziRect)) {
 						enemy.setCollided(true);
 					}
 				}
 				if (enemy.getDirection() == Direction.RIGHT) {
-					paparazziRect.setX(enemy.getPositionX() + enemy.getSpeed());
-					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
-					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
-					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+					paparazziRect.x = enemy.getPositionX() + enemy.getSpeed();
+					otherPaparazziRect.x = pprzziArray[i].getPositionX();
+					otherPaparazziRect.y = pprzziArray[i].getPositionY();
+					if (paparazziRect.intersects(otherPaparazziRect)) {
 						enemy.setCollided(true);
 					}
 				}
 				if (enemy.getDirection() == Direction.LEFT) {
-					paparazziRect.setX(enemy.getPositionX() - enemy.getSpeed());
-					otherPaparazziRect.setX(pprzziArray[i].getPositionX());
-					otherPaparazziRect.setY(pprzziArray[i].getPositionY());
-					if (paparazziRect.getLayoutBounds().intersects(otherPaparazziRect.getLayoutBounds())) {
+					paparazziRect.x = enemy.getPositionX() - enemy.getSpeed();
+					otherPaparazziRect.x = pprzziArray[i].getPositionX();
+					otherPaparazziRect.y = pprzziArray[i].getPositionY();
+					if (paparazziRect.intersects(otherPaparazziRect)) {
 						enemy.setCollided(true);
 					}
 				}

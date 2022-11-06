@@ -8,15 +8,18 @@ import javax.swing.JPanel;
 import map.Map;
 import moveable_entity.Celebrity;
 import moveable_entity.Paparazzi;
-import util.InputHandler;
 
+/**
+ * Handles the drawing of the in game screen
+ * 
+ * @author Gurinder Bhogal
+ * 
+ */
 public class GamePanel extends JPanel {
 	private Celebrity celebrity;
 	private Paparazzi[] paparazzi;
 	private Map map;
 	private GameFrame gFrame;
-
-	// UI
 	private Hud hud;
 
 	/**
@@ -30,7 +33,11 @@ public class GamePanel extends JPanel {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 
+=======
+	 * Get elements ready to be drawn
+>>>>>>> fb4636e0caf45ba66b52e6fd4db035c448339e13
 	 */
 	public void placeElements() {
 		this.celebrity = new Celebrity(1080, 630, gFrame);
@@ -54,14 +61,17 @@ public class GamePanel extends JPanel {
 			paparazzi[i].draw(g2d);
 
 		}
-
-		// UI
+		// HUD
 		hud.draw(g2d);
 		g2d.dispose();
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 
+=======
+	 * calls celebrity and paparazzi update methods
+>>>>>>> fb4636e0caf45ba66b52e6fd4db035c448339e13
 	 */
 	public void update() {
 		if (!gFrame.isPaused()) {
@@ -74,32 +84,58 @@ public class GamePanel extends JPanel {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 
 	 * @return
+=======
+	 * Gets the the games map
+	 * 
+	 * @return a 2 dimensional array of integers representing cell types
+>>>>>>> fb4636e0caf45ba66b52e6fd4db035c448339e13
 	 */
 	public int[][] getMapArray() {
 		return map.getMapArray();
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 
 	 * @return
+=======
+	 * checks if the cell type is collidable
+	 * 
+	 * @param type integer representing cell type
+	 * @return true if the integer represents a collidable cell type, false
+	 *         otherwise
+>>>>>>> fb4636e0caf45ba66b52e6fd4db035c448339e13
 	 */
 	public boolean isCollidable(int type) {
 		return map.checkColidable(type);
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 
 	 * @return
+=======
+	 * for the given the given number it loads corresponding reward
+	 * 
+	 * @param num corresponds to the reward number to load
+>>>>>>> fb4636e0caf45ba66b52e6fd4db035c448339e13
 	 */
 	public void loadBonusRewards(int num) {
 		map.loadBonusRewards(num);
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 
 	 * @return
+=======
+	 * Returns all the paparazzi in the game
+	 * 
+	 * @return an array of type paparazzi
+>>>>>>> fb4636e0caf45ba66b52e6fd4db035c448339e13
 	 */
 	public Paparazzi[] getPaparazzis() {
 		return paparazzi;

@@ -13,6 +13,12 @@ import moveable_entity.Paparazzi;
 import util.InputHandler;
 import util.Score;
 
+/**
+ * Frame which handles all the display panels
+ * 
+ * @author Gurinder Bhogal
+ */
+
 public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
@@ -57,6 +63,7 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * this method sets up the panels and their layouts 
 	 * then adds all the game panels to our game
+	 * Adds all the different display panels to a card layout
 	 */
 	public void createCardLayout() {
 		this.setLayout(cardLayout);
@@ -70,6 +77,7 @@ public class GameFrame extends JFrame implements Runnable {
 
 	/**
 	 * this methods creates the intro page for a game
+	 * Changes panel to the game panel and starts the thread
 	 */
 	public void startGame() {
 		this.addKeyListener(inpHandler);
@@ -80,6 +88,7 @@ public class GameFrame extends JFrame implements Runnable {
 
 	/**
 	 * this methods reset things such as score and items and then show the game window
+	 * Resets game elements and displays the game panel for a game restart
 	 */
 	public void restartGame() {
 		enemyMovement.clearAll();
@@ -95,6 +104,7 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * this method is used when the user loses the game
 	 * it will remove all the key and show the lose panel
+	 * Stops the game and displays losing panel
 	 */
 	public void loseGame() {
 		paused = true;
@@ -105,6 +115,7 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * this method is used when the user wins the game
 	 * it will show the win panel
+	 * Stops the game and displays winning panel
 	 */
 	public void winGame() {
 		paused = true;
@@ -115,6 +126,7 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * this method reates a new thread and automatically call the run method
 	 * and start the theread
+	 * Begins the game thread
 	 */
 	public void startThread() {
 		thread = new Thread(this);
@@ -124,6 +136,7 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * this method creates a game loop which will update things such as
 	 * chracter position and draw the screen with updated position
+	 * Tells the game panel to update and repaint
 	 */
 	public void run() {
 		double interval = 1000000000 / fps;
@@ -147,6 +160,8 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
+	 * Get the game panel of the frame
+	 * 
 	 * @return the game panel
 	 */
 	public GamePanel getGamePanel() {
@@ -155,6 +170,9 @@ public class GameFrame extends JFrame implements Runnable {
 
 	/**
 	 * @return input handler
+	 * Get the input handler for the frame
+	 * 
+	 * @return the input handler
 	 */
 	public InputHandler getInputHandler() {
 		return inpHandler;
@@ -162,6 +180,9 @@ public class GameFrame extends JFrame implements Runnable {
 
 	/**
 	 * @return collision finder
+	 * Get the collision finder of the frame
+	 * 
+	 * @return the collision finder
 	 */
 	public CollisionFinder getCollisionFinder() {
 		return collisionFinder;
@@ -169,6 +190,9 @@ public class GameFrame extends JFrame implements Runnable {
 
 	/**
 	 * @return 
+	 * Get the enemy movement handler of the frame
+	 * 
+	 * @return the enemy movement handler
 	 */
 	public EnemyMovement getEnemyMovement() {
 		return enemyMovement;
@@ -177,6 +201,9 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * this method will add the item score to the current total score
 	 * @param val
+	 * Add the given score to the score total
+	 * 
+	 * @param val value to be added
 	 */
 	public void addScore(int val) {
 		score.addScore(val);
@@ -185,15 +212,20 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * this method will remove certain points from the total score
 	 * @param val
+	 * Subtract the given score from the score total
+	 * 
+	 * @param val value to be subtracted
 	 */
 	public void substractScore(int val) {
 		score.substractScore(val);
-
 	}
 
 	/**
 	 * 
 	 * @return the total score 
+	 * Get the current score
+	 * 
+	 * @return the current score
 	 */
 	public int getScore() {
 		return score.getScore();
@@ -201,6 +233,7 @@ public class GameFrame extends JFrame implements Runnable {
 
 	/**
 	 * 
+	 * toggles the game in and out of the pauses state
 	 */
 	public void togglePause() {
 		if (paused == false) {
@@ -214,6 +247,7 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	/**
+	 * returns true if the game is the paused state, false if not
 	 * 
 	 * @return
 	 */
@@ -224,6 +258,9 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * 
 	 * @param num
+	 * for the given the given number it loads corresponding reward
+	 * 
+	 * @param num corresponds to the reward number to load
 	 */
 	public void loadBonusRewards(int num) {
 		gamePanel.loadBonusRewards(num);
@@ -232,6 +269,9 @@ public class GameFrame extends JFrame implements Runnable {
 	/**
 	 * 
 	 * @return
+	 * Returns all the paparazzi in the game
+	 * 
+	 * @return an array of type paparazzi
 	 */
 	public Paparazzi[] getPaparazzis() {
 		return gamePanel.getPaparazzis();

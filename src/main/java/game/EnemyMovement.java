@@ -2,15 +2,14 @@ package game;
 
 import java.util.ArrayList;
 
-import javax.sound.midi.Track;
-
 import ui.GameFrame;
 import ui.GamePanel;
 
 /**
+ * implement A* search algorithm to find the main character
+ * 
  * @author julio patrick Asifiwe
- * handles the movements of the enemy when following the celebrity
- *
+ * @author Gurinder Bhogal
  */
 public class EnemyMovement {
     private GameFrame gFrame;
@@ -28,7 +27,7 @@ public class EnemyMovement {
     }
 
     /**
-     * clears everything and loads all nodes 
+     * clears all lists and loads nodes again
      */
     public void clearAll() {
         opened.clear();
@@ -39,7 +38,7 @@ public class EnemyMovement {
     }
 
     /**
-     * loading all the nodes or colunms from the frame 
+     * Makes a 2 dimensional array of nodes the same size as the map
      */
     public void loadNodes() {
         nodes = new Node[gFrame.columnNum][gFrame.rowNum];
@@ -58,33 +57,13 @@ public class EnemyMovement {
     }
 
     /**
-     * reseting all the nodes to new
-     */
-    public void resetNodes() {
-        int column = 0;
-        int row = 0;
-
-        while (column < gFrame.columnNum && row < gFrame.rowNum) {
-            // iterate through the nodes and make them back to their original state
-            nodes[column][row].open = false;
-            nodes[column][row].checked = false;
-            nodes[column][row].solid = false;
-            column++;
-            if (column == gFrame.columnNum) {
-                column = 0;
-                row++;
-            }
-        }
-        opened.clear();
-        path.clear();
-        succeeded = false;
-    }
-
-    /**
-     * @param startColum of where the enemy will start
-     * @param startRow of where the enemy will start
-     * @param endColumn of where the goal or celebrity will be
-     * @param endRow of where the goal or celebrity will be
+     * Sets the start and end rows and columns, sets the solid nodes, and gets their
+     * total cost
+     * 
+     * @param startColum starting column of the enemy
+     * @param startRow   starting row of the enemy
+     * @param endColumn  the column of the destination
+     * @param endRow     the row ow the destination
      */
     public void setNodes(int startColum, int startRow, int endColumn, int endRow) {
         resetNodes();
@@ -115,7 +94,8 @@ public class EnemyMovement {
     }
 
     /**
-     * calculating how far the node to be found is
+     * Finds the nodes g-cost and h-cost and adds them to get its f-cost
+     * 
      * @param node to be looked for
      */
     public void getTotalCost(Node node) {
@@ -131,7 +111,9 @@ public class EnemyMovement {
     }
 
     /**
-     * @return true if u succeeded to find the goal
+     * Searches until it finds a path to the player
+     * 
+     * @return boolean true once succeeded
      */
     public boolean search() {
         while (succeeded == false) {
@@ -187,8 +169,9 @@ public class EnemyMovement {
     }
 
     /**
+     * Marks and tracks nodes which haven't been looked at
      * 
-     * @param node to be opened 
+     * @param node node to open
      */
     public void openNode(Node node) {
         if (node.open == false && node.checked == false && node.solid == false) {
@@ -200,7 +183,7 @@ public class EnemyMovement {
     }
 
     /**
-     * tracking the path of the enemy
+     * loads the successful path into the path ArrayList
      */
     public void trackPath() {
         Node node = end;
@@ -212,14 +195,41 @@ public class EnemyMovement {
     }
 
     /**
-     * @return the next column to to current position
+     * Resets all the boolean values in the nodes
+     */
+    public void resetNodes() {
+        int column = 0;
+        int row = 0;
+
+        while (column < gFrame.columnNum && row < gFrame.rowNum) {
+            // iterate through the nodes and make them back to their original state
+            nodes[column][row].open = false;
+            nodes[column][row].checked = false;
+            nodes[column][row].solid = false;
+            column++;
+            if (column == gFrame.columnNum) {
+                column = 0;
+                row++;
+            }
+        }
+        opened.clear();
+        path.clear();
+        succeeded = false;
+    }
+
+    /**
+     * Get the next column in the path
+     * 
+     * @return index representing the column
      */
     public int getNextColumn() {
         return path.get(0).columnNum;
     }
 
     /**
-     * @return the next row to current position
+     * Get the next row in the path
+     * 
+     * @return index representing the row
      */
     public int getNextRow() {
         return path.get(0).rowNum;

@@ -7,13 +7,12 @@ import util.Point;
 
 /**
  * @author julio patrick Asifiwe
- *Handles all the entity needed functions 
+ *         Handles all the entity needed functions
  */
 public abstract class Entity {
 	protected Point position;
 	protected BufferedImage img;
 
-	
 	public Point getPosition() {
 		return position;
 	}
@@ -26,24 +25,21 @@ public abstract class Entity {
 	}
 
 	/**
-	 * @return  the y (value) position of the entitty
+	 * @return the y (value) position of the entity
 	 */
 	public int getPositionY() {
 		return position.getY();
 	}
 
-	public void setPosition(int x, int y) {
-		position.setPoint(x, y);
-	}
-
 	/**
 	 * draws 2d the entity to be shown in the map
+	 * 
 	 * @param g2d to be drawn
 	 */
 	public abstract void draw(Graphics g2d);
 
 	/**
-	 * loading the image to the map  that was drawn 
+	 * loads the image in order for it to be drawn
 	 */
 	public abstract void loadImage();
 

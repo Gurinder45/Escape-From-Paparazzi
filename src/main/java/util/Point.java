@@ -1,81 +1,71 @@
 package util;
 
 /**
- * @author julio patrick Asifiwe
+ * Tracks an Entity with its x and y pixel coordinates
  * 
- * handles the x and y point  on the map or the frame
+ * @author julio patrick Asifiwe
  */
 public class Point {
 	private int x;
 	private int y;
-	
-	/**
-	 * @param x 
-	 * @param y
-	 */
+
 	public Point(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	/**
-	 * @return the value of x position
+	 * Get x coordinate
+	 * 
+	 * @return integer for x coordinate
 	 */
 	public int getX() {
 		return x;
 	}
-	
-	public void setX(int val) {
-		x = val;
-	}
-	
+
 	/**
-	 * @return the value of y position
+	 * Get y coordinate
+	 * 
+	 * @return integer for y coordinate
 	 */
 	public int getY() {
 		return y;
 	}
-	
-	public void setY(int val) {
-		y = val;
-	}
-	
-	
-	public void setPoint(int valX, int valY) {
-		x = valX;
-		y = valY;
-	}
-	
+
 	/**
-	 * @param val the value to remove from the current x position
+	 * subtract given value from the x coordinate
+	 * 
+	 * @param val integer value to remove
 	 */
 	public void subtractX(int val) {
 		x -= val;
 	}
-	
+
 	/**
-	 * @param val the value to add from the current x position
+	 * add given value to the x coordinate
+	 * 
+	 * @param val integer value to add
 	 */
 	public void addX(int val) {
 		x += val;
 	}
-	
+
 	/**
-	 * @param val the value to remove from the current y position
+	 * subtract given value from the y coordinate
+	 * 
+	 * @param val integer value to remove
 	 */
 	public void subtractY(int val) {
 		y -= val;
 	}
-	
+
 	/**
-	 * @param val the value to add from the current y position
+	 * add given value to the y coordinate
+	 * 
+	 * @param val integer value to add
 	 */
 	public void addY(int val) {
 		y += val;
 	}
-	
-	
-	
-	
 
 }

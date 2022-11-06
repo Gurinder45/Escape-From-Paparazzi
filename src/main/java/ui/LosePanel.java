@@ -14,10 +14,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
+ * This class will control the lose panel
  * 
- * @return
+ * @author Haruka Mibuchi
  */
-
 public class LosePanel extends JPanel {
 	private JButton restartBtn;
 	private GameFrame gFrame;
@@ -34,14 +34,12 @@ public class LosePanel extends JPanel {
 		restartBtn.setForeground(Color.BLACK);
 		restartBtn.setFocusPainted(false);
 		restartBtn.setFont(new Font("Serif", Font.BOLD, 40));
-		//restartBtn.setBounds((gFrame.screenWidth / 2) - 40, (gFrame.screenHeight / 2) - 15, 80, 30);
 		addActListeners();
 
 	}
 
 	/**
-	 * 
-	 * @return
+	 * this method wi;; ass 
 	 */
 	public void addActListeners() {
 		restartBtn.addActionListener(new ActionListener() {
