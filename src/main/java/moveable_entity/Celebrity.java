@@ -15,8 +15,6 @@ import util.InputHandler;
  * @author Gurinder Bhogal
  */
 public class Celebrity extends MoveableEntity {
-	// celebrity should be singleton
-
 	InputHandler inpHandler;
 
 	public Celebrity(int x, int y, GameFrame gameFrame) {

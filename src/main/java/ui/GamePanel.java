@@ -44,8 +44,9 @@ public class GamePanel extends JPanel {
 	}
 
 	/**
-	 * this method draws neccesasary things such as map and celebrity om JPanel
-	 *   @param g the Graphics class object 
+	 * Draws everything on the game panel display
+	 * 
+	 * @param g Graphics object
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
