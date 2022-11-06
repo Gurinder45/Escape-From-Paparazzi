@@ -1,7 +1,3 @@
-/**
- * Returns an 
- * 
- */
 package entity;
 
 import java.awt.Graphics;
