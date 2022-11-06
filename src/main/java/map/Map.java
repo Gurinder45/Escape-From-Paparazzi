@@ -49,55 +49,55 @@ public class Map {
 
 	public void loadImages() {
 		try {
-			//floor
+			// floor
 			cell[0] = new Cell();
 			cell[0].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
+			cell[0].setCollidable(false);
 
-			//wall (This separates rooms)
+			// wall (This separates rooms)
 			cell[1] = new Cell();
 			cell[1].img = ImageIO.read(getClass().getResourceAsStream("/images/wall.png"));
 			cell[1].setCollidable(true);
 
-			//barrier 
+			// barrier
 			cell[2] = new Cell();
 			cell[2].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier.png"));
 			cell[2].setCollidable(true);
 
-			//disguise //t-shirt
+			// disguise //t-shirt
 			cell[3] = new Cell();
 			cell[3].img = ImageIO.read(getClass().getResourceAsStream("/images/disguise.png"));
 			cell[3].setCollidable(false);
 
-			//camera(just a regular bblock/barrier)
+			// camera(just a regular bblock/barrier)
 			cell[4] = new Cell();
 			cell[4].img = ImageIO.read(getClass().getResourceAsStream("/images/camera.png"));
 			cell[4].setCollidable(false);
 
-			//bonus reward (a fan wanting a signiture from the celeb)
+			// bonus reward (a fan wanting a signiture from the celeb)
 			cell[5] = new Cell();
 			cell[5].img = ImageIO.read(getClass().getResourceAsStream("/images/fan.png"));
 			cell[5].setCollidable(false);
 
-			//blocks for goal
+			// blocks for goal
 			cell[6] = new Cell();
 			cell[6].img = ImageIO.read(getClass().getResourceAsStream("/images/floor_placeholder.png"));
 			cell[6].setCollidable(true);
 
-			//laser (punishment)
+			// laser (punishment)
 			cell[7] = new Cell();
 			cell[7].img = ImageIO.read(getClass().getResourceAsStream("/images/laser.png"));
 			cell[7].setCollidable(false);
 
-			//wall_2 //separator
+			// wall_2 //separator
 			cell[8] = new Cell();
 			cell[8].img = ImageIO.read(getClass().getResourceAsStream("/images/wall_2.png"));
 			cell[8].setCollidable(true);
 
-			//barrier 2 (clothing racks)
+			// barrier 2 (clothing racks)
 			cell[9] = new Cell();
 			cell[9].img = ImageIO.read(getClass().getResourceAsStream("/images/barrier_2.png"));
 			cell[9].setCollidable(true);
-
 
 		} catch (IOException e) {
 			e.printStackTrace();

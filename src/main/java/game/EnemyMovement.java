@@ -12,7 +12,7 @@ public class EnemyMovement {
     private Node[][] nodes;
     private ArrayList<Node> opened;
     private boolean succeeded;
-    public ArrayList<Node> path; ////
+    private ArrayList<Node> path;
     private Node start, end, cur;
 
     public EnemyMovement(GameFrame gFrame) {
@@ -81,7 +81,8 @@ public class EnemyMovement {
         while (column < gFrame.columnNum && row < gFrame.rowNum) {
             int[][] mapArray = gPanel.getMapArray();
             // check if the cell is Collidable
-            if (mapArray[column][row] == 1 || mapArray[column][row] == 2) {
+            if (mapArray[column][row] == 1 || mapArray[column][row] == 2 || mapArray[column][row] == 6
+                    || mapArray[column][row] == 8 || mapArray[column][row] == 9) { ///////
                 nodes[column][row].solid = true;
             }
             getTotalCost(nodes[column][row]);

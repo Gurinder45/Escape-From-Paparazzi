@@ -43,7 +43,7 @@ public class CollisionFinder {
 				gFrame.addScore(3);
 				break;
 			case 6:
-				if (disguiseCollected == 1) { // change to 5 later
+				if (disguiseCollected >= 4) {
 					gFrame.winGame();
 				} else {
 					mvbEntity.setCollided(true);
