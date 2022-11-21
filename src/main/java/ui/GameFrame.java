@@ -55,13 +55,12 @@ public class GameFrame extends JFrame implements Runnable {
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
 		this.setFocusable(true);
-		this.setVisible(true);
 		this.setResizable(false);
 		createCardLayout();
 	}
 
 	/**
-	 * this method sets up the panels and their layouts 
+	 * this method sets up the panels and their layouts
 	 * then adds all the game panels to our game
 	 * Adds all the different display panels to a card layout
 	 */
