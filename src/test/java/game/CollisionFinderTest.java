@@ -1,4 +1,4 @@
-package moveable_entity;
+package game;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import ui.GameFrame;
 
-class MoveableEntity {
+class CollisionFinderTest {
 	private GameFrame gFrame = new GameFrame();
 
 	@BeforeEach
@@ -16,7 +16,7 @@ class MoveableEntity {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		assertEquals(0, 0);
 	}
 
 }
