@@ -235,4 +235,9 @@ public class CollisionFinder {
 		}
 	}
 
+	public int getDisguiseNumber() {
+		return disguiseCollected;
+
+	}
+
 }
