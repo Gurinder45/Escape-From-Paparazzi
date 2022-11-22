@@ -156,4 +156,9 @@ public class Paparazzi extends MoveableEntity {
 		}
 	}
 
+	@Override
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+	}
+
 }

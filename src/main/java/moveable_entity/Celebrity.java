@@ -100,4 +100,9 @@ public class Celebrity extends MoveableEntity {
 
 	}
 
+	@Override
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+	}
+
 }

@@ -23,6 +23,8 @@ public abstract class MoveableEntity extends Entity {
 		this.gFrame = gameFrame;
 	}
 
+	public abstract void setDirection(Direction direction);
+
 	/**
 	 * Return the direction the entity is heading in
 	 * 
