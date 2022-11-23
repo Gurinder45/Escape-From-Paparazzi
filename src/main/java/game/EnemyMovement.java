@@ -248,4 +248,12 @@ public class EnemyMovement {
         return opened.isEmpty();
     }
 
+    public Node[][] getNodes() {
+        return nodes;
+    }
+
+    public Node getCurrentNode() {
+        return cur;
+    }
+
 }

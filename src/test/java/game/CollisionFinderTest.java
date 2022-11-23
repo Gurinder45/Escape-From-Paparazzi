@@ -138,7 +138,7 @@ class CollisionFinderTest {
 		collisionFinder.checkCellType(3, 0, 0, celebrity);
 		GamePanel gPanel = gFrame.getGamePanel();
 		int[][] map = gPanel.getMapArray();
-		assertEquals(2, gFrame.getScore());
+		assertEquals(10, gFrame.getScore());
 		assertEquals(1, collisionFinder.getDisguiseNumber());
 		assertEquals(0, map[0][0]);
 	}
@@ -156,7 +156,7 @@ class CollisionFinderTest {
 		collisionFinder.checkCellType(5, 0, 0, celebrity);
 		GamePanel gPanel = gFrame.getGamePanel();
 		int[][] map = gPanel.getMapArray();
-		assertEquals(3, gFrame.getScore());
+		assertEquals(20, gFrame.getScore());
 		assertEquals(0, map[0][0]);
 	}
 
@@ -180,7 +180,7 @@ class CollisionFinderTest {
 			}
 		}
 		assertFalse(errorFound);
-		assertEquals(-4, gFrame.getScore());
+		assertEquals(-20, gFrame.getScore());
 	}
 
 	@Test
