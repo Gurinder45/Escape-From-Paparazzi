@@ -52,4 +52,8 @@ public abstract class MoveableEntity extends Entity {
 		collided = bool;
 	}
 
+	public boolean getCollided() {
+		return collided;
+	}
+
 }

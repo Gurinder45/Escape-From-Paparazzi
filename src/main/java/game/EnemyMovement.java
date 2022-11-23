@@ -236,4 +236,16 @@ public class EnemyMovement {
         return path.get(0).rowNum;
     }
 
+    public boolean getSuceeded() {
+        return succeeded;
+    }
+
+    public boolean isEmptyPath() {
+        return path.isEmpty();
+    }
+
+    public boolean isEmptyOpened() {
+        return opened.isEmpty();
+    }
+
 }
