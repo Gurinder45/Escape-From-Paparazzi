@@ -240,12 +240,12 @@ public class EnemyMovement {
         return succeeded;
     }
 
-    public boolean isEmptyPath() {
-        return path.isEmpty();
+    public ArrayList<Node> getPath() {
+        return path;
     }
 
-    public boolean isEmptyOpened() {
-        return opened.isEmpty();
+    public ArrayList<Node> getOpened() {
+        return opened;
     }
 
     public Node[][] getNodes() {

@@ -24,11 +24,12 @@ In order to build this game, you will be required to install Java, Maven, and Gi
 
 ### How to install the game
 
-- In order to run this application, Ddownload the GitLab zipfile or clone the repository.
+- In order to run this application, Download the GitLab zipfile or clone the repository.
 
 - You can clone by typing `git clone https://csil-git1.cs.surrey.sfu.ca/cmpt276f22_group18/project.git`
 
 ### How to run the game
+
 - Build the project by running the maven command `mvn package` or `mvn clean install`
 
 - After you successfully build the project, type the command `java -jar target/maze_game-0.0.1-SNAPSHOT.jar` to run the game
@@ -36,5 +37,3 @@ In order to build this game, you will be required to install Java, Maven, and Gi
 ### How to test
 
 - You can test the game by using the command `mvn test` after building the project
-
-
