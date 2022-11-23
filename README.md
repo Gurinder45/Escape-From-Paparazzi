@@ -1,6 +1,6 @@
 # CMPT 276 Group 18 Project
 
-Group Members: Haruka Mibuchi, Gurinder, Julio
+Group Members: Haruka Mibuchi, Gurinder Bhogal, Asifiwe Julio Patrick
 
 ## Escape from Paparazzies
 
