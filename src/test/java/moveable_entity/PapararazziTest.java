@@ -20,6 +20,14 @@ class PapararazziTest {
 	}
 
 	@Test
+	void setDirectionTest(){
+		Paparazzi PaparazziTest = new Paparazzi(1080, 630, gFrame);
+		PaparazziTest.setDirection(Direction.UP);
+		Direction expectedDirection = Direction.UP;
+		assertEquals(expectedDirection, PaparazziTest.getDirection());
+	}	
+
+	@Test
 	void moveUpTest(){
 		Paparazzi expectedPos = new Paparazzi(1080, 629, gFrame);
 		paparazzi.move(Direction.UP);

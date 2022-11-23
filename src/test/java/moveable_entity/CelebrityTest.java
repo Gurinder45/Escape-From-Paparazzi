@@ -47,6 +47,14 @@ class CelebrityTest {
 	}
 
 	@Test
+	void setDirectionTest(){
+		Celebrity celebTest = new Celebrity(1080, 630, gFrame);
+		celebTest.setDirection(Direction.UP);
+		Direction expectedDirection = Direction.UP;
+		assertEquals(expectedDirection, celebTest.inpHandler.direction);
+	}
+
+	@Test
 	void moveUpTest(){
 		Celebrity expectedPos = new Celebrity(1080, 626, gFrame);
 		//celebrity.direction = Direction.UP;
