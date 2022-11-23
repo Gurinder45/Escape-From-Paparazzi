@@ -47,7 +47,7 @@ public class CollisionFinder {
 				break;
 			case 3:
 				mapArray[colIndex][rowIndex] = 0;
-				gFrame.addScore(2);
+				gFrame.addScore(10);
 				disguiseCollected++;
 				break;
 			case 4:
@@ -55,7 +55,7 @@ public class CollisionFinder {
 				break;
 			case 5:
 				mapArray[colIndex][rowIndex] = 0;
-				gFrame.addScore(3);
+				gFrame.addScore(20);
 				break;
 			case 6:
 				if (disguiseCollected >= 4) {
@@ -70,7 +70,7 @@ public class CollisionFinder {
 						mapArray[i][rowIndex] = 0;
 					}
 				}
-				gFrame.substractScore(4);
+				gFrame.substractScore(20);
 				if (gFrame.getScore() < 0) {
 					gFrame.loseGame();
 				}
