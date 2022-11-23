@@ -5,24 +5,14 @@ Group Members:
   Gurinder
   Julio
 
-## Table of Contents
-
-- [Maze of The Dead](#maze-of-the-dead)
-- [Instructions](#instructions)
-  - [How To Play](#how-to-play)
-  - [How To Build](#how-to-build)
-  - [How To Run](#how-to-run)
-  - [How To Test](#how-to-test)
-  - [Generate Javadocs](#generate-javadocs)
-- [Creators](#creators)
-
 ## Escape from Paparazzies
 
 A bunch of Paparazzis are trying to take pictures of a celebrity visiting a shopping mall. The celebrity also want to avoid all the cameras that have been set in the mall by those paparazzis. In this 2D game, the celebrity needs to collect all disguise items from different stores in the mall in order to escape from paparazzis and their cameras. Therefore, the player will moves the celebrity in complex and branched passages and lead her to the exit obtaing all the items without meeting paparazzis and cameras.
 
 ### Instruction of the game
 
-- Uuse the arrow keys to move the celebrity/the main character left, right, forward or backward.
+- Uuse the arrow keys to move the celebrity/the main character left, right, forward or backward
+-
 - Use 'Esc' to pause the game
 - Click 'START' to start the game
 - Click 'RESUME' to restart the game
