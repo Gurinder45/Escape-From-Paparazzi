@@ -10,6 +10,7 @@ import util.Direction;
 
 class PapararazziTest {
 	private Paparazzi paparazzi;
+	private Celebrity celebrity;
 	private GameFrame gFrame = new GameFrame();
 
 	@BeforeEach
@@ -51,6 +52,30 @@ class PapararazziTest {
 		Paparazzi expectedPos = new Paparazzi(1079, 629, gFrame);
 		paparazzi.move(Direction.LEFT);
 		assertEquals(expectedPos.getPositionX(), paparazzi.getPositionX());
+	}
+
+	@Test
+	void celebrityAboveTest() {
+		celebrity = new Celebrity(32, 32, gFrame);
+		paparazzi = new Paparazzi(32, 96, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.UP, paparazzi.getDirection());
+	}
+
+	@Test
+	void celebrityBelowTest() {
+		celebrity = new Celebrity(32, 96, gFrame);
+		paparazzi = new Paparazzi(32, 32, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.DOWN, paparazzi.getDirection());
+	}
+
+	@Test
+	void centerLeftTest() {
+		celebrity = new Celebrity(32, 32, gFrame);
+		paparazzi = new Paparazzi(39, 96, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.LEFT, paparazzi.getDirection());
 	}
 
 }
