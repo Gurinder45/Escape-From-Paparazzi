@@ -33,7 +33,7 @@ public class WinPanel extends JPanel {
 		// - 15, 80, 30);
 		restartBtn.setBounds(710, 450, 300, 100);
 		restartBtn.setBackground(new Color(143, 0, 225));
-		restartBtn.setForeground(Color.YELLOW);
+		restartBtn.setForeground(Color.BLACK);
 		restartBtn.setFocusPainted(false);
 		restartBtn.setFont(new Font("Serif", Font.BOLD, 40));
 		addActListeners();

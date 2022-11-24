@@ -16,18 +16,10 @@ class EnemyMovementTest {
 
 	@BeforeEach
 	void setUp() {
-		enemyMovement.clearAll();
+		enemyMovement.resetNodes();
 		enemyMovement.setNodes(1, 1, 4, 1);
 		nodes = enemyMovement.getNodes();
 		enemyMovement.search();
-	}
-
-	@Test
-	void clearTest() {
-		enemyMovement.clearAll();
-		assertTrue(enemyMovement.getOpened().isEmpty());
-		assertTrue(enemyMovement.getPath().isEmpty());
-		assertFalse(enemyMovement.getSuceeded());
 	}
 
 	@Test

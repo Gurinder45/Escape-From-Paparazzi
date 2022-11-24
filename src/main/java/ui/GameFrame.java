@@ -88,7 +88,7 @@ public class GameFrame extends JFrame implements Runnable {
 	 * Resets game elements and displays the game panel for a game restart
 	 */
 	public void restartGame() {
-		enemyMovement.clearAll();
+		enemyMovement.resetNodes();
 		score.restartScore();
 		gamePanel.placeElements();
 		collisionFinder.resetDisguises();

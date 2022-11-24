@@ -27,17 +27,6 @@ public class EnemyMovement {
     }
 
     /**
-     * clears all lists and loads nodes again
-     */
-    public void clearAll() {
-        opened.clear();
-        path.clear();
-        succeeded = false;
-        loadNodes();
-
-    }
-
-    /**
      * Makes a 2 dimensional array of nodes the same size as the map
      */
     public void loadNodes() {
