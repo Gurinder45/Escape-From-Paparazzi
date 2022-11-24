@@ -39,5 +39,8 @@ local.properties
 .vscode/
 .code-workspace
 
+# IntelliJ
+/.idea
+
 # OS X
 .DS_Store
