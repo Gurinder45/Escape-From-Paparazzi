@@ -39,7 +39,7 @@ class EnemyMovementTest {
 	}
 
 	@Test
-	void openNodeTest() {
+	void notOpenedNodeTest() {
 		enemyMovement.resetNodes();
 		enemyMovement.setNodes(1, 1, 1, 4);
 		enemyMovement.openNode(nodes[1][2]);
@@ -47,6 +47,17 @@ class EnemyMovementTest {
 		assertTrue(nodes[1][2].open);
 		assertEquals(enemyMovement.getCurrentNode(), nodes[1][2].parent);
 		assertTrue(opened.get(1) == nodes[1][2]);
+	}
+
+	@Test
+	void openedNodeTest() {
+		enemyMovement.resetNodes();
+		enemyMovement.setNodes(1, 1, 1, 4);
+		nodes[1][2].open = true;
+		enemyMovement.openNode(nodes[1][2]);
+		ArrayList<Node> opened = enemyMovement.getOpened();
+		assertTrue(nodes[1][2].open);
+		assertFalse(opened.contains(nodes[1][2]));
 	}
 
 	@Test

@@ -4,11 +4,11 @@ Group Members: Haruka Mibuchi, Gurinder Bhogal, Asifiwe Julio Patrick
 
 ## Escape from Paparazzies
 
-A bunch of Paparazzis are trying to take pictures of a celebrity visiting a shopping mall. The celebrity also wants to avoid all the cameras that have been set in the mall by those paparazzis. In this 2D game, the celebrity must collect all disguise items from stores in the mall to escape from paparazzis and their cameras. Therefore, the player will move the celebrity in complex and branched passages and lead her to the exit obtaining all the items without meeting paparazzis and cameras.
+A bunch of Paparazzi are trying to take pictures of a celebrity visiting a shopping mall. The celebrity also wants to avoid all the cameras that have been set in the mall by those paparazzi. In this 2D game, the celebrity must collect all disguise items from stores in the mall to escape from paparazzi and their cameras. Therefore, the player will move the celebrity in complex and branched passages and lead her to the exit obtaining all the items without meeting paparazzi and cameras.
 
 ### Instruction of the game
 
-- Use the arrow keys to move the celebrity/the main character left, right, forward or backward
+- Use the arrow or WASD keys to move the celebrity/the main character left, right, dP or down
 - The player will gain 10 points for each disguise item and 20 points when the player meets a fan
 - The player will lose 20 points if the celebrity crosses the camera lazer
 - The player will be able to exit from the mall after getting all the items
