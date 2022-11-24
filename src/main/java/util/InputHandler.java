@@ -50,9 +50,10 @@ public class InputHandler extends KeyAdapter {
 		}
 	}
 
-	public void setDirection(Direction direction){
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
+
 	public Direction getDirection() {
 		if (direction == null) {
 			return Direction.NONE;

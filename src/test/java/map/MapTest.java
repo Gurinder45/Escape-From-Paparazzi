@@ -8,47 +8,51 @@ import ui.GameFrame;
 
 class MapTest {
 	private GameFrame gFrame = new GameFrame();
-	private Map map=new Map(gFrame);
+	private Map map = new Map(gFrame);
 	private int mapArray[][];
+
 	@BeforeEach
 	void setUp() {
 		map.loadMap();
-		mapArray= map.getMapArray();
+		mapArray = map.getMapArray();
 	}
 
 	@Test
-	void loadbonusrewardtest1() {
+	void loadBonusRewardTest1() {
 		map.loadBonusRewards(1);
-		assertEquals(5,mapArray[29][17]);
+		assertEquals(5, mapArray[29][17]);
 	}
+
 	@Test
-	void loadbonusrewardtest2() {
+	void loadBonusRewardTest2() {
 		map.loadBonusRewards(2);
-		assertEquals(0,mapArray[29][17]);
-		assertEquals(5,mapArray[8][14]);
+		assertEquals(0, mapArray[29][17]);
+		assertEquals(5, mapArray[8][14]);
 	}
+
 	@Test
-	void loadbonusrewardtest3() {
+	void loadBonusRewardTest3() {
 		map.loadBonusRewards(3);
-		assertEquals(5,mapArray[22][3]);
-		assertEquals(0,mapArray[8][14]);
+		assertEquals(5, mapArray[22][3]);
+		assertEquals(0, mapArray[8][14]);
 	}
+
 	@Test
-	void loadbonusrewardtest4() {
+	void loadBonusRewardTest4() {
 		map.loadBonusRewards(4);
-		assertEquals(5,mapArray[5][4]);
-		assertEquals(0,mapArray[22][3]);
+		assertEquals(5, mapArray[5][4]);
+		assertEquals(0, mapArray[22][3]);
 	}
+
 	@Test
-	void loadbonusrewardtest5() {
+	void loadBonusRewardTest5() {
 		map.loadBonusRewards(5);
-		assertEquals(0,mapArray[5][4]);
+		assertEquals(0, mapArray[5][4]);
 	}
 
 	@Test
-	void checkCollidabletest(){
-		assertEquals(true,map.checkColidable(1));
+	void checkCollidabletest() {
+		assertEquals(true, map.checkColidable(1));
 	}
-
 
 }

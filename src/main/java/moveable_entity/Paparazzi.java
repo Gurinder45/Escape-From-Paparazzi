@@ -92,20 +92,19 @@ public class Paparazzi extends MoveableEntity {
 			int topPosition = this.getPositionY() + gap;
 			int bottomPosition = this.getPositionY() - gap + gFrame.cellSize;
 
-			// case when next position is above and the enemy is perfectly centered in the
+			// case when next position is above and the enemy is centered in the
 			// tile
 			if (topPosition > nextPositionY && leftPosition >= nextPositionX
 					&& rightPosition < nextPositionX + gFrame.cellSize) {
 				direction = Direction.UP;
 				move(direction);
-				// case when next position is below and the enemy is perfectly centered in the
+				// case when next position is below and the enemy is centered in the
 				// tile
 			} else if (topPosition < nextPositionY && leftPosition >= nextPositionX
 					&& rightPosition < nextPositionX + gFrame.cellSize) {
 				direction = Direction.DOWN;
 				move(direction);
-				// case when next position is above or below but enemy needs to move into the
-				// center of the tile
+				// case when next position is left or right
 			} else if (topPosition >= nextPositionY && bottomPosition < nextPositionY +
 					gFrame.cellSize) {
 				if (leftPosition > nextPositionX) {

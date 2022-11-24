@@ -71,11 +71,51 @@ class PapararazziTest {
 	}
 
 	@Test
-	void centerLeftTest() {
+	void celebrityLeftTest() {
 		celebrity = new Celebrity(32, 32, gFrame);
-		paparazzi = new Paparazzi(39, 96, gFrame);
+		paparazzi = new Paparazzi(96, 32, gFrame);
 		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
 		assertEquals(Direction.LEFT, paparazzi.getDirection());
+	}
+
+	@Test
+	void celebrityRightTest() {
+		celebrity = new Celebrity(96, 32, gFrame);
+		paparazzi = new Paparazzi(32, 32, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.RIGHT, paparazzi.getDirection());
+	}
+
+	@Test
+	void upCollisionMoveLeftTest() {
+		celebrity = new Celebrity(352, 32, gFrame);
+		paparazzi = new Paparazzi(326, 91, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.LEFT, paparazzi.getDirection());
+	}
+
+	@Test
+	void upCollisionMoveRightTest() {
+		celebrity = new Celebrity(64, 192, gFrame);
+		paparazzi = new Paparazzi(90, 251, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.RIGHT, paparazzi.getDirection());
+	}
+
+	@Test
+	void downCollisionMoveLeftTest() {
+		celebrity = new Celebrity(352, 96, gFrame);
+		paparazzi = new Paparazzi(326, 37, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.LEFT, paparazzi.getDirection());
+	}
+
+	@Test
+	void downCollisionMoveRightTest() {
+		celebrity = new Celebrity(64, 256, gFrame);
+		paparazzi = new Paparazzi(90, 196, gFrame);
+		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		assertEquals(Direction.RIGHT, paparazzi.getDirection());
 	}
 
 }
