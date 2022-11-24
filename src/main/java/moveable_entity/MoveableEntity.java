@@ -1,6 +1,7 @@
 package moveable_entity;
 
-import entity.Entity;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import game.CollisionFinder;
 import ui.GameFrame;
 import util.Direction;
@@ -11,7 +12,9 @@ import util.Point;
  * 
  * @author Gurinder Bhogal
  */
-public abstract class MoveableEntity extends Entity {
+public abstract class MoveableEntity {
+	protected Point position;
+	protected BufferedImage img;
 	protected Direction direction;
 	protected int speed;
 	protected boolean collided;
@@ -55,5 +58,35 @@ public abstract class MoveableEntity extends Entity {
 	public boolean getCollided() {
 		return collided;
 	}
+
+	public Point getPosition() {
+		return position;
+	}
+
+	/**
+	 * @return the x (value) position of the entity
+	 */
+	public int getPositionX() {
+		return position.getX();
+	}
+
+	/**
+	 * @return the y (value) position of the entity
+	 */
+	public int getPositionY() {
+		return position.getY();
+	}
+
+	/**
+	 * draws 2d the entity to be shown in the map
+	 * 
+	 * @param g2d to be drawn
+	 */
+	public abstract void draw(Graphics g2d);
+
+	/**
+	 * loads the image in order for it to be drawn
+	 */
+	public abstract void loadImage();
 
 }
