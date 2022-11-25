@@ -88,4 +88,12 @@ class CelebrityTest {
 		assertEquals(expectedPos.getPositionX(), celebrity.getPositionX());
 	}
 
+	@Test
+	void collidedTest() {
+		celebrity = new Celebrity(27, 27, gFrame);
+		celebrity.setDirection(Direction.UP);
+		celebrity.update();
+		assertEquals(27, celebrity.getPositionY());
+	}
+
 }
