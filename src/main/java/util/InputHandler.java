@@ -50,10 +50,20 @@ public class InputHandler extends KeyAdapter {
 		}
 	}
 
+	/**
+	 * Manually set the direction of the InputHandler
+	 * 
+	 * @param direction Direction for the entity to move of type Direction
+	 */
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 
+	/**
+	 * Gets the direction of the InputHandler
+	 * 
+	 * @return Type Direction
+	 */
 	public Direction getDirection() {
 		if (direction == null) {
 			return Direction.NONE;

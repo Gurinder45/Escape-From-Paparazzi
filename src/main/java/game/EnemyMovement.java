@@ -225,22 +225,47 @@ public class EnemyMovement {
         return path.get(0).rowNum;
     }
 
+    /**
+     * Check if a the goal node has been reached successfully
+     * 
+     * @return boolean true if reach goal node, false otherwise
+     */
     public boolean getSuceeded() {
         return succeeded;
     }
 
+    /**
+     * Gets the path to the goal node
+     * 
+     * @return ArrayList of type node representing the path to the goal node
+     */
     public ArrayList<Node> getPath() {
         return path;
     }
 
+    /**
+     * Gets the all the nodes which have been opened
+     * 
+     * @return ArrayList of type node representing the nodes which have been opened
+     */
     public ArrayList<Node> getOpened() {
         return opened;
     }
 
+    /**
+     * Gets all the nodes
+     * 
+     * @return a 2D Array of Nodes
+     */
     public Node[][] getNodes() {
         return nodes;
     }
 
+    /**
+     * Get the current node
+     * 
+     * @return Node type, represents the current node
+     */
     public Node getCurrentNode() {
         return cur;
     }

@@ -11,6 +11,8 @@ import util.Direction;
 
 /**
  * Represents the enemies in the game
+ * 
+ * @author Gurinder Bhogal
  */
 public class Paparazzi extends MoveableEntity {
 

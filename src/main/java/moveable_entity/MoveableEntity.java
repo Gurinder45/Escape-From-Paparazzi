@@ -26,6 +26,11 @@ public abstract class MoveableEntity {
 		this.gFrame = gameFrame;
 	}
 
+	/**
+	 * Sets the direction for a moveable entity
+	 * 
+	 * @param direction Direction for the entity to move of type Direction
+	 */
 	public abstract void setDirection(Direction direction);
 
 	/**

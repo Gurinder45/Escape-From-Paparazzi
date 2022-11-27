@@ -235,6 +235,11 @@ public class CollisionFinder {
 		}
 	}
 
+	/**
+	 * Gets the number of disguises collected so far
+	 * 
+	 * @return an integer representing the number of disguises collected
+	 */
 	public int getDisguiseNumber() {
 		return disguiseCollected;
 
