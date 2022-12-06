@@ -37,3 +37,9 @@ In order to build this game, you will be required to install Java, Maven, and Gi
 ### How to test
 
 - You can test the game by using the command `mvn test` after building the project
+
+### How to generate Javadocs
+
+- run the command `mvn javadoc:javadoc`
+
+- Open the `index.html` file in `target/site/apidocs`, in your browser
