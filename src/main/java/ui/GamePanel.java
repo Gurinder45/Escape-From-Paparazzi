@@ -16,6 +16,7 @@ import moveable_entity.Paparazzi;
  * 
  */
 public class GamePanel extends JPanel {
+	private static GamePanel instance = null;
 	private Celebrity celebrity;
 	private Paparazzi[] paparazzi;
 	private Map map;
@@ -26,10 +27,18 @@ public class GamePanel extends JPanel {
 	 * 
 	 * @param gFrame
 	 */
-	public GamePanel() {
+	private GamePanel() {
+		instance = this;
 		this.gFrame = GameFrame.getInstance();
 		this.paparazzi = new Paparazzi[2];
 		placeElements();
+	}
+
+	public static GamePanel getInstance() {
+		if (instance == null) {
+			new GamePanel();
+		}
+		return instance;
 	}
 
 	/**

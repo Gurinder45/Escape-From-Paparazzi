@@ -135,8 +135,7 @@ class CollisionFinderTest {
 	void cellType3CollisionTest() {
 		celebrity = new Celebrity(27, 27);
 		collisionFinder.checkCellType(3, 0, 0, celebrity);
-		GamePanel gPanel = GameFrame.getInstance().getGamePanel();
-		int[][] map = gPanel.getMapArray();
+		int[][] map = GamePanel.getInstance().getMapArray();
 		assertEquals(10, GameFrame.getInstance().getScore());
 		assertEquals(1, collisionFinder.getDisguiseNumber());
 		assertEquals(0, map[0][0]);
@@ -153,8 +152,7 @@ class CollisionFinderTest {
 	void cellType5CollisionTest() {
 		celebrity = new Celebrity(27, 27);
 		collisionFinder.checkCellType(5, 0, 0, celebrity);
-		GamePanel gPanel = GameFrame.getInstance().getGamePanel();
-		int[][] map = gPanel.getMapArray();
+		int[][] map = GamePanel.getInstance().getMapArray();
 		assertEquals(20, GameFrame.getInstance().getScore());
 		assertEquals(0, map[0][0]);
 	}
@@ -170,8 +168,7 @@ class CollisionFinderTest {
 	void cellType7CollisionTest() {
 		celebrity = new Celebrity(27, 27);
 		collisionFinder.checkCellType(7, 3, 0, celebrity);
-		GamePanel gPanel = GameFrame.getInstance().getGamePanel();
-		int[][] map = gPanel.getMapArray();
+		int[][] map = GamePanel.getInstance().getMapArray();
 		boolean errorFound = false;
 		for (int i = 0; i < GameFrame.getInstance().columnNum; i++) {
 			if (map[i][3] == 7) {

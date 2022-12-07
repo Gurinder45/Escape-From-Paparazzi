@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import moveable_entity.Celebrity;
 import moveable_entity.Paparazzi;
 import ui.GameFrame;
+import ui.GamePanel;
 import util.Direction;
 
 /**
@@ -13,12 +14,7 @@ import util.Direction;
  */
 
 public class CollisionFinder {
-	private GameFrame gFrame;
 	private int disguiseCollected;
-
-	public CollisionFinder() {
-		this.gFrame = GameFrame.getInstance();
-	}
 
 	/**
 	 * resets the number of disguises collected for a restart
@@ -37,7 +33,7 @@ public class CollisionFinder {
 	 * @param character the character
 	 */
 	public void checkCellType(int cellType, int rowIndex, int colIndex, Celebrity character) {
-		int[][] mapArray = gFrame.getGamePanel().getMapArray();
+		int[][] mapArray = GamePanel.getInstance().getMapArray();
 		switch (cellType) {
 			case 1:
 				character.setCollided(true);
@@ -47,7 +43,7 @@ public class CollisionFinder {
 				break;
 			case 3:
 				mapArray[colIndex][rowIndex] = 0;
-				gFrame.addScore(10);
+				GameFrame.getInstance().addScore(10);
 				disguiseCollected++;
 				break;
 			case 4:
@@ -55,24 +51,24 @@ public class CollisionFinder {
 				break;
 			case 5:
 				mapArray[colIndex][rowIndex] = 0;
-				gFrame.addScore(20);
+				GameFrame.getInstance().addScore(20);
 				break;
 			case 6:
 				if (disguiseCollected >= 4) {
-					gFrame.winGame();
+					GameFrame.getInstance().winGame();
 				} else {
 					character.setCollided(true);
 				}
 				break;
 			case 7:
-				for (int i = 0; i < gFrame.columnNum; i++) {
+				for (int i = 0; i < GameFrame.getInstance().columnNum; i++) {
 					if (mapArray[i][rowIndex] == 7) {
 						mapArray[i][rowIndex] = 0;
 					}
 				}
-				gFrame.substractScore(20);
-				if (gFrame.getScore() < 0) {
-					gFrame.loseGame();
+				GameFrame.getInstance().substractScore(20);
+				if (GameFrame.getInstance().getScore() < 0) {
+					GameFrame.getInstance().loseGame();
 				}
 				break;
 			case 8:
@@ -102,7 +98,7 @@ public class CollisionFinder {
 
 		int cell1Type, cell2Type, next;
 
-		int[][] mapArray = gFrame.getGamePanel().getMapArray();
+		int[][] mapArray = GamePanel.getInstance().getMapArray();
 
 		if (character.getDirection() == Direction.UP) {
 			next = character.getNextUp();
@@ -146,13 +142,13 @@ public class CollisionFinder {
 		int topRow = enemy.getTopRow();
 		int bottomRow = enemy.getBottomRow();
 		int cell1Type, cell2Type, next;
-		int[][] mapArray = gFrame.getGamePanel().getMapArray();
+		int[][] mapArray = GamePanel.getInstance().getMapArray();
 
 		if (enemy.getDirection() == Direction.UP) {
 			next = enemy.getNextUp();
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
+			if (GamePanel.getInstance().isCollidable(cell1Type) || GamePanel.getInstance().isCollidable(cell2Type)) {
 				enemy.setCollided(true);
 			}
 		}
@@ -160,7 +156,7 @@ public class CollisionFinder {
 			next = enemy.getNextDown();
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
-			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
+			if (GamePanel.getInstance().isCollidable(cell1Type) || GamePanel.getInstance().isCollidable(cell2Type)) {
 				enemy.setCollided(true);
 			}
 		}
@@ -168,7 +164,7 @@ public class CollisionFinder {
 			next = enemy.getNextLeft();
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
+			if (GamePanel.getInstance().isCollidable(cell1Type) || GamePanel.getInstance().isCollidable(cell2Type)) {
 				enemy.setCollided(true);
 			}
 		}
@@ -176,7 +172,7 @@ public class CollisionFinder {
 			next = enemy.getNextRight();
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
-			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
+			if (GamePanel.getInstance().isCollidable(cell1Type) || GamePanel.getInstance().isCollidable(cell2Type)) {
 				enemy.setCollided(true);
 			}
 		}
@@ -189,7 +185,7 @@ public class CollisionFinder {
 	 * @param enemy enemy to be checked
 	 */
 	public void checkEnemyCollision(Paparazzi enemy) {
-		Paparazzi[] pprzziArray = gFrame.getPaparazzis();
+		Paparazzi[] pprzziArray = GameFrame.getInstance().getPaparazzis();
 		Rectangle paparazziRect = new Rectangle(enemy.getPositionX(), enemy.getPositionY(), 32, 32);
 		Rectangle otherPaparazziRect = new Rectangle(0, 0, 32, 32);
 

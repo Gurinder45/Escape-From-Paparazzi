@@ -12,7 +12,7 @@ import ui.GamePanel;
  * @author Gurinder Bhogal
  */
 public class EnemyMovement {
-    private GameFrame gFrame;
+
     private Node[][] nodes;
     private ArrayList<Node> opened;
     private boolean succeeded;
@@ -20,7 +20,6 @@ public class EnemyMovement {
     private Node start, end, cur;
 
     public EnemyMovement() {
-        this.gFrame = GameFrame.getInstance();
         this.opened = new ArrayList<Node>();
         this.path = new ArrayList<Node>();
         loadNodes();
@@ -30,15 +29,15 @@ public class EnemyMovement {
      * Makes a 2 dimensional array of nodes the same size as the map
      */
     public void loadNodes() {
-        nodes = new Node[gFrame.columnNum][gFrame.rowNum];
+        nodes = new Node[GameFrame.getInstance().columnNum][GameFrame.getInstance().rowNum];
         int column = 0;
         int row = 0;
 
-        while (column < gFrame.columnNum && row < gFrame.rowNum) {
+        while (column < GameFrame.getInstance().columnNum && row < GameFrame.getInstance().rowNum) {
             nodes[column][row] = new Node(column, row);
             column++;
 
-            if (column == gFrame.columnNum) {
+            if (column == GameFrame.getInstance().columnNum) {
                 column = 0;
                 row++;
             }
@@ -65,10 +64,9 @@ public class EnemyMovement {
 
         int column = 0;
         int row = 0;
-        GamePanel gPanel = gFrame.getGamePanel();
 
-        while (column < gFrame.columnNum && row < gFrame.rowNum) {
-            int[][] mapArray = gPanel.getMapArray();
+        while (column < GameFrame.getInstance().columnNum && row < GameFrame.getInstance().rowNum) {
+            int[][] mapArray = GamePanel.getInstance().getMapArray();
             // check if the cell is Collidable
             if (mapArray[column][row] == 1 || mapArray[column][row] == 2 || mapArray[column][row] == 6
                     || mapArray[column][row] == 8 || mapArray[column][row] == 9) { ///////
@@ -76,7 +74,7 @@ public class EnemyMovement {
             }
             getTotalCost(nodes[column][row]);
             column++;
-            if (column == gFrame.columnNum) {
+            if (column == GameFrame.getInstance().columnNum) {
                 column = 0;
                 row++;
             }
@@ -122,11 +120,11 @@ public class EnemyMovement {
                 openNode(nodes[column - 1][row]);
             }
             // open the node below
-            if (row + 1 < gFrame.rowNum) {
+            if (row + 1 < GameFrame.getInstance().rowNum) {
                 openNode(nodes[column][row + 1]);
             }
             // open the node on the right
-            if (column + 1 < gFrame.columnNum) {
+            if (column + 1 < GameFrame.getInstance().columnNum) {
                 openNode(nodes[column + 1][row]);
             }
 
@@ -191,13 +189,13 @@ public class EnemyMovement {
         int column = 0;
         int row = 0;
 
-        while (column < gFrame.columnNum && row < gFrame.rowNum) {
+        while (column < GameFrame.getInstance().columnNum && row < GameFrame.getInstance().rowNum) {
             // iterate through the nodes and make them back to their original state
             nodes[column][row].open = false;
             nodes[column][row].checked = false;
             nodes[column][row].isCollidable = false;
             column++;
-            if (column == gFrame.columnNum) {
+            if (column == GameFrame.getInstance().columnNum) {
                 column = 0;
                 row++;
             }

@@ -51,7 +51,7 @@ public class GameFrame extends JFrame implements Runnable {
 		losePanel = new LosePanel();
 		score = new Score();
 		enemyMovement = new EnemyMovement();
-		gamePanel = new GamePanel();
+		gamePanel = GamePanel.getInstance();
 		collisionFinder = new CollisionFinder();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
@@ -155,15 +155,6 @@ public class GameFrame extends JFrame implements Runnable {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	/**
-	 * Get the game panel of the frame
-	 * 
-	 * @return the game panel
-	 */
-	public GamePanel getGamePanel() {
-		return gamePanel;
 	}
 
 	/**
