@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import game.CollisionFinder;
 import game.EnemyMovement;
 import util.Direction;
 
@@ -41,10 +42,9 @@ public class Paparazzi extends MoveableEntity {
 	 * @param direction direction to move enemy in
 	 */
 	public void move(Direction direction) {
-		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
-		collisionFinder.checkEnemyMapCollision(this);
-		collisionFinder.checkEnemyCollision(this);
+		CollisionFinder.getInstance().checkEnemyMapCollision(this);
+		CollisionFinder.getInstance().checkEnemyCollision(this);
 
 		if (!collided) {
 			if (direction == Direction.UP) {
@@ -75,10 +75,9 @@ public class Paparazzi extends MoveableEntity {
 		int playerRow = (y + gap) / gFrame.cellSize;
 		int startColumn = this.getLeftColumn();
 		int startRow = this.getTopRow();
-		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
-		collisionFinder.checkEnemyMapCollision(this);
-		collisionFinder.checkEnemyCollision(this);
+		CollisionFinder.getInstance().checkEnemyMapCollision(this);
+		CollisionFinder.getInstance().checkEnemyCollision(this);
 		EnemyMovement.getInstance().setNodes(startColumn, startRow, playerColumn, playerRow);
 		if (EnemyMovement.getInstance().search()) {
 			int nextPositionX = EnemyMovement.getInstance().getNextColumn() * gFrame.cellSize;

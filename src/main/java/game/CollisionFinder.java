@@ -14,7 +14,19 @@ import util.Direction;
  */
 
 public class CollisionFinder {
+	private static CollisionFinder instance = null;
 	private int disguiseCollected;
+
+	private CollisionFinder() {
+		instance = this;
+	}
+
+	public static CollisionFinder getInstance() {
+		if (instance == null) {
+			new CollisionFinder();
+		}
+		return instance;
+	}
 
 	/**
 	 * resets the number of disguises collected for a restart

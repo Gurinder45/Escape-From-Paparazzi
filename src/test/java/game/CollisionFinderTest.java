@@ -12,7 +12,7 @@ import ui.GamePanel;
 import util.Direction;
 
 class CollisionFinderTest {
-	private CollisionFinder collisionFinder = new CollisionFinder();
+	private CollisionFinder collisionFinder = CollisionFinder.getInstance();
 	private Paparazzi enemy;
 	private Celebrity celebrity;
 

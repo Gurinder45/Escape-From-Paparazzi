@@ -27,7 +27,6 @@ public class GameFrame extends JFrame implements Runnable {
 	private WinPanel winPanel;
 	private LosePanel losePanel;
 	private CardLayout cardLayout;
-	private CollisionFinder collisionFinder;
 	private Score score;
 	private boolean paused;
 	final public int cellSize = 32;
@@ -47,7 +46,6 @@ public class GameFrame extends JFrame implements Runnable {
 		winPanel = new WinPanel();
 		losePanel = new LosePanel();
 		score = new Score();
-		collisionFinder = new CollisionFinder();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
@@ -95,7 +93,7 @@ public class GameFrame extends JFrame implements Runnable {
 		EnemyMovement.getInstance().resetNodes();
 		score.restartScore();
 		GamePanel.getInstance().placeElements();
-		collisionFinder.resetDisguises();
+		CollisionFinder.getInstance().resetDisguises();
 		this.addKeyListener(inpHandler);
 		cardLayout.show(getContentPane(), "gamePanel");
 		paused = false;
@@ -150,15 +148,6 @@ public class GameFrame extends JFrame implements Runnable {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	/**
-	 * Get the collision finder of the frame
-	 * 
-	 * @return the collision finder
-	 */
-	public CollisionFinder getCollisionFinder() {
-		return collisionFinder;
 	}
 
 	/**

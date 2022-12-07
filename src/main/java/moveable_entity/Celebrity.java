@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import game.CollisionFinder;
 import util.Direction;
 import util.InputHandler;
 
@@ -67,9 +68,8 @@ public class Celebrity extends MoveableEntity {
 		direction = InputHandler.getInstance().getDirection();
 		loadImage();
 
-		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
-		collisionFinder.checkMapCollision(this);
+		CollisionFinder.getInstance().checkMapCollision(this);
 
 		if (!collided) {
 			if (direction == Direction.UP) {

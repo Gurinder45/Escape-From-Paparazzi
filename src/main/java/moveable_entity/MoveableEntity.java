@@ -2,7 +2,6 @@ package moveable_entity;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import game.CollisionFinder;
 import ui.GameFrame;
 import util.Direction;
 import util.Point;
@@ -19,7 +18,6 @@ public abstract class MoveableEntity {
 	protected int speed;
 	protected boolean collided;
 	protected GameFrame gFrame;
-	CollisionFinder collisionFinder;
 
 	public MoveableEntity(int x, int y) {
 		position = new Point(x, y);
