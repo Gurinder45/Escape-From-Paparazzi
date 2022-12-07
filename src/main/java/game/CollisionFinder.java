@@ -95,40 +95,38 @@ public class CollisionFinder {
 	 * @param character the Character which is checked
 	 */
 	public void checkMapCollision(Celebrity character) {
-		// find the column(s)/row(s) the entity is in
-		int gap = 5;
-		int leftColumn = (character.getPositionX() + gap) / gFrame.cellSize;
-		int rightColumn = (character.getPositionX() - gap + gFrame.cellSize) / gFrame.cellSize;
-		int topRow = (character.getPositionY() + gap) / gFrame.cellSize;
-		int bottomRow = (character.getPositionY() - gap + gFrame.cellSize) / gFrame.cellSize;
+		int leftColumn = character.getLeftColumn();
+		int rightColumn = character.getRightColumn();
+		int topRow = character.getTopRow();
+		int bottomRow = character.getBottomRow();
 
 		int cell1Type, cell2Type, next;
 
 		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 
 		if (character.getDirection() == Direction.UP) {
-			next = (character.getPositionY() - character.getSpeed()) / gFrame.cellSize;
+			next = character.getNextUp();
 			cell1Type = mapArray[leftColumn][next];
 			checkCellType(cell1Type, next, leftColumn, character);
 			cell2Type = mapArray[rightColumn][next];
 			checkCellType(cell2Type, next, rightColumn, character);
 		}
 		if (character.getDirection() == Direction.DOWN) {
-			next = ((character.getPositionY() + gFrame.cellSize) + character.getSpeed()) / gFrame.cellSize;
+			next = character.getNextDown();
 			cell1Type = mapArray[leftColumn][next];
 			checkCellType(cell1Type, next, leftColumn, character);
 			cell2Type = mapArray[rightColumn][next];
 			checkCellType(cell2Type, next, rightColumn, character);
 		}
 		if (character.getDirection() == Direction.LEFT) {
-			next = (character.getPositionX() - character.getSpeed()) / gFrame.cellSize;
+			next = character.getNextLeft();
 			cell1Type = mapArray[next][topRow];
 			checkCellType(cell1Type, topRow, next, character);
 			cell2Type = mapArray[next][bottomRow];
 			checkCellType(cell2Type, bottomRow, next, character);
 		}
 		if (character.getDirection() == Direction.RIGHT) {
-			next = (character.getPositionX() + gFrame.cellSize + character.getSpeed()) / gFrame.cellSize;
+			next = character.getNextRight();
 			cell1Type = mapArray[next][topRow];
 			checkCellType(cell1Type, topRow, next, character);
 			cell2Type = mapArray[next][bottomRow];
@@ -143,16 +141,15 @@ public class CollisionFinder {
 	 * @param enemy the enemy to be checked
 	 */
 	public void checkEnemyMapCollision(Paparazzi enemy) {
-		int gap = 5;
-		int leftColumn = (enemy.getPositionX() + gap) / gFrame.cellSize;
-		int rightColumn = (enemy.getPositionX() - gap + gFrame.cellSize) / gFrame.cellSize;
-		int topRow = (enemy.getPositionY() + gap) / gFrame.cellSize;
-		int bottomRow = (enemy.getPositionY() - gap + gFrame.cellSize) / gFrame.cellSize;
+		int leftColumn = enemy.getLeftColumn();
+		int rightColumn = enemy.getRightColumn();
+		int topRow = enemy.getTopRow();
+		int bottomRow = enemy.getBottomRow();
 		int cell1Type, cell2Type, next;
 		int[][] mapArray = gFrame.getGamePanel().getMapArray();
 
 		if (enemy.getDirection() == Direction.UP) {
-			next = (enemy.getPositionY() + gap - enemy.getSpeed()) / gFrame.cellSize;
+			next = enemy.getNextUp();
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
@@ -160,7 +157,7 @@ public class CollisionFinder {
 			}
 		}
 		if (enemy.getDirection() == Direction.DOWN) {
-			next = ((enemy.getPositionY() - gap + gFrame.cellSize) + enemy.getSpeed()) / gFrame.cellSize;
+			next = enemy.getNextDown();
 			cell1Type = mapArray[leftColumn][next];
 			cell2Type = mapArray[rightColumn][next];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
@@ -168,7 +165,7 @@ public class CollisionFinder {
 			}
 		}
 		if (enemy.getDirection() == Direction.LEFT) {
-			next = (enemy.getPositionX() + gap - enemy.getSpeed()) / gFrame.cellSize;
+			next = enemy.getNextLeft();
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {
@@ -176,7 +173,7 @@ public class CollisionFinder {
 			}
 		}
 		if (enemy.getDirection() == Direction.RIGHT) {
-			next = (enemy.getPositionX() - gap + gFrame.cellSize + enemy.getSpeed()) / gFrame.cellSize;
+			next = enemy.getNextRight();
 			cell1Type = mapArray[next][topRow];
 			cell2Type = mapArray[next][bottomRow];
 			if (gFrame.getGamePanel().isCollidable(cell1Type) || gFrame.getGamePanel().isCollidable(cell2Type)) {

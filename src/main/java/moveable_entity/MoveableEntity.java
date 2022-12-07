@@ -94,4 +94,36 @@ public abstract class MoveableEntity {
 	 */
 	public abstract void loadImage();
 
+	public int getLeftColumn() {
+		return position.getLeftColumn();
+	}
+
+	public int getRightColumn() {
+		return position.getRightColumn();
+	}
+
+	public int getTopRow() {
+		return position.getTopRow();
+	}
+
+	public int getBottomRow() {
+		return position.getBottomRow();
+	}
+
+	public int getNextUp() {
+		return position.getNextUp(this.speed);
+	}
+
+	public int getNextDown() {
+		return position.getNextDown(this.speed);
+	}
+
+	public int getNextLeft() {
+		return position.getNextLeft(this.speed);
+	}
+
+	public int getNextRight() {
+		return position.getNextRight(this.speed);
+	}
+
 }

@@ -1,5 +1,7 @@
 package util;
 
+import ui.GameFrame;
+
 /**
  * Tracks an Entity with its x and y pixel coordinates
  * 
@@ -8,6 +10,8 @@ package util;
 public class Point {
 	private int x;
 	private int y;
+	final int gap = 5;
+	final int cellSize = GameFrame.getInstance().cellSize;
 
 	public Point(int x, int y) {
 		this.x = x;
@@ -66,6 +70,38 @@ public class Point {
 	 */
 	public void addY(int val) {
 		y += val;
+	}
+
+	public int getLeftColumn() {
+		return (this.getX() + gap) / cellSize;
+	}
+
+	public int getRightColumn() {
+		return (this.getX() - gap + cellSize) / cellSize;
+	}
+
+	public int getTopRow() {
+		return (this.getY() + gap) / cellSize;
+	}
+
+	public int getBottomRow() {
+		return (this.getY() - gap + cellSize) / cellSize;
+	}
+
+	public int getNextUp(int speed) {
+		return (this.getY() - speed) / cellSize;
+	}
+
+	public int getNextDown(int speed) {
+		return ((this.getY() + cellSize) + speed) / cellSize;
+	}
+
+	public int getNextLeft(int speed) {
+		return (this.getX() - speed) / cellSize;
+	}
+
+	public int getNextRight(int speed) {
+		return (this.getX() + cellSize + speed) / cellSize;
 	}
 
 }

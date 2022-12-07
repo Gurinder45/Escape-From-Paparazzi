@@ -78,8 +78,8 @@ public class Paparazzi extends MoveableEntity {
 		int gap = 5;
 		int playerColumn = (x + gap) / gFrame.cellSize;
 		int playerRow = (y + gap) / gFrame.cellSize;
-		int startColumn = (this.getPositionX() + gap) / gFrame.cellSize;
-		int startRow = (this.getPositionY() + gap) / gFrame.cellSize;
+		int startColumn = this.getLeftColumn();
+		int startRow = this.getTopRow();
 		collisionFinder = gFrame.getCollisionFinder();
 		collided = false;
 		collisionFinder.checkEnemyMapCollision(this);
