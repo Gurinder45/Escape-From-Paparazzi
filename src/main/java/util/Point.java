@@ -104,4 +104,20 @@ public class Point {
 		return (this.getX() + cellSize + speed) / cellSize;
 	}
 
+	public int getHitBoxLeft() {
+		return this.getX() + gap;
+	}
+
+	public int getHitBoxRight() {
+		return this.getX() - gap + cellSize;
+	}
+
+	public int getHitBoxTop() {
+		return this.getY() + gap;
+	}
+
+	public int getHitBoxBottom() {
+		return this.getY() - gap + cellSize;
+	}
+
 }

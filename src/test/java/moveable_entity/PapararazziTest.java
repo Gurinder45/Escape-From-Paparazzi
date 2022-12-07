@@ -56,7 +56,7 @@ class PapararazziTest {
 	void celebrityAboveTest() {
 		celebrity = new Celebrity(32, 32);
 		paparazzi = new Paparazzi(32, 96);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.UP, paparazzi.getDirection());
 	}
 
@@ -64,7 +64,7 @@ class PapararazziTest {
 	void celebrityBelowTest() {
 		celebrity = new Celebrity(32, 96);
 		paparazzi = new Paparazzi(32, 32);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.DOWN, paparazzi.getDirection());
 	}
 
@@ -72,7 +72,7 @@ class PapararazziTest {
 	void celebrityLeftTest() {
 		celebrity = new Celebrity(32, 32);
 		paparazzi = new Paparazzi(96, 32);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.LEFT, paparazzi.getDirection());
 	}
 
@@ -80,7 +80,7 @@ class PapararazziTest {
 	void celebrityRightTest() {
 		celebrity = new Celebrity(96, 32);
 		paparazzi = new Paparazzi(32, 32);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.RIGHT, paparazzi.getDirection());
 	}
 
@@ -88,7 +88,7 @@ class PapararazziTest {
 	void upCollisionMoveLeftTest() {
 		celebrity = new Celebrity(352, 32);
 		paparazzi = new Paparazzi(326, 91);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.LEFT, paparazzi.getDirection());
 	}
 
@@ -96,7 +96,7 @@ class PapararazziTest {
 	void upCollisionMoveRightTest() {
 		celebrity = new Celebrity(64, 192);
 		paparazzi = new Paparazzi(90, 251);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.RIGHT, paparazzi.getDirection());
 	}
 
@@ -104,7 +104,7 @@ class PapararazziTest {
 	void downCollisionMoveLeftTest() {
 		celebrity = new Celebrity(352, 96);
 		paparazzi = new Paparazzi(326, 37);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.LEFT, paparazzi.getDirection());
 	}
 
@@ -112,7 +112,7 @@ class PapararazziTest {
 	void downCollisionMoveRightTest() {
 		celebrity = new Celebrity(64, 256);
 		paparazzi = new Paparazzi(90, 196);
-		paparazzi.update(celebrity.getPositionX(), celebrity.getPositionY());
+		paparazzi.update(celebrity.getLeftColumn(), celebrity.getTopRow());
 		assertEquals(Direction.RIGHT, paparazzi.getDirection());
 	}
 

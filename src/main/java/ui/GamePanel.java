@@ -73,7 +73,7 @@ public class GamePanel extends JPanel {
 		if (!GameFrame.getInstance().isPaused()) {
 			celebrity.update();
 			for (int i = 0; i < paparazzi.length; i++) {
-				paparazzi[i].update(celebrity.getPositionX(), celebrity.getPositionY());
+				paparazzi[i].update(celebrity.getLeftColumn(), celebrity.getTopRow());
 			}
 		}
 

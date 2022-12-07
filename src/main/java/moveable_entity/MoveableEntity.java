@@ -124,4 +124,21 @@ public abstract class MoveableEntity {
 		return position.getNextRight(this.speed);
 	}
 
+	public int getHitBoxTop() {
+		return position.getHitBoxTop();
+	}
+
+	public int getHitBoxBottom() {
+		return position.getHitBoxBottom();
+	}
+
+	public int getHitBoxRight() {
+		return position.getHitBoxRight();
+
+	}
+
+	public int getHitBoxLeft() {
+		return position.getHitBoxLeft();
+	}
+
 }

@@ -66,38 +66,34 @@ public class Paparazzi extends MoveableEntity {
 	/**
 	 * Finds the next direction to move the paparazzi closer to the celebrity
 	 * 
-	 * @param x celebrities x position
-	 * @param y celebrities y position
+	 * @param col celebrities column in map
+	 * @param row celebrities row in map
 	 */
-	public void update(int x, int y) {
-		int gap = 5;
-		int playerColumn = (x + gap) / gFrame.cellSize;
-		int playerRow = (y + gap) / gFrame.cellSize;
+	public void update(int col, int row) {
 		int startColumn = this.getLeftColumn();
 		int startRow = this.getTopRow();
 		collided = false;
 		CollisionFinder.getInstance().checkEnemyMapCollision(this);
 		CollisionFinder.getInstance().checkEnemyCollision(this);
-		EnemyMovement.getInstance().setNodes(startColumn, startRow, playerColumn, playerRow);
+		EnemyMovement.getInstance().setNodes(startColumn, startRow, col, row);
 		if (EnemyMovement.getInstance().search()) {
 			findDirection();
 			int nextColumn = EnemyMovement.getInstance().getNextColumn();
 			int nextRow = EnemyMovement.getInstance().getNextRow();
-			if (nextColumn == playerColumn && nextRow == playerRow) {
+			if (nextColumn == col && nextRow == row) {
 				gFrame.loseGame();
 			}
 		}
 	}
 
 	public void findDirection() {
-		int gap = 5;
 		int nextPositionX = EnemyMovement.getInstance().getNextColumn() * gFrame.cellSize;
 		int nextPositionY = EnemyMovement.getInstance().getNextRow() * gFrame.cellSize;
 
-		int leftPosition = this.getPositionX() + gap;
-		int rightPosition = this.getPositionX() - gap + gFrame.cellSize;
-		int topPosition = this.getPositionY() + gap;
-		int bottomPosition = this.getPositionY() - gap + gFrame.cellSize;
+		int leftPosition = this.getHitBoxLeft();
+		int rightPosition = this.getHitBoxRight();
+		int topPosition = this.getHitBoxTop();
+		int bottomPosition = this.getHitBoxBottom();
 
 		// case when next position is above and the enemy is centered in the
 		// tile
