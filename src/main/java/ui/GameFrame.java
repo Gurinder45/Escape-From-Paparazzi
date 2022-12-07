@@ -43,7 +43,7 @@ public class GameFrame extends JFrame implements Runnable {
 
 	private GameFrame() {
 		instance = this;
-		inpHandler = new InputHandler();
+		inpHandler = InputHandler.getInstance();
 		cardLayout = new CardLayout();
 		startPanel = new StartPanel();
 		pausedPanel = new PausedPanel();
@@ -62,11 +62,10 @@ public class GameFrame extends JFrame implements Runnable {
 	}
 
 	public static GameFrame getInstance() {
-		if (instance == null)
+		if (instance == null) {
 			new GameFrame();
-
+		}
 		return instance;
-
 	}
 
 	/**
@@ -165,15 +164,6 @@ public class GameFrame extends JFrame implements Runnable {
 	 */
 	public GamePanel getGamePanel() {
 		return gamePanel;
-	}
-
-	/**
-	 * Get the input handler for the frame
-	 * 
-	 * @return the input handler
-	 */
-	public InputHandler getInputHandler() {
-		return inpHandler;
 	}
 
 	/**

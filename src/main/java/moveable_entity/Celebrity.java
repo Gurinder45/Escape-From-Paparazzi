@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import ui.GameFrame;
 import util.Direction;
 import util.InputHandler;
 
@@ -15,11 +14,9 @@ import util.InputHandler;
  * @author Gurinder Bhogal
  */
 public class Celebrity extends MoveableEntity {
-	InputHandler inpHandler;
 
 	public Celebrity(int x, int y) {
 		super(x, y);
-		this.inpHandler = GameFrame.getInstance().getInputHandler();
 		this.speed = 4;
 		this.direction = Direction.NONE;
 		loadImage();
@@ -67,7 +64,7 @@ public class Celebrity extends MoveableEntity {
 	 * its permissable
 	 */
 	public void update() {
-		direction = inpHandler.getDirection();
+		direction = InputHandler.getInstance().getDirection();
 		loadImage();
 
 		collisionFinder = gFrame.getCollisionFinder();
@@ -103,7 +100,7 @@ public class Celebrity extends MoveableEntity {
 	@Override
 	public void setDirection(Direction direction) {
 		this.direction = direction;
-		inpHandler.direction = direction;
+		InputHandler.getInstance().direction = direction;
 	}
 
 }

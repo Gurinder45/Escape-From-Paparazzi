@@ -11,11 +11,18 @@ import ui.GameFrame;
  * @author Gurinder Bhogal
  */
 public class InputHandler extends KeyAdapter {
+	private static InputHandler instance = null;
 	public Direction direction;
-	private GameFrame gFrame;
 
-	public InputHandler() {
-		this.gFrame = GameFrame.getInstance();
+	private InputHandler() {
+		instance = this;
+	}
+
+	public static InputHandler getInstance() {
+		if (instance == null) {
+			new InputHandler();
+		}
+		return instance;
 	}
 
 	@Override
@@ -35,7 +42,7 @@ public class InputHandler extends KeyAdapter {
 			direction = Direction.RIGHT;
 		}
 		if (key == KeyEvent.VK_ESCAPE) {
-			gFrame.togglePause();
+			GameFrame.getInstance().togglePause();
 		}
 	}
 

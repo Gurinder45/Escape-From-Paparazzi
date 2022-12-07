@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ui.GameFrame;
 import util.Direction;
+import util.InputHandler;
 import util.Point;
 
 class CelebrityTest {
@@ -48,7 +48,7 @@ class CelebrityTest {
 		Celebrity celebTest = new Celebrity(1080, 630);
 		celebTest.setDirection(Direction.UP);
 		Direction expectedDirection = Direction.UP;
-		assertEquals(expectedDirection, celebTest.inpHandler.direction);
+		assertEquals(expectedDirection, InputHandler.getInstance().direction);
 	}
 
 	@Test
