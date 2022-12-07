@@ -185,7 +185,7 @@ public class CollisionFinder {
 	 * @param enemy enemy to be checked
 	 */
 	public void checkEnemyCollision(Paparazzi enemy) {
-		Paparazzi[] pprzziArray = GameFrame.getInstance().getPaparazzis();
+		Paparazzi[] pprzziArray = GamePanel.getInstance().getPaparazzis();
 		Rectangle paparazziRect = new Rectangle(enemy.getPositionX(), enemy.getPositionY(), 32, 32);
 		Rectangle otherPaparazziRect = new Rectangle(0, 0, 32, 32);
 

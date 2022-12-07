@@ -19,13 +19,10 @@ import javax.swing.JPanel;
  * @author Haruka Mibuchi
  */
 public class PausedPanel extends JPanel {
-
 	private JButton resumeBtn;
-	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
 	public PausedPanel() {
-		this.gFrame = GameFrame.getInstance();
 		this.setLayout(null);
 		loadBackground();
 		this.resumeBtn = new JButton("RESUME");
@@ -46,7 +43,7 @@ public class PausedPanel extends JPanel {
 	public void addActListeners() {
 		resumeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gFrame.togglePause();
+				GameFrame.getInstance().togglePause();
 			}
 		});
 	}
@@ -71,7 +68,8 @@ public class PausedPanel extends JPanel {
 
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(backgroundImg, 0, 0, gFrame.screenWidth, gFrame.screenHeight, null);
+		g2d.drawImage(backgroundImg, 0, 0, GameFrame.getInstance().screenWidth, GameFrame.getInstance().screenHeight,
+				null);
 
 		String text = "Paused";
 

@@ -9,7 +9,6 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import game.CollisionFinder;
 import game.EnemyMovement;
-import moveable_entity.Paparazzi;
 import util.InputHandler;
 import util.Score;
 
@@ -226,22 +225,4 @@ public class GameFrame extends JFrame implements Runnable {
 		return paused;
 	}
 
-	/**
-	 * 
-	 * for the given the given number it loads corresponding reward
-	 * 
-	 * @param num corresponds to the reward number to load
-	 */
-	public void loadBonusRewards(int num) {
-		gamePanel.loadBonusRewards(num);
-	}
-
-	/**
-	 * Returns all the paparazzi in the game
-	 * 
-	 * @return an array of type paparazzi
-	 */
-	public Paparazzi[] getPaparazzis() {
-		return gamePanel.getPaparazzis();
-	}
 }

@@ -19,13 +19,10 @@ import javax.swing.JPanel;
  * @author Haruka Mibuchi
  */
 public class StartPanel extends JPanel {
-
 	private JButton startBtn;
-	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
 	public StartPanel() {
-		this.gFrame = GameFrame.getInstance();
 		this.setLayout(null);
 		loadBackground();
 		this.startBtn = new JButton("START");
@@ -47,7 +44,7 @@ public class StartPanel extends JPanel {
 	public void addActListeners() {
 		startBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gFrame.startGame();
+				GameFrame.getInstance().startGame();
 			}
 		});
 	}
@@ -73,6 +70,7 @@ public class StartPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(backgroundImg, 0, 0, gFrame.screenWidth, gFrame.screenHeight, null);
+		g2d.drawImage(backgroundImg, 0, 0, GameFrame.getInstance().screenWidth, GameFrame.getInstance().screenHeight,
+				null);
 	}
 }

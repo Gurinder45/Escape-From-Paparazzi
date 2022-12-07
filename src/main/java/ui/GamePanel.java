@@ -20,7 +20,6 @@ public class GamePanel extends JPanel {
 	private Celebrity celebrity;
 	private Paparazzi[] paparazzi;
 	private Map map;
-	private GameFrame gFrame;
 	private Hud hud;
 
 	/**
@@ -29,7 +28,6 @@ public class GamePanel extends JPanel {
 	 */
 	private GamePanel() {
 		instance = this;
-		this.gFrame = GameFrame.getInstance();
 		this.paparazzi = new Paparazzi[2];
 		placeElements();
 	}
@@ -76,7 +74,7 @@ public class GamePanel extends JPanel {
 	 * calls celebrity and paparazzi update methods
 	 */
 	public void update() {
-		if (!gFrame.isPaused()) {
+		if (!GameFrame.getInstance().isPaused()) {
 			celebrity.update();
 			for (int i = 0; i < paparazzi.length; i++) {
 				paparazzi[i].update(celebrity.getPositionX(), celebrity.getPositionY());

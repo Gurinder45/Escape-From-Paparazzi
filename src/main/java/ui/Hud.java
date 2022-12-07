@@ -15,10 +15,8 @@ public class Hud {
     Font arial_40;
     double timer;
     DecimalFormat deciF = new DecimalFormat("#0.00");
-    GameFrame gf;
 
     public Hud() {
-        this.gf = GameFrame.getInstance();
         arial_40 = new Font("Arial", Font.PLAIN, 40);
     }
 
@@ -38,12 +36,12 @@ public class Hud {
         if (deciTimer % 10.00 == 0 && deciTimer <= 50.00) {
             int intTimer = (int) deciTimer;
             int rewardNum = intTimer / 10;
-            gf.loadBonusRewards(rewardNum);
+            GamePanel.getInstance().loadBonusRewards(rewardNum);
         }
 
         g2d.drawString("Time: " + deciF.format(timer), 50, 750);
 
-        g2d.drawString("Fame:  " + gf.getScore(), 900, 750);
+        g2d.drawString("Fame:  " + GameFrame.getInstance().getScore(), 900, 750);
 
     }
 

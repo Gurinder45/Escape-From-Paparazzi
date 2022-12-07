@@ -20,11 +20,9 @@ import javax.swing.JPanel;
  */
 public class WinPanel extends JPanel {
 	private JButton restartBtn;
-	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
 	public WinPanel() {
-		this.gFrame = GameFrame.getInstance();
 		this.setLayout(null);
 		loadBackground();
 		this.restartBtn = new JButton("RESTART");
@@ -48,7 +46,7 @@ public class WinPanel extends JPanel {
 	public void addActListeners() {
 		restartBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gFrame.restartGame();
+				GameFrame.getInstance().restartGame();
 			}
 		});
 	}
@@ -74,7 +72,8 @@ public class WinPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(backgroundImg, 0, 0, gFrame.screenWidth, gFrame.screenHeight, null);
+		g2d.drawImage(backgroundImg, 0, 0, GameFrame.getInstance().screenWidth, GameFrame.getInstance().screenHeight,
+				null);
 
 		String text = "YOU WON!";
 		g2d.setBackground(new Color(143, 0, 225));
