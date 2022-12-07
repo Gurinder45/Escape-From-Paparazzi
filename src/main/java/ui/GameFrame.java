@@ -22,8 +22,6 @@ public class GameFrame extends JFrame implements Runnable {
 	private static GameFrame instance = null;
 	private Thread thread;
 	private InputHandler inpHandler;
-	private EnemyMovement enemyMovement;
-	private GamePanel gamePanel;
 	private StartPanel startPanel;
 	private PausedPanel pausedPanel;
 	private WinPanel winPanel;
@@ -49,8 +47,6 @@ public class GameFrame extends JFrame implements Runnable {
 		winPanel = new WinPanel();
 		losePanel = new LosePanel();
 		score = new Score();
-		enemyMovement = new EnemyMovement();
-		gamePanel = GamePanel.getInstance();
 		collisionFinder = new CollisionFinder();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
@@ -75,7 +71,7 @@ public class GameFrame extends JFrame implements Runnable {
 	public void createCardLayout() {
 		this.setLayout(cardLayout);
 		this.add(startPanel, "startPanel");
-		this.add(gamePanel, "gamePanel");
+		this.add(GamePanel.getInstance(), "gamePanel");
 		this.add(pausedPanel, "pausedPanel");
 		this.add(winPanel, "winPanel");
 		this.add(losePanel, "losePanel");
@@ -96,9 +92,9 @@ public class GameFrame extends JFrame implements Runnable {
 	 * Resets game elements and displays the game panel for a game restart
 	 */
 	public void restartGame() {
-		enemyMovement.resetNodes();
+		EnemyMovement.getInstance().resetNodes();
 		score.restartScore();
-		gamePanel.placeElements();
+		GamePanel.getInstance().placeElements();
 		collisionFinder.resetDisguises();
 		this.addKeyListener(inpHandler);
 		cardLayout.show(getContentPane(), "gamePanel");
@@ -140,9 +136,9 @@ public class GameFrame extends JFrame implements Runnable {
 		double nextStart = System.nanoTime() + interval;
 
 		while (thread != null) {
-			gamePanel.update();
+			GamePanel.getInstance().update();
 
-			gamePanel.repaint();
+			GamePanel.getInstance().repaint();
 			try {
 				double timeRemaining = (nextStart - System.nanoTime()) / 1000000;
 				if (timeRemaining < 0) {
@@ -163,15 +159,6 @@ public class GameFrame extends JFrame implements Runnable {
 	 */
 	public CollisionFinder getCollisionFinder() {
 		return collisionFinder;
-	}
-
-	/**
-	 * Get the enemy movement handler of the frame
-	 * 
-	 * @return the enemy movement handler
-	 */
-	public EnemyMovement getEnemyMovement() {
-		return enemyMovement;
 	}
 
 	/**

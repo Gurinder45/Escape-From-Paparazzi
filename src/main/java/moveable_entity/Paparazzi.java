@@ -6,7 +6,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import game.EnemyMovement;
-import ui.GameFrame;
 import util.Direction;
 
 /**
@@ -15,13 +14,9 @@ import util.Direction;
  * @author Gurinder Bhogal
  */
 public class Paparazzi extends MoveableEntity {
-
-	EnemyMovement enemyMovement;
-
 	public Paparazzi(int x, int y) {
 		super(x, y);
 		this.speed = 1;
-		this.enemyMovement = GameFrame.getInstance().getEnemyMovement();
 		loadImage();
 	}
 
@@ -84,10 +79,10 @@ public class Paparazzi extends MoveableEntity {
 		collided = false;
 		collisionFinder.checkEnemyMapCollision(this);
 		collisionFinder.checkEnemyCollision(this);
-		enemyMovement.setNodes(startColumn, startRow, playerColumn, playerRow);
-		if (enemyMovement.search()) {
-			int nextPositionX = enemyMovement.getNextColumn() * gFrame.cellSize;
-			int nextPositionY = enemyMovement.getNextRow() * gFrame.cellSize;
+		EnemyMovement.getInstance().setNodes(startColumn, startRow, playerColumn, playerRow);
+		if (EnemyMovement.getInstance().search()) {
+			int nextPositionX = EnemyMovement.getInstance().getNextColumn() * gFrame.cellSize;
+			int nextPositionY = EnemyMovement.getInstance().getNextRow() * gFrame.cellSize;
 
 			int leftPosition = this.getPositionX() + gap;
 			int rightPosition = this.getPositionX() - gap + gFrame.cellSize;
@@ -149,8 +144,8 @@ public class Paparazzi extends MoveableEntity {
 					move(direction);
 				}
 			}
-			int nextColumn = enemyMovement.getNextColumn();
-			int nextRow = enemyMovement.getNextRow();
+			int nextColumn = EnemyMovement.getInstance().getNextColumn();
+			int nextRow = EnemyMovement.getInstance().getNextRow();
 			if (nextColumn == playerColumn && nextRow == playerRow) {
 				gFrame.loseGame();
 			}

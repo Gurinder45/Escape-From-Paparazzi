@@ -12,17 +12,25 @@ import ui.GamePanel;
  * @author Gurinder Bhogal
  */
 public class EnemyMovement {
-
+    private static EnemyMovement instance = null;
     private Node[][] nodes;
     private ArrayList<Node> opened;
     private boolean succeeded;
     private ArrayList<Node> path;
     private Node start, end, cur;
 
-    public EnemyMovement() {
+    private EnemyMovement() {
+        instance = this;
         this.opened = new ArrayList<Node>();
         this.path = new ArrayList<Node>();
         loadNodes();
+    }
+
+    public static EnemyMovement getInstance() {
+        if (instance == null) {
+            new EnemyMovement();
+        }
+        return instance;
     }
 
     /**

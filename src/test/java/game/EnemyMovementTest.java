@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import ui.GameFrame;
 
 class EnemyMovementTest {
-	private EnemyMovement enemyMovement = new EnemyMovement();
+	private EnemyMovement enemyMovement = EnemyMovement.getInstance();
 	private Node[][] nodes;
 
 	@BeforeEach
