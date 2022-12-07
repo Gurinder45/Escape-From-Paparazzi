@@ -10,6 +10,7 @@ import moveable_entity.Paparazzi;
 import ui.GameFrame;
 import ui.GamePanel;
 import util.Direction;
+import util.Score;
 
 class CollisionFinderTest {
 	private CollisionFinder collisionFinder = CollisionFinder.getInstance();
@@ -136,7 +137,7 @@ class CollisionFinderTest {
 		celebrity = new Celebrity(27, 27);
 		collisionFinder.checkCellType(3, 0, 0, celebrity);
 		int[][] map = GamePanel.getInstance().getMapArray();
-		assertEquals(10, GameFrame.getInstance().getScore());
+		assertEquals(10, Score.getInstance().getScore());
 		assertEquals(1, collisionFinder.getDisguiseNumber());
 		assertEquals(0, map[0][0]);
 	}
@@ -153,7 +154,7 @@ class CollisionFinderTest {
 		celebrity = new Celebrity(27, 27);
 		collisionFinder.checkCellType(5, 0, 0, celebrity);
 		int[][] map = GamePanel.getInstance().getMapArray();
-		assertEquals(20, GameFrame.getInstance().getScore());
+		assertEquals(20, Score.getInstance().getScore());
 		assertEquals(0, map[0][0]);
 	}
 
@@ -176,7 +177,7 @@ class CollisionFinderTest {
 			}
 		}
 		assertFalse(errorFound);
-		assertEquals(-20, GameFrame.getInstance().getScore());
+		assertEquals(-20, Score.getInstance().getScore());
 	}
 
 	@Test

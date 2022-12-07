@@ -7,30 +7,31 @@ import org.junit.jupiter.api.Test;
 
 class ScoreTest {
 	private Score score;
+
 	@BeforeEach
 	void setUp() {
-		score=new Score();
+		score = Score.getInstance();
 	}
 
 	@Test
-	void testGetScore(){
-		assertEquals(0,score.getScore());
+	void testGetScore() {
+		assertEquals(0, score.getScore());
 	}
+
 	@Test
-	void testaddandsubstractscore(){
+	void testaddandsubstractscore() {
 		score.addScore(5);
-		assertEquals(5,score.getScore());
+		assertEquals(5, score.getScore());
 		score.substractScore(3);
-		assertEquals(2,score.getScore());
+		assertEquals(2, score.getScore());
 
 	}
+
 	@Test
-	void testrestartscore(){
+	void testrestartscore() {
 		score.addScore(5);
 		score.restartScore();
-		assertEquals(0,score.getScore());
+		assertEquals(0, score.getScore());
 	}
-
-
 
 }

@@ -7,10 +7,19 @@ package util;
  *
  */
 public class Score {
+	private static Score instance = null;
 	private int score;
 
-	public Score() {
+	private Score() {
+		instance = this;
 		this.score = 0;
+	}
+
+	public static Score getInstance() {
+		if (instance == null) {
+			new Score();
+		}
+		return instance;
 	}
 
 	/**

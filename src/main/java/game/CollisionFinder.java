@@ -6,6 +6,7 @@ import moveable_entity.Paparazzi;
 import ui.GameFrame;
 import ui.GamePanel;
 import util.Direction;
+import util.Score;
 
 /**
  * Handles all collisions which happen on the map
@@ -55,7 +56,7 @@ public class CollisionFinder {
 				break;
 			case 3:
 				mapArray[colIndex][rowIndex] = 0;
-				GameFrame.getInstance().addScore(10);
+				Score.getInstance().addScore(10);
 				disguiseCollected++;
 				break;
 			case 4:
@@ -63,7 +64,7 @@ public class CollisionFinder {
 				break;
 			case 5:
 				mapArray[colIndex][rowIndex] = 0;
-				GameFrame.getInstance().addScore(20);
+				Score.getInstance().addScore(20);
 				break;
 			case 6:
 				if (disguiseCollected >= 4) {
@@ -78,8 +79,8 @@ public class CollisionFinder {
 						mapArray[i][rowIndex] = 0;
 					}
 				}
-				GameFrame.getInstance().substractScore(20);
-				if (GameFrame.getInstance().getScore() < 0) {
+				Score.getInstance().substractScore(20);
+				if (Score.getInstance().getScore() < 0) {
 					GameFrame.getInstance().loseGame();
 				}
 				break;

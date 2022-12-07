@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.text.DecimalFormat;
 
+import util.Score;
+
 /**
  * this class will handle all the on-screen UI
  *
@@ -49,7 +51,7 @@ public class Hud {
 
         g2d.drawString("Time: " + deciF.format(timer), 50, 750);
 
-        g2d.drawString("Fame:  " + GameFrame.getInstance().getScore(), 900, 750);
+        g2d.drawString("Fame:  " + Score.getInstance().getScore(), 900, 750);
 
     }
 

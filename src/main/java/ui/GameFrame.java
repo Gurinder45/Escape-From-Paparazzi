@@ -23,7 +23,6 @@ public class GameFrame extends JFrame implements Runnable {
 	private Thread thread;
 	private InputHandler inpHandler;
 	private CardLayout cardLayout;
-	private Score score;
 	private boolean paused;
 	final public int cellSize = 32;
 	final public int columnNum = 36;
@@ -37,7 +36,6 @@ public class GameFrame extends JFrame implements Runnable {
 		instance = this;
 		inpHandler = InputHandler.getInstance();
 		cardLayout = new CardLayout();
-		score = new Score();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
@@ -83,7 +81,7 @@ public class GameFrame extends JFrame implements Runnable {
 	 */
 	public void restartGame() {
 		EnemyMovement.getInstance().resetNodes();
-		score.restartScore();
+		Score.getInstance().restartScore();
 		GamePanel.getInstance().placeElements();
 		CollisionFinder.getInstance().resetDisguises();
 		this.addKeyListener(inpHandler);
@@ -140,33 +138,6 @@ public class GameFrame extends JFrame implements Runnable {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	/**
-	 * Add the given score to the score total
-	 * 
-	 * @param val value to be added
-	 */
-	public void addScore(int val) {
-		score.addScore(val);
-	}
-
-	/**
-	 * Subtract the given score from the score total
-	 * 
-	 * @param val value to be subtracted
-	 */
-	public void substractScore(int val) {
-		score.substractScore(val);
-	}
-
-	/**
-	 * Get the current score
-	 * 
-	 * @return the current score
-	 */
-	public int getScore() {
-		return score.getScore();
 	}
 
 	/**
