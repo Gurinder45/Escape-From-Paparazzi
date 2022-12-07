@@ -16,8 +16,8 @@ public class CollisionFinder {
 	private GameFrame gFrame;
 	private int disguiseCollected;
 
-	public CollisionFinder(GameFrame gFrame) {
-		this.gFrame = gFrame;
+	public CollisionFinder() {
+		this.gFrame = GameFrame.getInstance();
 	}
 
 	/**

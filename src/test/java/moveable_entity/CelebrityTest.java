@@ -12,16 +12,15 @@ import util.Point;
 
 class CelebrityTest {
 	private Celebrity celebrity;
-	private GameFrame gFrame = new GameFrame();
 
 	@BeforeEach
 	void setUp() {
-		celebrity = new Celebrity(1080, 630, gFrame);
+		celebrity = new Celebrity(1080, 630);
 	}
 
 	@Test
 	void getPositionTest() {
-		Celebrity expectedCeleb = new Celebrity(1080, 630, gFrame);
+		Celebrity expectedCeleb = new Celebrity(1080, 630);
 		Point celebPos = celebrity.getPosition();
 		Point expectedPos = expectedCeleb.getPosition();
 		assertEquals(expectedPos.getX(), celebPos.getX());
@@ -30,7 +29,7 @@ class CelebrityTest {
 
 	@Test
 	void getPositionXTest() {
-		Celebrity expectedCeleb = new Celebrity(1080, 630, gFrame);
+		Celebrity expectedCeleb = new Celebrity(1080, 630);
 		int expectedX = expectedCeleb.getPositionX();
 		int celebPosX = celebrity.getPositionX();
 		assertEquals(expectedX, celebPosX);
@@ -38,7 +37,7 @@ class CelebrityTest {
 
 	@Test
 	void getPositionYTest() {
-		Celebrity expectedCeleb = new Celebrity(1080, 630, gFrame);
+		Celebrity expectedCeleb = new Celebrity(1080, 630);
 		int expectedY = expectedCeleb.getPositionY();
 		int celebPosY = celebrity.getPositionY();
 		assertEquals(expectedY, celebPosY);
@@ -46,7 +45,7 @@ class CelebrityTest {
 
 	@Test
 	void setDirectionTest() {
-		Celebrity celebTest = new Celebrity(1080, 630, gFrame);
+		Celebrity celebTest = new Celebrity(1080, 630);
 		celebTest.setDirection(Direction.UP);
 		Direction expectedDirection = Direction.UP;
 		assertEquals(expectedDirection, celebTest.inpHandler.direction);
@@ -54,7 +53,7 @@ class CelebrityTest {
 
 	@Test
 	void moveUpTest() {
-		Celebrity expectedPos = new Celebrity(1080, 626, gFrame);
+		Celebrity expectedPos = new Celebrity(1080, 626);
 		// celebrity.direction = Direction.UP;
 		celebrity.setDirection(Direction.UP);
 		celebrity.update();
@@ -63,7 +62,7 @@ class CelebrityTest {
 
 	@Test
 	void moveDownTest() {
-		Celebrity expectedPos = new Celebrity(1080, 634, gFrame);
+		Celebrity expectedPos = new Celebrity(1080, 634);
 		// celebrity.direction = Direction.UP;
 		celebrity.setDirection(Direction.DOWN);
 		celebrity.update();
@@ -72,7 +71,7 @@ class CelebrityTest {
 
 	@Test
 	void moveRightTest() {
-		Celebrity expectedPos = new Celebrity(1084, 630, gFrame);
+		Celebrity expectedPos = new Celebrity(1084, 630);
 		// celebrity.direction = Direction.UP;
 		celebrity.setDirection(Direction.RIGHT);
 		celebrity.update();
@@ -81,7 +80,7 @@ class CelebrityTest {
 
 	@Test
 	void moveLeftTest() {
-		Celebrity expectedPos = new Celebrity(1076, 630, gFrame);
+		Celebrity expectedPos = new Celebrity(1076, 630);
 		// celebrity.direction = Direction.UP;
 		celebrity.setDirection(Direction.LEFT);
 		celebrity.update();
@@ -90,7 +89,7 @@ class CelebrityTest {
 
 	@Test
 	void collidedTest() {
-		celebrity = new Celebrity(27, 27, gFrame);
+		celebrity = new Celebrity(27, 27);
 		celebrity.setDirection(Direction.UP);
 		celebrity.update();
 		assertEquals(27, celebrity.getPositionY());

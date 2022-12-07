@@ -18,10 +18,10 @@ public class Paparazzi extends MoveableEntity {
 
 	EnemyMovement enemyMovement;
 
-	public Paparazzi(int x, int y, GameFrame gameFrame) {
-		super(x, y, gameFrame);
+	public Paparazzi(int x, int y) {
+		super(x, y);
 		this.speed = 1;
-		this.enemyMovement = gameFrame.getEnemyMovement();
+		this.enemyMovement = GameFrame.getInstance().getEnemyMovement();
 		loadImage();
 	}
 

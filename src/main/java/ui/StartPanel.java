@@ -24,8 +24,8 @@ public class StartPanel extends JPanel {
 	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
-	public StartPanel(GameFrame gFrame) {
-		this.gFrame = gFrame;
+	public StartPanel() {
+		this.gFrame = GameFrame.getInstance();
 		this.setLayout(null);
 		loadBackground();
 		this.startBtn = new JButton("START");

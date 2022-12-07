@@ -23,8 +23,8 @@ public class WinPanel extends JPanel {
 	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
-	public WinPanel(GameFrame gFrame) {
-		this.gFrame = gFrame;
+	public WinPanel() {
+		this.gFrame = GameFrame.getInstance();
 		this.setLayout(null);
 		loadBackground();
 		this.restartBtn = new JButton("RESTART");

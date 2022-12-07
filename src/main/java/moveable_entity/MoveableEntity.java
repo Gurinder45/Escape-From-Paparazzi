@@ -21,9 +21,9 @@ public abstract class MoveableEntity {
 	protected GameFrame gFrame;
 	CollisionFinder collisionFinder;
 
-	public MoveableEntity(int x, int y, GameFrame gameFrame) {
+	public MoveableEntity(int x, int y) {
 		position = new Point(x, y);
-		this.gFrame = gameFrame;
+		this.gFrame = GameFrame.getInstance();
 	}
 
 	/**

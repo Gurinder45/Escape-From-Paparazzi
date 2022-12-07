@@ -20,8 +20,8 @@ public class Map {
 	private Cell[] cell;
 	private int mapArray[][];
 
-	public Map(GameFrame gFrame) {
-		this.gFrame = gFrame;
+	public Map() {
+		this.gFrame = GameFrame.getInstance();
 		cell = new Cell[10];
 		mapArray = new int[gFrame.columnNum][gFrame.rowNum];
 		loadImages();

@@ -19,8 +19,8 @@ public class EnemyMovement {
     private ArrayList<Node> path;
     private Node start, end, cur;
 
-    public EnemyMovement(GameFrame gFrame) {
-        this.gFrame = gFrame;
+    public EnemyMovement() {
+        this.gFrame = GameFrame.getInstance();
         this.opened = new ArrayList<Node>();
         this.path = new ArrayList<Node>();
         loadNodes();

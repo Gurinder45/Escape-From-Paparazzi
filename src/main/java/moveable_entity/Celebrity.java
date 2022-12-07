@@ -17,9 +17,9 @@ import util.InputHandler;
 public class Celebrity extends MoveableEntity {
 	InputHandler inpHandler;
 
-	public Celebrity(int x, int y, GameFrame gameFrame) {
-		super(x, y, gameFrame);
-		this.inpHandler = gameFrame.getInputHandler();
+	public Celebrity(int x, int y) {
+		super(x, y);
+		this.inpHandler = GameFrame.getInstance().getInputHandler();
 		this.speed = 4;
 		this.direction = Direction.NONE;
 		loadImage();

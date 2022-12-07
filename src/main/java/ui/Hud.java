@@ -17,8 +17,8 @@ public class Hud {
     DecimalFormat deciF = new DecimalFormat("#0.00");
     GameFrame gf;
 
-    public Hud(GameFrame gFrame) {
-        this.gf = gFrame;
+    public Hud() {
+        this.gf = GameFrame.getInstance();
         arial_40 = new Font("Arial", Font.PLAIN, 40);
     }
 

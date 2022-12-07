@@ -24,9 +24,8 @@ public class PausedPanel extends JPanel {
 	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
-	public PausedPanel(GameFrame gFrame) {
-
-		this.gFrame = gFrame;
+	public PausedPanel() {
+		this.gFrame = GameFrame.getInstance();
 		this.setLayout(null);
 		loadBackground();
 		this.resumeBtn = new JButton("RESUME");

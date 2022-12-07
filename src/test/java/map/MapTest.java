@@ -4,11 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.GameFrame;
 
 class MapTest {
-	private GameFrame gFrame = new GameFrame();
-	private Map map = new Map(gFrame);
+	private Map map = new Map();
 	private int mapArray[][];
 
 	@BeforeEach

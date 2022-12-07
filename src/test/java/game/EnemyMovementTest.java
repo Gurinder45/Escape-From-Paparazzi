@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import ui.GameFrame;
 
 class EnemyMovementTest {
-	private GameFrame gFrame = new GameFrame();
-	private EnemyMovement enemyMovement = new EnemyMovement(gFrame);
+	private EnemyMovement enemyMovement = new EnemyMovement();
 	private Node[][] nodes;
 
 	@BeforeEach
@@ -74,13 +73,13 @@ class EnemyMovementTest {
 		int column = 0;
 		int row = 0;
 		boolean nodesReset = true;
-		while (column < gFrame.columnNum && row < gFrame.rowNum) {
+		while (column < GameFrame.getInstance().columnNum && row < GameFrame.getInstance().rowNum) {
 			if (nodes[column][row].open == true || nodes[column][row].checked == true
 					|| nodes[column][row].isCollidable == true) {
 				nodesReset = false;
 			}
 			column++;
-			if (column == gFrame.columnNum) {
+			if (column == GameFrame.getInstance().columnNum) {
 				column = 0;
 				row++;
 			}

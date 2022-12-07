@@ -14,8 +14,8 @@ public class InputHandler extends KeyAdapter {
 	public Direction direction;
 	private GameFrame gFrame;
 
-	public InputHandler(GameFrame gFrame) {
-		this.gFrame = gFrame;
+	public InputHandler() {
+		this.gFrame = GameFrame.getInstance();
 	}
 
 	@Override

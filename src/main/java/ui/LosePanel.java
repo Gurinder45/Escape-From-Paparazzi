@@ -23,8 +23,8 @@ public class LosePanel extends JPanel {
 	private GameFrame gFrame;
 	private BufferedImage backgroundImg;
 
-	public LosePanel(GameFrame gFrame) {
-		this.gFrame = gFrame;
+	public LosePanel() {
+		this.gFrame = GameFrame.getInstance();
 		this.setLayout(null);
 		loadBackground();
 		this.restartBtn = new JButton("RESTART");

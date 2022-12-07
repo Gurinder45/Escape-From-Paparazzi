@@ -20,6 +20,7 @@ import util.Score;
  */
 
 public class GameFrame extends JFrame implements Runnable {
+	private static GameFrame instance = null;
 	private Thread thread;
 	private InputHandler inpHandler;
 	private EnemyMovement enemyMovement;
@@ -40,23 +41,32 @@ public class GameFrame extends JFrame implements Runnable {
 
 	int fps = 60;
 
-	public GameFrame() {
-		inpHandler = new InputHandler(this);
+	private GameFrame() {
+		instance = this;
+		inpHandler = new InputHandler();
 		cardLayout = new CardLayout();
-		startPanel = new StartPanel(this);
-		pausedPanel = new PausedPanel(this);
-		winPanel = new WinPanel(this);
-		losePanel = new LosePanel(this);
+		startPanel = new StartPanel();
+		pausedPanel = new PausedPanel();
+		winPanel = new WinPanel();
+		losePanel = new LosePanel();
 		score = new Score();
-		enemyMovement = new EnemyMovement(this);
-		gamePanel = new GamePanel(this);
-		collisionFinder = new CollisionFinder(this);
+		enemyMovement = new EnemyMovement();
+		gamePanel = new GamePanel();
+		collisionFinder = new CollisionFinder();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
 		this.setTitle("Papparazi Escape!");
 		this.setFocusable(true);
 		this.setResizable(false);
 		createCardLayout();
+	}
+
+	public static GameFrame getInstance() {
+		if (instance == null)
+			new GameFrame();
+
+		return instance;
+
 	}
 
 	/**

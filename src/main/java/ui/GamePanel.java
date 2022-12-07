@@ -26,8 +26,8 @@ public class GamePanel extends JPanel {
 	 * 
 	 * @param gFrame
 	 */
-	public GamePanel(GameFrame gFrame) {
-		this.gFrame = gFrame;
+	public GamePanel() {
+		this.gFrame = GameFrame.getInstance();
 		this.paparazzi = new Paparazzi[2];
 		placeElements();
 	}
@@ -36,11 +36,11 @@ public class GamePanel extends JPanel {
 	 * Get elements ready to be drawn
 	 */
 	public void placeElements() {
-		this.celebrity = new Celebrity(1080, 630, gFrame);
-		paparazzi[0] = new Paparazzi(288, 416, gFrame);
-		paparazzi[1] = new Paparazzi(576, 576, gFrame);
-		this.map = new Map(gFrame);
-		this.hud = new Hud(gFrame);
+		this.celebrity = new Celebrity(1080, 630);
+		paparazzi[0] = new Paparazzi(288, 416);
+		paparazzi[1] = new Paparazzi(576, 576);
+		this.map = new Map();
+		this.hud = new Hud();
 	}
 
 	/**
