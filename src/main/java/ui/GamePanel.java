@@ -22,10 +22,6 @@ public class GamePanel extends JPanel {
 	private Map map;
 	private Hud hud;
 
-	/**
-	 * 
-	 * @param gFrame
-	 */
 	private GamePanel() {
 		instance = this;
 		this.paparazzi = new Paparazzi[2];
@@ -47,7 +43,7 @@ public class GamePanel extends JPanel {
 		paparazzi[0] = new Paparazzi(288, 416);
 		paparazzi[1] = new Paparazzi(576, 576);
 		this.map = new Map();
-		this.hud = new Hud();
+		this.hud = Hud.getInstance();
 	}
 
 	/**

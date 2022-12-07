@@ -19,10 +19,12 @@ import javax.swing.JPanel;
  * @author Haruka Mibuchi
  */
 public class LosePanel extends JPanel {
+	private static LosePanel instance = null;
 	private JButton restartBtn;
 	private BufferedImage backgroundImg;
 
-	public LosePanel() {
+	private LosePanel() {
+		instance = this;
 		this.setLayout(null);
 		loadBackground();
 		this.restartBtn = new JButton("RESTART");
@@ -34,6 +36,13 @@ public class LosePanel extends JPanel {
 		restartBtn.setFont(new Font("Serif", Font.BOLD, 40));
 		addActListeners();
 
+	}
+
+	public static LosePanel getInstance() {
+		if (instance == null) {
+			new LosePanel();
+		}
+		return instance;
 	}
 
 	/**

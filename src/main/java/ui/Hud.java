@@ -11,13 +11,21 @@ import java.text.DecimalFormat;
  * @author Haruka Mibuchi
  */
 public class Hud {
-
+    private static Hud instance = null;
     Font arial_40;
     double timer;
     DecimalFormat deciF = new DecimalFormat("#0.00");
 
-    public Hud() {
+    private Hud() {
+        instance = this;
         arial_40 = new Font("Arial", Font.PLAIN, 40);
+    }
+
+    public static Hud getInstance() {
+        if (instance == null) {
+            new Hud();
+        }
+        return instance;
     }
 
     /**

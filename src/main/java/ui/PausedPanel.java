@@ -19,10 +19,12 @@ import javax.swing.JPanel;
  * @author Haruka Mibuchi
  */
 public class PausedPanel extends JPanel {
+	private static PausedPanel instance = null;
 	private JButton resumeBtn;
 	private BufferedImage backgroundImg;
 
-	public PausedPanel() {
+	private PausedPanel() {
+		instance = this;
 		this.setLayout(null);
 		loadBackground();
 		this.resumeBtn = new JButton("RESUME");
@@ -34,6 +36,13 @@ public class PausedPanel extends JPanel {
 		resumeBtn.setFont(new Font("Serif", Font.BOLD, 40));
 		addActListeners();
 
+	}
+
+	public static PausedPanel getInstance() {
+		if (instance == null) {
+			new PausedPanel();
+		}
+		return instance;
 	}
 
 	/**

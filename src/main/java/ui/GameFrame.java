@@ -22,10 +22,6 @@ public class GameFrame extends JFrame implements Runnable {
 	private static GameFrame instance = null;
 	private Thread thread;
 	private InputHandler inpHandler;
-	private StartPanel startPanel;
-	private PausedPanel pausedPanel;
-	private WinPanel winPanel;
-	private LosePanel losePanel;
 	private CardLayout cardLayout;
 	private Score score;
 	private boolean paused;
@@ -41,10 +37,6 @@ public class GameFrame extends JFrame implements Runnable {
 		instance = this;
 		inpHandler = InputHandler.getInstance();
 		cardLayout = new CardLayout();
-		startPanel = new StartPanel();
-		pausedPanel = new PausedPanel();
-		winPanel = new WinPanel();
-		losePanel = new LosePanel();
 		score = new Score();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(screenWidth, screenHeight); // 46 columns 27 rows
@@ -68,11 +60,11 @@ public class GameFrame extends JFrame implements Runnable {
 	 */
 	public void createCardLayout() {
 		this.setLayout(cardLayout);
-		this.add(startPanel, "startPanel");
+		this.add(StartPanel.getInstance(), "startPanel");
 		this.add(GamePanel.getInstance(), "gamePanel");
-		this.add(pausedPanel, "pausedPanel");
-		this.add(winPanel, "winPanel");
-		this.add(losePanel, "losePanel");
+		this.add(PausedPanel.getInstance(), "pausedPanel");
+		this.add(WinPanel.getInstance(), "winPanel");
+		this.add(LosePanel.getInstance(), "losePanel");
 		cardLayout.show(getContentPane(), "startPanel");
 	}
 

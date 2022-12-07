@@ -19,10 +19,12 @@ import javax.swing.JPanel;
  * @author Haruka Mibuchi
  */
 public class WinPanel extends JPanel {
+	private static WinPanel instance = null;
 	private JButton restartBtn;
 	private BufferedImage backgroundImg;
 
-	public WinPanel() {
+	private WinPanel() {
+		instance = this;
 		this.setLayout(null);
 		loadBackground();
 		this.restartBtn = new JButton("RESTART");
@@ -36,6 +38,13 @@ public class WinPanel extends JPanel {
 		restartBtn.setFont(new Font("Serif", Font.BOLD, 40));
 		addActListeners();
 
+	}
+
+	public static WinPanel getInstance() {
+		if (instance == null) {
+			new WinPanel();
+		}
+		return instance;
 	}
 
 	/**

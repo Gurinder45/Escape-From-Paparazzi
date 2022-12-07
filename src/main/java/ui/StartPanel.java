@@ -19,10 +19,12 @@ import javax.swing.JPanel;
  * @author Haruka Mibuchi
  */
 public class StartPanel extends JPanel {
+	private static StartPanel instance = null;
 	private JButton startBtn;
 	private BufferedImage backgroundImg;
 
-	public StartPanel() {
+	private StartPanel() {
+		instance = this;
 		this.setLayout(null);
 		loadBackground();
 		this.startBtn = new JButton("START");
@@ -34,6 +36,13 @@ public class StartPanel extends JPanel {
 		startBtn.setFont(new Font("Serif", Font.BOLD, 40));
 		addActListeners();
 
+	}
+
+	public static StartPanel getInstance() {
+		if (instance == null) {
+			new StartPanel();
+		}
+		return instance;
 	}
 
 	/**
