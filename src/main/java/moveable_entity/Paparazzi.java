@@ -80,73 +80,78 @@ public class Paparazzi extends MoveableEntity {
 		CollisionFinder.getInstance().checkEnemyCollision(this);
 		EnemyMovement.getInstance().setNodes(startColumn, startRow, playerColumn, playerRow);
 		if (EnemyMovement.getInstance().search()) {
-			int nextPositionX = EnemyMovement.getInstance().getNextColumn() * gFrame.cellSize;
-			int nextPositionY = EnemyMovement.getInstance().getNextRow() * gFrame.cellSize;
-
-			int leftPosition = this.getPositionX() + gap;
-			int rightPosition = this.getPositionX() - gap + gFrame.cellSize;
-			int topPosition = this.getPositionY() + gap;
-			int bottomPosition = this.getPositionY() - gap + gFrame.cellSize;
-
-			// case when next position is above and the enemy is centered in the
-			// tile
-			if (topPosition > nextPositionY && leftPosition >= nextPositionX
-					&& rightPosition < nextPositionX + gFrame.cellSize) {
-				direction = Direction.UP;
-				move(direction);
-				// case when next position is below and the enemy is centered in the
-				// tile
-			} else if (topPosition < nextPositionY && leftPosition >= nextPositionX
-					&& rightPosition < nextPositionX + gFrame.cellSize) {
-				direction = Direction.DOWN;
-				move(direction);
-				// case when next position is left or right
-			} else if (topPosition >= nextPositionY && bottomPosition < nextPositionY +
-					gFrame.cellSize) {
-				if (leftPosition > nextPositionX) {
-					direction = Direction.LEFT;
-					move(direction);
-				}
-				if (leftPosition < nextPositionX) {
-					direction = Direction.RIGHT;
-					move(direction);
-				}
-				// if a collision is preventing the enemy from moving up, move left or right
-			} else if (topPosition > nextPositionY && leftPosition > nextPositionX) {
-				direction = Direction.UP;
-				move(direction);
-				if (collided) {
-					direction = Direction.LEFT;
-					move(direction);
-				}
-			} else if (topPosition > nextPositionY && leftPosition < nextPositionX) {
-				direction = Direction.UP;
-				move(direction);
-				if (collided) {
-					direction = Direction.RIGHT;
-					move(direction);
-				}
-
-				// if a collision is preventing the enemy from moving down, move left or right
-			} else if (topPosition < nextPositionY && leftPosition > nextPositionX) {
-				direction = Direction.DOWN;
-				move(direction);
-				if (collided) {
-					direction = Direction.LEFT;
-					move(direction);
-				}
-			} else if (topPosition < nextPositionY && leftPosition < nextPositionX) {
-				direction = Direction.DOWN;
-				move(direction);
-				if (collided) {
-					direction = Direction.RIGHT;
-					move(direction);
-				}
-			}
+			findDirection();
 			int nextColumn = EnemyMovement.getInstance().getNextColumn();
 			int nextRow = EnemyMovement.getInstance().getNextRow();
 			if (nextColumn == playerColumn && nextRow == playerRow) {
 				gFrame.loseGame();
+			}
+		}
+	}
+
+	public void findDirection() {
+		int gap = 5;
+		int nextPositionX = EnemyMovement.getInstance().getNextColumn() * gFrame.cellSize;
+		int nextPositionY = EnemyMovement.getInstance().getNextRow() * gFrame.cellSize;
+
+		int leftPosition = this.getPositionX() + gap;
+		int rightPosition = this.getPositionX() - gap + gFrame.cellSize;
+		int topPosition = this.getPositionY() + gap;
+		int bottomPosition = this.getPositionY() - gap + gFrame.cellSize;
+
+		// case when next position is above and the enemy is centered in the
+		// tile
+		if (topPosition > nextPositionY && leftPosition >= nextPositionX
+				&& rightPosition < nextPositionX + gFrame.cellSize) {
+			direction = Direction.UP;
+			move(direction);
+			// case when next position is below and the enemy is centered in the
+			// tile
+		} else if (topPosition < nextPositionY && leftPosition >= nextPositionX
+				&& rightPosition < nextPositionX + gFrame.cellSize) {
+			direction = Direction.DOWN;
+			move(direction);
+			// case when next position is left or right
+		} else if (topPosition >= nextPositionY && bottomPosition < nextPositionY +
+				gFrame.cellSize) {
+			if (leftPosition > nextPositionX) {
+				direction = Direction.LEFT;
+				move(direction);
+			}
+			if (leftPosition < nextPositionX) {
+				direction = Direction.RIGHT;
+				move(direction);
+			}
+			// if a collision is preventing the enemy from moving up, move left or right
+		} else if (topPosition > nextPositionY && leftPosition > nextPositionX) {
+			direction = Direction.UP;
+			move(direction);
+			if (collided) {
+				direction = Direction.LEFT;
+				move(direction);
+			}
+		} else if (topPosition > nextPositionY && leftPosition < nextPositionX) {
+			direction = Direction.UP;
+			move(direction);
+			if (collided) {
+				direction = Direction.RIGHT;
+				move(direction);
+			}
+
+			// if a collision is preventing the enemy from moving down, move left or right
+		} else if (topPosition < nextPositionY && leftPosition > nextPositionX) {
+			direction = Direction.DOWN;
+			move(direction);
+			if (collided) {
+				direction = Direction.LEFT;
+				move(direction);
+			}
+		} else if (topPosition < nextPositionY && leftPosition < nextPositionX) {
+			direction = Direction.DOWN;
+			move(direction);
+			if (collided) {
+				direction = Direction.RIGHT;
+				move(direction);
 			}
 		}
 	}
