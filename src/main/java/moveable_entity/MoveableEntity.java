@@ -92,51 +92,111 @@ public abstract class MoveableEntity {
 	 */
 	public abstract void loadImage();
 
+	/**
+	 * Gets the left column number of the Entity
+	 * 
+	 * @return integer representing column number
+	 */
 	public int getLeftColumn() {
 		return position.getLeftColumn();
 	}
 
+	/**
+	 * Gets the right column number of the Entity
+	 * 
+	 * @return integer representing column number
+	 */
 	public int getRightColumn() {
 		return position.getRightColumn();
 	}
 
+	/**
+	 * Gets the top row number of the Entity
+	 * 
+	 * @return integer representing row number
+	 */
 	public int getTopRow() {
 		return position.getTopRow();
 	}
 
+	/**
+	 * Gets the bottom number of the Entity
+	 * 
+	 * @return integer representing row number
+	 */
 	public int getBottomRow() {
 		return position.getBottomRow();
 	}
 
+	/**
+	 * Gets the next block row above the Entity
+	 * 
+	 * @return integer representing row number
+	 */
 	public int getNextUp() {
 		return position.getNextUp(this.speed);
 	}
 
+	/**
+	 * Gets the next block row below the Entity
+	 * 
+	 * @return integer representing row number
+	 */
 	public int getNextDown() {
 		return position.getNextDown(this.speed);
 	}
 
+	/**
+	 * Gets the next block column on the left of the Entity
+	 * 
+	 * @return integer representing colum number
+	 */
 	public int getNextLeft() {
 		return position.getNextLeft(this.speed);
 	}
 
+	/**
+	 * Gets the next block column on the right of the Entity
+	 * 
+	 * @return integer representing colum number
+	 */
 	public int getNextRight() {
 		return position.getNextRight(this.speed);
 	}
 
+	/**
+	 * Gets the top pixel of the Entity hit box
+	 * 
+	 * @return integer representing pixel
+	 */
 	public int getHitBoxTop() {
 		return position.getHitBoxTop();
 	}
 
+	/**
+	 * Gets the bottom pixel of the Entity hit box
+	 * 
+	 * @return integer representing pixel
+	 */
 	public int getHitBoxBottom() {
 		return position.getHitBoxBottom();
 	}
 
+	/**
+	 * Gets the right pixel of the Entity hit box
+	 * 
+	 * @return integer representing pixel
+	 */
 	public int getHitBoxRight() {
 		return position.getHitBoxRight();
 
 	}
 
+	/**
+	 * Gets the left pixel of the Entity hit box
+	 * 
+	 * @return integer representing pixel
+	 */
 	public int getHitBoxLeft() {
 		return position.getHitBoxLeft();
 	}

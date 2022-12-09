@@ -64,7 +64,7 @@ public class Paparazzi extends MoveableEntity {
 	}
 
 	/**
-	 * Finds the next direction to move the paparazzi closer to the celebrity
+	 * Calls the EnemyMovement class to create a path to the main character
 	 * 
 	 * @param col celebrities column in map
 	 * @param row celebrities row in map
@@ -86,6 +86,9 @@ public class Paparazzi extends MoveableEntity {
 		}
 	}
 
+	/**
+	 * Finds the next direction to move the paparazzi closer to the celebrity
+	 */
 	public void findDirection() {
 		int nextPositionX = EnemyMovement.getInstance().getNextColumn() * gFrame.cellSize;
 		int nextPositionY = EnemyMovement.getInstance().getNextRow() * gFrame.cellSize;
