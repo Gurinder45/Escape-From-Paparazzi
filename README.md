@@ -1,10 +1,9 @@
-# CMPT 276 Group 18 Project
 
-Group Members: Haruka Mibuchi, Gurinder Bhogal, Asifiwe Julio Patrick
+Members: Haruka Mibuchi, Gurinder Bhogal, Asifiwe Julio Patrick
 
-## Escape from Paparazzies
+## Escape from Paparazzi
 
-A bunch of Paparazzi are trying to take pictures of a celebrity visiting a shopping mall. The celebrity also wants to avoid all the cameras that have been set in the mall by those paparazzi. In this 2D game, the celebrity must collect all disguise items from stores in the mall to escape from paparazzi and their cameras. Therefore, the player will move the celebrity in complex and branched passages and lead her to the exit obtaining all the items without meeting paparazzi and cameras.
+Paparazzi are trying to take pictures of a celebrity visiting a shopping mall. The celebrity also wants to avoid all the cameras that have been set in the mall by those paparazzi. In this 2D game, the celebrity must collect all disguise items from stores in the mall to escape from paparazzi and their cameras. Therefore, the player will move the celebrity in complex and branched passages and lead her to the exit obtaining all the items without meeting paparazzi and cameras.
 
 ### Instruction of the game
 
